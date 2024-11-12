@@ -1,0 +1,416 @@
+/*NOT USED*/
+/*navigation bar*/
+/*.navbar {
+    width: 100%;
+    height: 65px;
+    padding-right: 37px;
+    border-bottom: 1px solid;
+}
+a:first-child {
+    float: left;
+    padding: 7px 7px 2px 37px;
+}
+
+a {
+    float: left;
+}
+
+.navbar a:not(:first-child) {
+    color: dimgrey;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: 23px 16px;
+}
+
+a.right {
+    float: right;
+}
+
+span.icons {
+    display: none;
+    font-size: 27px;
+    margin-top: 12px;
+    margin-right: 10px;
+    color: dimgrey;
+    cursor: pointer;
+}
+
+.navbar a:not(:first-child):hover {
+    background-color: pink;
+    color: black;
+    border-radius: .3px;
+}
+
+@media screen and (max-width: 700px){
+    .navbar a:not(:first-child) {
+        display: none;
+      }
+      .navbar a.icon {
+        float: right;
+        display: block;
+        font-size: 17px;
+      }
+    .navbar{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+*/
+
+/*
+header {
+    width: 50%;       
+    /*not writing in pixel since that will require exact no. of pixels when switched to other devices, and we won't be able to create
+      a responsive web page so this relative length will help our content to remain at 50% (here) according to screen size. 
+    margin: auto;
+    border-width: 1px;
+    border-top: dotted;
+    border-bottom: dotted;
+   }
+    
+   header h1 {
+    text-align: center;
+    font: 100 60px/1.5 Helvetica, Verdana, sans-serif;
+    
+   }
+    
+   header p {
+    font: 100 15px/1.5 Helvetica, Verdana, sans-serif;
+    text-align: justify;
+   }
+*/
+.photobanner{
+    display: flex;
+    border: 3px solid green;
+    background-color: grey;
+    justify-content: space-evenly;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.photobanner div{
+    margin: 3px;
+}
+
+.horizontal{
+    display: flex;
+    border: 3px solid green;
+    flex-wrap: wrap;   
+/*in this it doesn't work bcoz all those photos are not rendered differently, i.e., since they is no space between images and also all images are 
+contained in a single div container 'horizontal', see above class 'photobanner' in that we have different div containers for different images.*/
+}
+
+.pics{
+    transition: 1s;
+}
+.pics:hover{
+    transform: scale(1.3) ;
+    z-index: 2;
+}
+.swiper{
+    width: 80%;
+    height: fit-content;
+    margin: auto;
+    position: relative;
+}
+
+.swiper::before{
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    z-index: 99;
+    height: 100%;
+    width: 150px;
+    background-image: linear-gradient(90deg, black, transparent);
+}
+
+.swiper::after{
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+    z-index: 99;
+    height: 100%;
+    width: 150px;
+    background-image: linear-gradient(-90deg, black, transparent);
+}
+
+.imageban img{
+    width: 100%;
+}
+
+.banner{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    overflow: auto;
+    position: relative;
+    scroll-behavior: smooth;
+}
+.imageban{
+    min-width: 600px;
+    height: 450px;
+    margin: 1px 10px;
+    cursor: pointer;
+    border: 1px solid;
+    overflow: hidden;
+}
+.banner::-webkit-scrollbar{
+    -webkit-appearance: none;
+}
+
+.icon{
+    color: green;
+    background-color: black;
+    font-size: 50px;
+    outline: none;
+    border: none;
+    padding: 0px 20px;
+    cursor: pointer;
+}
+/*
+
+.table{
+    margin: 1.2%;
+    display: flex;
+    background-color: #D8D8D8;
+    flex-direction: row;
+}
+.box{
+    height: 33vh;
+    width: 25vw;
+}
+
+.box img{
+    max-height: 33vh;
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
+ 
+.box h5{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.box p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+*/
+/*
+    .table{
+        flex-direction: column;
+    }
+    .box{
+        width: 50vw;
+    }
+    */
+
+/*
+    .tabl tr {
+        display: block; 
+        float: left; 
+    }
+    .tabl td { 
+        display: block; 
+    }
+    .cell{
+        width: 50%;
+        height: 25%;
+    }*/
+
+/*navigation bar*/
+.navbar ul {
+    height: 100%;
+    list-style-type: none;
+    margin : 0;
+    padding : 4px;
+}
+
+.navbar{
+    border-bottom: 1px solid;
+    /*background-color: #f8f9fa;*/
+    background-color: #333;
+    height: 70px;
+    width: 100%;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.navbar-collapse{
+    /*position: relative; 
+    height: 100%;     */ 
+    padding : 3px 16px 12px;
+    margin-top: 1px;
+    border: 1px solid;
+    
+}
+/*ul li{
+    font-size: medium; 
+    float: left;
+    padding-right: 26px;
+}
+li.right{
+    float: right;
+}*/
+.inliner{
+    display: inline-block;
+
+}
+ul li{
+    display: inline-block;
+}
+.navbar a{
+    text-decoration : none;   /*removing underline from anchor tag links*/
+    color : #f2f2f2;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    font-size: 17px;
+}
+li a:hover{
+    background-color: palevioletred;
+    color: whitesmoke;
+    transition: 0.3s;
+}
+
+li#logo{
+    mix-blend-mode: multiply; /*to remove background colour of image logo of Taj,i.e, mix it with the background colour of surrounding element
+                                here navbar*/
+    padding-right: 35px;
+    padding-left: 34px;   
+    
+}
+span {
+    float: right;
+    padding: 8px 8px;
+    cursor: pointer;
+    font-size: 30px;
+    display: none;
+}
+
+@media only screen and (max-width: 700px){
+    span{
+        display: inline-block;
+    }
+    ul li{
+        display: block;
+    }
+}
+
+
+/*styling*/
+
+/*
+.slider{
+    animation: slide 12s infinite 2s;
+}
+.slider{
+    display: flex;
+    aspect-ratio: 17/6;
+    overflow-x: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+.slider img{
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover;
+    object-position: center center;
+}
+.slider-nav{
+    display: flex;
+    column-gap: 1rem;
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+.slider-nav a{
+    height: 0.5rem;
+    width: 0.5rem;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 75%;
+    border: 1px solid black;
+    transition: opacity ease 250ms;
+}
+.slider-nav a:hover{
+    opacity: 1;
+}
+
+
+.image{
+    background-image: url("../images/mumbai.jpg");
+    height: 76%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 3.8%;
+    filter: blur(2px);
+}
+
+.content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45%;
+    padding: 40px 20px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-weight: bold;
+    border: 15px inset #fff;
+}
+
+.group{
+    height: 100%;
+    width: 73%;
+    background-color: #D8D8D8;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+
+@keyframes slide {
+    0%{
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(0);
+    }
+    30%{
+        transform: translateX(-100%);
+    }
+    50%{
+        transform: translateX(-100%);
+    }
+    55%{
+        transform: translateX(-200%);
+    }
+    75%{
+        transform: translateX(-200%);
+    }
+    80%{
+        transform: translateX(-300%);
+    }
+    100%{
+        transform: translateX(-300%);
+    }
+}*/

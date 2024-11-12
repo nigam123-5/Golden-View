@@ -1,0 +1,440 @@
+<html>
+    <head>
+        <title>Luxury Hotels</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+        <link rel='stylesheet' href="/css/swiper-bundle.min.css">
+        <link rel='stylesheet' href="/css/style.css">
+        <link rel='stylesheet' href="/css/style1.css">
+        <link rel='stylesheet' href="/css/style-select.css">
+
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+       
+
+    </head>
+    <body id='content'>
+        <div id='container'>
+            <nav>
+                <div class="navbar" id='mynavbar'>
+                    <a href='/' class='logo'><img src='/logo (2).png'
+                            height='56px' width='80px'></a>
+                    <span class='icons menu'>&#9776;</span>
+                    <span class='icons close'>&#10006;</span>
+                    <div class="navbar-collapse">
+                        <a href="/hotels">Our Hotels</a>
+                        <a href="/booking">Manage Booking</a>
+                        <a href="/menu">Menu</a>
+                        <a href="/awards">About</a>
+                        
+                  <a href="/contact" class="right">Contact Us</a>
+                        <a href="/login" class="right">Sign In</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class='container0 swiper-container'>
+                <div class='slider swiper-wrapper'>
+                    <img class="animated_ swiper-slide" src='/slide2.jpg'>
+                    <!-- <img class="animated_ swiper-slide" src='/home3.jpg'> -->
+                    <img class="animated_ swiper-slide" src='/slide5.jpg'>
+                    <img class="animated_ swiper-slide" src='/slide3.jpg'>
+                    <img class="animated_ swiper-slide" src='/slide4.jpg'>
+                    <img class="animated_ swiper-slide" src='/home2.jpg'>
+                </div>
+                <div
+                    class="swiper-button-next swiper-button-next1 nepr_butn"></div>
+                <div
+                    class="swiper-button-prev swiper-button-prev1 nepr_butn"></div>
+                <div class="swiper-pagination swiper-pagination1"></div>
+                
+            </div>
+
+            <!-- <br> -->
+
+            <div class='conteiner1'>
+                <h1>BOOK YOUR STAY</h1>
+            </div>
+
+            <div class='search_box' id='search-bar'>
+                <div class='book-your-stay display'><p>Book your stay</p>
+                    <i class="fa-solid fa-xmark" id='form-mark'
+                        onclick="formfunction()"></i></div>
+
+                <form action="/rooms" id='form'
+                    onsubmit="return checkFields()">
+                    <div class='search des'>
+                        <div class='input-container'>
+                            <label for="searchInput"><i
+                                    class="fas fa-search search_icon"></i></label>
+                            <input type='text' placeholder="Search Destination"
+                                id='searchInput'>
+                        </div>
+                        <div id='itemList'>
+                            <ul id='items'></ul>
+                        </div>
+                        <input type="hidden" id='selectedItem'>
+                    </div>
+                    <div class='search date'>
+                        <div class='in-date'>
+                            <span class='extra'>Check-In</span>
+                            <input type='date' oninput="changeColor(this)"
+                                class='datepicker'>
+                        </div>
+                        <div class='in-date'>
+                            <span>Check-Out</span>
+                            <input type='date' oninput="changeColor(this)"
+                                class='datepicker'>
+                        </div>
+                    </div>
+                    <div class='this-container search'>
+                        <div class='room'>
+                            <div class='room-num'>Room 01</div>
+                            <div class="room-box display line-height">
+                                <ul class='roomss'>
+                                    <li data-value="1" class='list-select'>Room
+                                        01</li>
+                                    <li data-value="2">Room 02</li>
+                                    <li data-value="3">Room 03</li>
+                                    <li data-value="4">Room 04</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class='room guest'>
+                            <div class='guest-num'>Guest 02</div>
+                            <div class='guest-box display line-height'>
+                                <div class='blocks'>
+                                    <span class='room-no'>Room 1</span>
+                                    <span class='x-mark display bar'><i
+                                            class="fa-regular fa-circle-xmark i-mark"></i></span>
+                                    <span class='edit display'>Edit</span>
+                                    <div class='final-list display'>
+                                    </div>
+                                    <div class='tot-guest'>
+                                        <div class='people'><p>Adult</p>
+                                            <ul class='number adult'>
+                                                <li data-value='1'>1</li>
+                                                <li data-value='2'
+                                                    class='selected'>2</li>
+                                            </ul>
+                                        </div>
+                                        <div class='people'><p>Children</p>
+                                            <ul class='number child'>
+                                                <li data-value='1'>1</li>
+                                                <li data-value='2'>2</li>
+                                                <li class='display'><i
+                                                        class="fa-regular fa-circle-xmark"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class='child-age'>
+                                    </div>
+                                </div>
+                                <div class='done'>
+                                    <div class='add-room'>ADD ROOM</div>
+                                    <p class='finish'>Done</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                            <div class='click-button'>
+                            <input type="submit" value='View Availibility'
+                                class='press' id='viewB'>
+                            <p class='guarantee'>Best Rate Guarantee</p>
+                        </div>
+
+
+                    </form>
+                    <div id='error'></div>
+                </div>
+
+                <!-- <div class='button-container display'>
+                    <button type='button'>How may I help you?</button>
+                    <button type='button' onclick='formfunction()'
+                        id='form-button' >View Availibility</button>
+                </div> -->
+
+                <div class='container1'>
+                    <h1>OFFERS AND PROMOTIONS</h1>
+                    <div class='inner_container1'>
+                        <ul type='circle'>
+                            <li class='l1 active_col' onclick='box(1)'>Urban
+                                Getaways</li>
+                            <li class='l1' onclick='box(2)'>International
+                                Escapes</li>
+                            <li class='l1' onclick='box(3)'>Member Exclusive
+                                Offers</li>
+                            <li class='l1' onclick='box(4)'>Carecations</li>
+                            <li class='l1' onclick='box(5)'>Suite Surprises</li>
+                            <li class='l1' onclick='box(6)'>4D Offer</li>
+                        </ul>
+
+                        <div class='box active_ele' id='box1'>
+                            <div class='text'>
+                                <p>Urban Getaways</p>
+                                <p>Treat yourself and your loved ones to a
+                                    relaxing
+                                    staycation at our iconic city hotels.</p>
+                                <p><b>VALID TILL 27th Sep 2024</b></p>
+                            </div>
+                            <img src='/link1.jpg'>
+                        </div>
+                        <div class='box' id='box2'>
+                            <div class='text'>
+                                <p>International Escapes</p>
+                                <p>Enjoy exclusive savings on your stay + 4%
+                                    Minimum
+                                    NeuCoins</p>
+                                <p><b>VALID TILL 27th Sep 2024</b></p>
+                            </div>
+                            <img src='/link2.jpeg'>
+                        </div>
+                        <div class='box' id='box3'>
+                            <div class='text'>
+                                <p>Member Exclusive Offer</p>
+                                <p>An exclusive offer for our Exclusive
+                                    members</p>
+                                <p><b>Round the year</b></p>
+                            </div>
+                            <img src='/link4.jpeg'>
+                        </div>
+                        <div class='box' id='box4'>
+                            <div class='text'>
+                                <p>Carecations</p>
+                                <p>Carecations enable you to embark on inspiring
+                                    journeys specially designed to lead positive
+                                    change for a better tomorrow.</p>
+                                <p><b>VALID TILL 31st DEC 2024</b></p>
+                            </div>
+                            <img src='/link5.jpg'>
+                        </div>
+                        <div class='box' id='box5'>
+                            <div class='text'>
+                                <p>Suite Surprises</p>
+                                <p>Great value on Suite bookings</p>
+                                <p><b>VALID TILL 31st Oct 2024</b></p>
+                            </div>
+                            <img src='/link3.jpg'>
+                        </div>
+                        <div class='box' id='box6'>
+                            <div class='text'>
+                                <p>4D Offer</p>
+                                <p>Presenting the 4D travel experience.</p>
+                                <p><b>Valid Till 31st Oct 2024</b></p>
+                            </div>
+                            <img src='/link6.jpg'>
+                        </div>
+                    </div>
+                    <div class='slider-nav'>
+                        <a href='#box1' onclick="box__(1)"></a>
+                        <a href='#box2' onclick='box__(2)'></a>
+                        <a href='#box3' onclick='box__(3)'></a>
+                        <a href='#box4' onclick='box__(4)'></a>
+                        <a href='#box5' onclick='box__(5)'></a>
+                        <a href='#box6' onclick='box__(6)'></a>
+                    </div>
+                </div>
+
+                <div class='container2'>
+                    <h2>Explore Golden View </h2>
+
+                    <p class='contain2_para'>
+                        Descend into a world that was once the sole preserve of
+                        royalty, step onto the soft,
+                        white sand beaches at a secluded island or discover the
+                        hidden secrets of mist-draped hills with Sunshine</p>
+
+                    <table class='tabl' cellspacing=0>
+                        <tr style="height: 32vh;">
+                            <td class='cell'>
+                                <img src='/hall.webp' alt='marine drive'
+                                    width=100%
+                                    height=100% style="object-fit: cover;"></td>
+                            <td class='row_col cell'><h5>BEACH RETREATS</h5>
+                                <p class="para"> Wake up to the sound of waves
+                                    lapping lazily at the shore. Uncover
+                                    serenity
+                                    and marvel at the
+                                    wealth of beauty within the glittering blue
+                                    seas. Give in to the siren song of the sun,
+                                    sand and surf with Beach Retreats.</p></td>
+                            <td class='cell'>
+                                <img src='/fort.jpg' width=100% height=100%
+                                    style="object-fit: cover;"></td>
+                            <td class='row_col cell'><h5>HILL STATIONS</h5>
+                                <p class="para">Gaze at the mist rolling in over
+                                    the
+                                    hill-tops from your luxurious villa. Marvel
+                                    at
+                                    glorious
+                                    sunsets that will take your breath away from
+                                    a
+                                    private deck.</p></td>
+                        </tr>
+                        <tr style="height: 32vh;">
+                            <td class='row_col cell'>
+                                <h5>ROYAL INDIA</h5>
+                                <p class="para"> Wander through the storied
+                                    halls of
+                                    a fairy tale palace, where
+                                    dreams come to life. Retreat into your
+                                    majestic
+                                    suite, inspired by elegance.</p>
+                            </td>
+                            <td class='cell'>
+                                <img src='/marine_drive.jpg' width=100%
+                                    height=100%
+                                    style="object-fit: cover;"></td>
+                            <td class='row_col cell'>
+                                <h5> URBAN GETAWAYS</h5>
+                                <p class="para"> There is magic to be found in
+                                    the
+                                    energy of a bustling city. Where vibrant
+                                    markets
+                                    offer you
+                                    everything you could imagine and centuries
+                                    of
+                                    history hide in the most unassuming places.
+                                    Discover the world's
+                                    most spectacular urban hubs.</p>
+                            </td>
+                            <td class='cell'>
+                                <img src='/waterfall.jpg' width=100%
+                                    height="100%"
+                                    style="object-fit: cover;"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class='container3'> <!-- using css grid concept -->
+                    <h1>OUR SERVICES</h1>
+                    <div class='services'>
+                        <div class='service_data'>
+                            <img src='/service11.jpg'>
+                            <h4>timeless weddings</h4>
+                        </div>
+                        <div class='service_data'>
+                            <img src='/service2.jpg'>
+                            <h4> Meetings</h4>
+                        </div>
+
+                        <div class='service_data'>
+                            <img src='/home3.jpg'>
+                            <h4>Stay </h4>
+                        </div>
+
+                        <div class='service_data'>
+                            <img src='/service5.jpeg'>
+                            <h4>Bussiness Events</h4>
+                        </div>
+                        <div class='service_data'>
+                            <img src='/service6 (3).jpeg'>
+                            <h4>Party</h4>
+                        </div>
+                        <div class='service_data'>
+                            <img src='/service6 (2).jpeg'>
+                            <h4>dining</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Used concept of swiper js which is library of js to create image touch slider for responsive webpage-->
+
+                <div class='footer'>
+                    <p>Destinations +</p>
+                    <hr
+                        style="width: 90%; height: .2px; border: none; background-color: #606060;">
+                    <div class='destination_box'>
+                        <div class='destination_box1'>
+                            <ul class='flex-list'>
+                                <div style='width: 35rem;'>
+                                    <li>Airline & Frequent Flyer Partners</li>
+                                    <li>Sunshine Magazine</li>
+                                    <li>J Wellness Circle</li>
+                                    <li>Site Map</li>
+                                    <li>Terms Of Use</li>
+                                    <li>Contact Us</li>
+                                </div>
+                                <div style='width: 15rem;'>
+                                    <li>Accessibility</li>
+                                    <li>Languages</li>
+                                    <li>Privacy Policy</li>
+                                    <li>Press Room</li>
+                                    <li>Careers</li>
+                                    <li>Blogs</li>
+                                </div>
+                                <div style='width: 26rem;'>
+                                    <li>SAATHI</li>
+                                    <li>NIDHI</li>
+                                    <li>UTSAV</li>
+                                    <li>INCREDIBLE INDIA FILM</li>
+                                </div>
+                            </ul>
+                        </div>
+                        <div class='destination_box2'>
+                            <ul>
+                                <li>Join our newsletter</li>
+                                <li><button class='button'><a
+                                            href='/our_newsletter'>SUBSCRIBE</a></button></li>
+                                <br>
+                                <li>Connect with us:</li>
+                                <li>
+                                    <div class='contact'>
+                                        <a class='con_icons' href='#'>
+                                            <i
+                                                class="fa-brands fa-facebook-f"></i></a>
+                                        <a class='con_icons' href='#'>
+                                            <i
+                                                class="fa-brands fa-instagram"></i></a>
+                                        <a class='con_icons' href='#'>
+                                            <i
+                                                class="fa-brands fa-x-twitter"></i></a>
+                                        <a class='con_icons' href='#'>
+                                            <i
+                                                class="fa-brands fa-youtube"></i></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class='f-brand'>
+                        <div class='hotel'>
+                            <img src='/brand_logo.png' width=90px height=37px>
+                            <p> The Indian Hotels Company Limited.</p>
+                        </div>
+                        <hr
+                            style="width: 90%; height: .2px; border: none; background-color: #606060;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <!-- Swiper JS-->
+    <script type='text/javascript' src="/js/swiper-bundle.min.js"></script>
+    <script type='text/javascript' src="/js/script.js"></script>
+    <script type='text/javascript' src="/js/script-select.js"></script>
+
+   <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/66e9241650c10f7a00abb45f/1i7vb9uu3';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+</html>

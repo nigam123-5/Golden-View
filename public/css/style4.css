@@ -1,0 +1,94 @@
+.container1{
+    height: 85%;
+    width: 100%;
+    margin-bottom: 3%;
+    background-image: url('/namaste1.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container2{
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 5%;
+}
+.heading{
+    font-size: 35px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+.award{
+    
+    width: 292px;
+    border-right: 1px solid rgb(223, 164, 14);
+    margin-bottom: 3%;
+    margin-top: 2%;
+    padding: 2% 2% 5% 2%;
+}
+
+p {
+    
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center; 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    color: #4b4949; 
+    /* background-color: white;  */
+    /* margin-bottom: 2.5%; */
+    
+}
+
+
+.award p{
+    text-align: center;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.award p:nth-child(3){
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.container2 button{
+    width: 100px;
+    height: 48px;
+    background-color: rgb(181, 132, 9);
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+.container2 button:hover{
+    text-decoration: underline;
+}
+.container2 span{
+    display: flex;
+    justify-content: center;
+}
+.show_more{
+    display: none;
+}
+.less1{
+    display: none;
+}
+.activate{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 747px) {
+    .flex{
+        justify-content: center;
+    }
+    .award{
+        border-right: none;
+        border-bottom: 1px solid rgb(223, 164, 14);
+    }
+    .show_more{
+        justify-content: center;
+    }
+    .container1{
+        height: 50%;
+    }
+}

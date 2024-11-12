@@ -1,0 +1,266 @@
+<html> <!--apply required on all fields-->
+    <head>
+        <title>Details</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel='stylesheet' href="/css/style1.css">
+        <link rel='stylesheet' href="/css/style7.css">
+
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body id='content'>
+        <div id='container'>
+            <nav>
+                <div class="navbar" id='mynavbar'>
+                    <a href='/' class='logo'><img src='/logo (2).png'
+                            height='56px' width='80px'></a>
+                    <span class='icons menu'>&#9776;</span>
+                    <span class='icons close'>&#10006;</span>
+                    <div class="navbar-collapse">
+                        <a href="/hotels">Our Hotels</a>
+                        <a href="/booking">Manage Booking</a>
+                        <a href="/awards">About</a>
+                        <a href="/menu">Menu</a>
+                        <a href="/contact"
+                            class="right">Contact Us</a>
+                        <a href="/login" class="right">Sign In</a>
+                    </div>
+                </div>
+            </nav>
+
+            
+
+            <div class='form'>
+                <p class='heading'>Guest Details</p>
+                <form action="/confirmation_page" id='form'>
+                    <div class='box'>
+                        <p>Guest Details</p>
+                        <div class='flex'>
+                            <div class='input-control'>
+                                <input type="text" placeholder="First Name"
+                                    id='first-name'>
+                                <div class='error-box'></div>
+                            </div>
+                            <div class='input-control'>
+                                <input type="text" placeholder="Last Name"
+                                    id='last-name'>
+                                <div class='error-box'></div>
+                            </div>
+                        </div>
+                        <div class='flex'>
+                            <div class='input-control'>
+                                <input type="text" placeholder="Mobile"
+                                    id='mobile'>
+                                <div class='error-box'></div>
+                            </div>
+                            <div class='input-control'>
+                                <input type="email" placeholder="Email Address"
+                                    id='email'>
+                                <div class='error-box'></div>
+                                <p class='mail-detail'>This is the email we will
+                                    send your confirmation to.</p>
+                            </div>
+                        </div>
+                        <p>Address</p>
+                        <div class='input-control'>
+                            <input type="text" placeholder="Country"
+                                id='country'>
+                            <div class='error-box'></div>
+                        </div>
+                        <div class='input-control'>
+                            <input type="text" placeholder="Address 1"
+                                id='address'>
+                            <div class='error-box'></div>
+                        </div>
+                        <div class='input-control'>
+                            <input type="text" placeholder="Postal / Zip Code"
+                                id='zip-code'>
+                            <div class='error-box'></div>
+                        </div>
+                        <hr>
+                        <p>Card Details</p>
+                        <div class='payment'>
+                            <div class='button'>
+                                <button type='button' id='key1' class='active'
+                                    onclick='key_function()'>Pay Now</button>
+                                <button type='button' id='key2' class='inactive'
+                                    onclick='key_function()'>Pay at
+                                    Hotel</button>
+                            </div>
+                            <p id='para1'>Please provide a valid payment
+                                method.</p>
+                            <p id='para2'>Payment information is only needed to
+                                guarantee your reservation. Full amount billed
+                                during the stay
+                                will be charged at the property. As per Reserve
+                                Bank of India guidelines on data protection, we
+                                are unable to
+                                store our guests' card details. In order to
+                                process your booking, we need to validate your
+                                card online. You will
+                                soon receive details of tokenising your card on
+                                the registered email id.</p>
+                            <img src='/payment.jpg'>
+                        </div>
+                        <div class='input-control'>
+                            <div class='card'>
+                                <input type="text" class='card-input'
+                                    placeholder="Card Number" id='card-number'>
+                            </div>
+                            <div class='error-box'></div>
+                        </div>
+                        <div class='flex'>
+                            <div class='input-control'>
+                                <input type="text"
+                                    placeholder="Expiration Date (MM/YY)"
+                                    id='expiry-date'>
+                                <div class='error-box'></div>
+                            </div>
+                            <div class='input-control'>
+                                <input type="password" placeholder="CVV"
+                                    id='security-code'>
+                                <div class='error-box'></div>
+                            </div>
+                        </div>
+                        <div class='input-control'>
+                            <input type="text" placeholder="Name on Card"
+                                id='holder'>
+                            <div class='error-box'></div>
+                        </div>
+
+                    </div>
+                    <div class='policy'>
+                        <p>Policies:</p>
+                        <h3>Check-in
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check-out</h3>
+                        <p class='time'>After 2:00 PM
+                            &nbsp;&nbsp;&nbsp;&nbsp;Before 12:00 PM</p>
+                        <p>
+                            Guarantee Policy<br>
+                            Your credit card will be charged with the final bill
+                            amount at the hotel. In case of late cancellation or
+                            No Show, hotel
+                            is authorised to charge the applicable cancellation
+                            charge, including any taxes and fees on the credit
+                            card used to
+                            guarantee the stay. </p>
+                        <p>
+                            Cancel Policy<br>
+                            Guaranteed reservations may be cancelled 30 days
+                            prior to date of arrival without any cancellation
+                            charge. Cancellations
+                            received less than 30 days prior to arrival will
+                            incur 100% cancellation charge of the entire stay
+                            including applicable
+                            taxes and fees.
+                        </p>
+                    </div>
+                    <div class='akg'>
+                        <p>Acknowledgement</p>
+                        <p>By completing this booking, I agree with the Booking
+                            Conditions.</p>
+                        <input type='checkbox' class='check' id='mark'><span
+                            class='agree'>* I agree with the Privacy
+                            Policy.</span>
+                        <div id='error'></div>
+                    </div>
+                    <div class='final'>
+                        <input type='submit' value='Complete Booking'
+                            class='submit'>
+                            <div class="nav-links"></div>
+                <a href="https://test.instamojo.com/@hs7570377/"
+                    rel="im-checkout" data-text="Pay"
+                    data-css-style="color:#ffffff; background:#75c26a; width:180px; border-radius:4px"></a>
+
+            </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class='footer'>
+                <p>Destinations +</p>
+                <hr
+                    style="width: 90%; height: .2px; border: none; background-color: #606060;">
+                <div class='destination_box'>
+                    <div class='destination_box1'>
+                        <ul class='flex-list'>
+                            <div style='width: 35rem;'>
+                                <li>Airline & Frequent Flyer Partners</li>
+                                <li>Taj Magazine</li>
+                                <li>J Wellness Circle</li>
+                                <li>Site Map</li>
+                                <li>Terms Of Use</li>
+                                <li>Contact Us</li>
+                            </div>
+                            <div style='width: 15rem;'>
+                                <li>Accessibility</li>
+                                <li>Languages</li>
+                                <li>Privacy Policy</li>
+                                <li>Press Room</li>
+                                <li>Careers</li>
+                                <li>Blogs</li>
+                            </div>
+                            <div style='width: 26rem;'>
+                                <li>SAATHI</li>
+                                <li>NIDHI</li>
+                                <li>UTSAV</li>
+                                <li>INCREDIBLE INDIA FILM</li>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class='destination_box2'>
+                        <ul>
+                            <li>Join our newsletter</li>
+                            <li><button class='button'><a
+                                        href='/our_newsletter'>SUBSCRIBE</a></button></li>
+                            <br>
+                            <li>Connect with us:</li>
+                            <li>
+                                <div class='contact'>
+                                    <a class='con_icons' href='#'>
+                                        <i
+                                            class="fa-brands fa-facebook-f"></i></a>
+                                    <a class='con_icons' href='#'>
+                                        <i
+                                            class="fa-brands fa-instagram"></i></a>
+                                    <a class='con_icons' href='#'>
+                                        <i
+                                            class="fa-brands fa-x-twitter"></i></a>
+                                    <a class='con_icons' href='#'>
+                                        <i class="fa-brands fa-youtube"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <p>Loyalty Programs +</p>
+                <hr
+                    style="width: 90%; height: .2px; border: none; background-color: #606060;">
+                <div class='f-brand'>
+                    <div class='hotel'>
+                        <img src='/brand_logo.png' width=90px height=37px>
+                        <p> The Indian Hotels Company Limited.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type='text/javascript' src="/js/script_hotel.js"></script>
+    <script type='text/javascript' src="/js/script_guest.js"></script>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/66e9241650c10f7a00abb45f/1i7vb9uu3';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+</html>

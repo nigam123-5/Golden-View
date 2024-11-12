@@ -1,0 +1,192 @@
+.box, .policy, .akg, .final{
+    border: 1px solid rgba(212, 206, 206, 0.953);
+    margin: 1% 6% 4% 6%;
+    padding: 0 0 2% 2%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.box hr{
+    border-top: 1px solid rgba(212, 206, 206, 0.953);   
+}
+.heading{
+    margin-left: 8%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 22px;
+}
+form p{
+    margin-top: 28px;
+}
+form hr{
+    margin-top: 18px;
+}
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.4%;
+}
+form input:not(.check, .submit){
+    width: 374px;
+    height: 43px;
+    margin: 12px 7.5px 0 0;
+    text-indent: 2%;
+}
+input::placeholder{
+    color: rgb(67, 62, 62);
+}
+.button{
+    border: 1px solid rgba(179, 175, 175, 0.953);
+    width: fit-content;
+    border-radius: 5px;
+}
+.button button{
+    width: 160px;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+.button .active{
+    background-color: rgb(210, 101, 11);
+    font-weight: bold;
+    color: white;
+}
+.button button:first-child{
+    border-radius: 5px 0 0 5px;
+}
+.button .inactive{
+    background-color: white;
+}
+.payment p{
+    font-size: 13.6px;
+    margin-top: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 65%;
+}
+#para2{
+    display: none;
+}
+.payment img{
+    width: 340px;
+    height: 105px;
+}
+
+.policy p:not(:first-child), .akg p:not(:first-child), h3, .agree{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    width: 65%;
+    min-width: 800px;
+}
+.policy h3{
+    margin: 0;
+    font-size: 16px;
+}
+.time{
+    margin: 0;
+}
+.final{
+    border: none;
+    height: 80px;
+    position: relative;
+}
+.submit{
+    width: 240px;
+    height: 50px;
+    float: right;
+    background-color: rgb(210, 101, 11);
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.card{
+    position: relative;
+    
+}
+.card::before{
+    content: '\f09d';
+    font-family: 'FontAwesome';
+    position: absolute;
+    top: 45%;
+    left: 10px;
+    z-index: 1;
+}
+.card-input{
+    padding-left: 28px;
+}
+.mail-detail{
+    width: 374px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    margin-top: 2px;
+    color: rgb(102, 99, 99);
+}
+.final::after{
+    content: '\f023';
+    font-family: 'FontAwesome';
+    position: absolute;
+    top: 17px;
+    right: 35px;
+    z-index: 1;
+    color: white;
+    font-size: 13px;
+}
+#error{
+    text-align: center;
+    color: rgba(218, 8, 8, 0.885);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+}
+.error-success{
+    background-color: rgb(174, 7, 7);
+    font-size: 14px;
+    color: white;
+    height: 31px;
+    width: 374px;
+    line-height: 31px;
+    padding: 0 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+@media screen and (max-width:915px) {
+    .policy p:not(:first-child), .akg p:not(:first-child), h3, .agree{
+        width: 100%;
+        min-width: auto;
+        padding-right: 10px;
+    }
+    .mail-detail{
+        margin-left: 5px;
+    }
+    form input:not(.check, .submit), .error-success{
+        width: 100%;
+    }
+    .input-control{
+        width: 80%;
+    }
+    .payment p {
+        width: 100%;
+        padding-right: 10px;
+    }
+    #error{
+        text-align: left;
+        padding-left: 28px;
+        margin-top: 5px;
+    }
+}
+@media screen and (max-width:400px) {
+    .button button{
+        height: 42px;
+        width: 131px;
+    }
+    .payment img {
+        width: 275px;
+    }
+    .submit {
+        width: 200px;
+        height: 47px;
+    }
+    .final::after{
+        right: 20px;
+        top: 16px;
+    }
+}

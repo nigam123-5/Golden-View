@@ -1,0 +1,561 @@
+.search_box{
+    width: 1100px;
+    margin: 0 auto;
+    height: 75px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.search_box form{
+    display: flex;
+    margin-bottom: 0;
+    height: 75%;
+}
+.search{
+    border-right:  1px solid rgb(223, 164, 14);
+    margin: 1% 0 0 0;
+    text-align: center;
+    color: #696969;
+    padding-top: .8%;
+    user-select: none;     /*to prevent icons to be treated as text to prevent mouse click event cos i-beam cursor starts blinking*/
+}
+.date{
+    width: 40%;
+    display: flex;
+}
+.in-date{
+    width: 50%;
+}
+input[type = 'date']{
+    color: white;
+    width: 52%;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    padding-left: 3%;
+    font-weight: bold;
+}
+.this-container{
+    width: 18%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1% 0 0 0;
+    padding-top: 0;
+    border: none;
+}
+.room{
+  width: 50%;
+  border-right:  1px solid rgb(223, 164, 14);
+  padding-top: 4%;
+} 
+/*
+.room select{
+    border: none;
+    color: #696969;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+}*/
+.guest{
+    border: none;
+}
+.des{
+    width: 25%;
+    padding-left: 2%;
+}
+#searchInput{
+    width: 80%;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    color: #525151;
+    padding-left: 7%;
+}
+.input-container {
+  position: relative;
+}
+
+.input-container label {
+  position: absolute;
+  top: 50%;
+  left: 17px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+/* #searchInput:before{
+  content: '\f00d';
+  font-family: 'FontAwesome';
+  font-size: 20px;
+} */
+#itemList{
+    display: none;
+    position: relative;
+    z-index: 5;
+}
+#itemList p{
+    color: rgb(216, 75, 15);
+}
+#items{
+    list-style: none;
+    padding: 10px 0 0 0;
+    margin: 5px 30px;
+    border: 1px solid rgb(201, 110, 12);
+    background-color: #fff;
+    max-height: 290px;
+    overflow-y: auto;
+    width: 390px;
+}
+  #items li {
+    padding: 10px;
+    cursor: pointer;
+  }
+  #items li:hover {
+    background-color: #f0f0f0;
+  }
+  optgroup[label="Trending Searches"]{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 14px;
+    padding: 12px 0 6px 35px;
+    text-align: left;
+  }
+#error{
+    text-align: center;
+    color: rgba(218, 8, 8, 0.885);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+}
+.room-num:after{
+  position: relative;
+  content: '\f107';
+  font-family: 'FontAwesome';
+  left: 4px;
+  top: 1px;
+  cursor: pointer;
+}
+.room-box{
+  width: 99px;
+  color: #525151;
+  border: 1px solid rgb(201, 110, 12);
+  background-color: white;
+  position: absolute;
+  z-index: 3;
+  margin-top: 6.1px;
+}
+.roomss{
+  list-style: none;
+  cursor: pointer;
+  padding-left: 0;
+  text-align: center;
+  margin: 0;
+}
+.roomss li{
+  height: 32px;
+  line-height: 30px;
+  font-size: 15px;
+}
+.list-select, .roomss li:hover{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.click-button {
+    width: 16%;
+    border-style: none;
+    margin: 1% 0px 0px;
+}
+.search_box .press{
+    width: 80%;
+    height: 42px;
+    background-color: rgb(212, 104, 15);
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    caret-color: transparent;
+}
+.search_box .press:hover{
+    background-color: rgb(174, 85, 12);
+}
+.guest-num:after{
+    position: relative;
+    content: '\f107';
+    font-family: 'FontAwesome';
+    left: 4px;
+    top: 1px;
+    cursor: pointer;
+  }
+  .guest-box{
+    background-color: white;
+    width: 290px;
+    padding: 0 14px 10px 14px;
+    color: #525151;
+    border: 1px solid rgb(201, 110, 12);
+    position: absolute;
+    z-index: 3;
+    text-align: left;
+    margin-top: 7px;
+  }
+  .room-no{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: rgb(74, 74, 74);
+  }
+  .tot-guest{
+    display: flex;
+  }
+  .blocks{
+    border-bottom: 1px solid rgb(181, 175, 175);
+    height: 22%;
+    background-color: white;
+    margin-top: 12px;
+    padding-bottom: 6px;
+  }
+  .people{
+    width: 90px;
+      }
+  .guest-box p{
+    margin: 5px;
+   }
+  .number{
+    list-style: none;
+    display: flex;
+    padding: 0;
+    height: 30px;
+     margin: 0;
+  }
+  .number li{
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    font-size: 13.5px;
+    cursor: pointer;
+    line-height: 22px;
+  }
+      
+  .number li i{
+    font-size: 12px;
+    padding-top: 4px;
+  }
+  .done{
+    display: flex;
+    margin-top: 9px;
+    justify-content: space-between;
+  }
+  .add-room{
+    border: 1px solid rgb(157, 155, 155);
+    width: 110px;
+    cursor: pointer;
+    height: 32px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 15px;
+  }
+  .add-room:hover{
+    color: rgb(212, 104, 15);
+    border-color: rgb(212, 104, 15);
+    cursor: pointer;
+  }
+  .finish:hover{
+    cursor: pointer;
+    color: rgb(212, 104, 15);
+  }
+      
+  .x-mark{
+    float: right;
+    color: #a7a3a3;
+  }
+  .x-mark i{
+    font-size: 13px;
+    cursor: pointer;
+    bottom: 1.6px;
+    position: relative;
+  }
+  .bar::before{
+    bottom: 2.7px;
+    position: relative;
+    content: '|';
+    font-family: 'FontAwesome';
+     font-weight: bold;
+     font-size: 16px;
+     padding-right: 2px;
+   }
+  .edit{
+    font-size: 14.3px;
+    color: rgb(212, 104, 15);
+    float: right;
+    cursor: pointer;
+    padding-right: 2px;
+  }
+      
+  .angle-up::after{
+    content: '\f106';
+  }
+  .display{
+    display: none;
+  }
+  .selected{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+  }
+  .final-list{
+    padding-top: 6px;
+  }
+  .guarantee{
+    margin: 0;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgb(190, 149, 13);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-left: 31%;
+    display: none;
+  }
+
+ @media screen and (max-width: 1125px){
+      .guest-num:after{
+        font-size: 13px;
+        top: 0;
+      }
+      .guest-box{
+         width: 230px;
+      }
+      .add-room{
+        font-size: 14px;
+        height: 25px;
+        line-height: 25px;
+        width: 100px;
+      }
+      .guest-box p:last-child{
+        margin-top: 3px;
+        font-size: 14px;
+      }
+      .add-room:hover, .room select{
+        font-size: 13px;
+      }
+    .search_box{
+        width: 98%;
+        margin: 0 auto;
+    }
+    .date{
+        width: 43%;
+    }
+    #items{
+        width: 310px;
+        max-height: 265px;
+    }
+    input[type = 'date'] {
+        font-size: 12px;
+    }
+    .in-date span, .roomss li, .room-num, #items li, #itemList p, #searchInput, .blocks, .guest-num{
+        font-size: 14px;
+    }
+    .click-button{
+        width: 13%;
+    }
+    .search_box .press {
+        width: 90%;
+        height: 38px;
+        font-size: 13px;
+    }
+    .room-box{
+      width: 8.7%;
+    }
+}
+/*@media screen and (min-width: 630px) and (max-width: 867px){ */
+   @media screen and (min-width: 835px) and (max-width: 1000px){
+    .date{
+        width: 29.5%;
+        flex-direction: column;
+    }
+    .in-date{
+        width: 100%;
+    }
+    .des{
+        width: 30%;
+        padding-left: 0;
+    }
+    .this-container{
+        width: 24%;
+    }
+    .click-button{
+        width: 15.5%;
+    }
+    .extra{
+        padding-right: 3%;
+    }
+    .select-items div,.select-selected {
+        padding: 8px 5%;
+    }
+    .select-selected:after {
+        right: 6%;
+    }
+    .room-box{
+      width: 11.8%;
+    }
+}
+@media screen and (max-width:835px) {
+    
+    .button-container{
+      display: flex;
+      position: fixed;
+      width: 100%;
+      height: 45px;
+      bottom: 0;
+      z-index: 3;
+    }
+    .button-container button:first-child{
+      width: 50%;
+      background-color: rgb(6, 6, 101);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    .button-container button:last-child{
+      width: 50%;
+      background-color: rgb(222, 110, 19);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    
+    .search_box{
+      position:fixed;
+      z-index: 11;
+      top: 0; 
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      background-color: white;
+    }
+    .active-bar{
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      width: 100vw;
+    }
+    .search_box form {
+      flex-direction: column;
+      margin: 45px 0 0 0 ;
+      width: 99.7%;
+    }
+    .search{
+      height: 60px;
+      line-height: 57px;
+      padding-top: 0;
+      margin: 0;
+      border: none;
+      border-bottom: 2px solid rgb(224, 223, 223);
+      width: 100%;
+    }
+    .des, .in-date{
+      border: 2px solid rgb(224, 223, 223);
+      border-bottom: none;
+      padding-left: 0;
+    }
+    .input-container{
+      height: 100%;
+    }
+    #searchInput{
+      height: 100%;
+      padding-left: 26.3%;
+    }
+    .input-container label {
+      left: 33%;
+    }
+    input[type = 'date'] {
+      padding-left: 15px;
+      width: auto;
+      font-size: 14px;
+    }
+    .click-button {
+      width: auto;
+      margin: 80px auto;
+    }
+    .search_box .press {
+      width: 300px;
+      font-size: 16px;
+      border-radius: 6px;
+    }
+    .room{
+      padding: 0;
+      border-right: 2px solid rgb(224, 223, 223);
+    }
+    .in-date{
+      border-left: none;
+    }
+    .room-box{
+      width: 50%;
+      margin: 0;
+      top: 40.4%;
+    }
+    .guest-box{
+      width: 49.7%;
+      margin: 0;
+      top: 40.4%;
+    }
+    .in-date span, .roomss li, .room-num, #items li, #itemList p, #searchInput, .blocks, .guest-num{
+      font-size: 16px;
+    }
+    .blocks{
+      padding-bottom: 0;
+      margin-top: 9px;
+    }
+    .line-height{
+      line-height: 25px;
+    }
+    .add-room{
+      height: 30px;
+      line-height: 30px;
+    }
+    .roomss li{
+      height: 45px;
+      line-height: 45px;
+    }
+    #items{
+      width: auto;
+      margin-top: 0;
+      max-height: 450px;
+    }
+    .book-your-stay{
+      display: block;
+      background-color: rgba(217, 219, 217, 0.838);
+      height: 35px;
+      padding-left: 30px;
+      margin-top: 58px;
+      display: flex;
+      line-height: 35px;
+    }
+    .book-your-stay p{
+      margin: 0;
+      width: 87%;
+    }
+    #form-mark{
+      font-size: 22px;
+      cursor: pointer;
+      padding-top: 7px;
+    }
+    .guest-box p{
+      margin: 2px;
+    }
+    .final-list{
+      padding-top: 0;
+    }
+    optgroup[label="Trending Searches"]{
+      font-size: 16px;
+      text-align: center;
+      padding-left: 0;
+    }
+    .guarantee{
+      display: block;
+    }
+}
+@media screen and (max-width:400px) {
+  #searchInput{
+    width: 90%;
+  }
+  .date{
+    height: 82px;
+  }
+  .input-container label {
+    left: 24%;
+  }
+}

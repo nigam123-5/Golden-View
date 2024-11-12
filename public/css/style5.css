@@ -1,0 +1,114 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.content{
+    background-image: url('/reservation.jpg');
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    filter: opacity(.1);
+    background-position: center center;
+}
+.nav{
+    padding: 4% 6%; 
+}
+.container{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 80%;
+}
+.reserve_form{
+    padding: 0 6%;
+}
+.box{
+    border: 3px solid rgb(167, 164, 164);
+    width: 600px;
+    padding: 2% 2.5%;
+    height: 50%;
+    margin-top: 2%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.box p:first-child{
+    font-size: 25px;
+    color: rgb(117, 10, 10);
+    padding: 2%;
+}
+input:not(.submit){
+    width: 100%;
+    height: 20%;
+    margin: 6px;
+    text-indent: 2%;
+    font-size: 14px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 15px;
+    
+}
+input::placeholder{
+    color: #000;
+}
+.submit{
+    margin: 10px 0 0 8px;
+    width: 160px;
+    height: 19%;
+    border: none;
+    background-color: rgb(25, 62, 161);
+    color: white;
+    float: right;
+    font-size: 14px;
+}
+.inner_box{
+    height: 80%;
+}
+.info{
+    border-top: 3px solid rgb(167, 164, 164);
+    width: 100%;
+    padding: 2% 1%;
+    color: rgb(117, 10, 10);
+}
+.submit:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+@media screen and (max-width:700px){
+    .box p:first-child{
+        font-size: 20px;
+    }
+    .reserve_form h1{
+        font-size: 23px;
+        padding: 4% 0;
+    }
+    .submit {
+        width: 140px;
+        height: 15%;
+        font-size: 12.5px;
+        margin: 13px 4% 0 8px;
+    }
+    .reserve_form{
+        padding-top: 5%;
+    }
+    .nav{
+        padding-top: 7%;
+    }
+    input:not(.submit) {
+       width: 95%;
+    }
+    .inner_box{
+        height: 70%;
+    }
+    .box{
+        width: auto;
+    }
+    .info{
+        font-size: 14px;
+    }
+}

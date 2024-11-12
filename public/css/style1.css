@@ -1,0 +1,271 @@
+/*common to all*/
+
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+}
+#container{
+    margin: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+/*navigation bar*/
+.navbar {
+    width: 100%;
+    height: 65px;
+    padding-right: 37px;
+    border-bottom: 1px solid;
+}
+a.logo {
+    float: left;
+    padding: 7px 10px 2px 37px;
+}
+
+.navbar a {
+    float: left;
+}
+
+.navbar-collapse a{
+    color: dimgrey;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: 23px 16px;
+}
+
+a.right {
+    float: right;
+}
+
+.icons {
+    display: none;
+    font-size: 25px;
+    margin-right: 12px;
+    margin-top: 14px;
+    color: dimgrey;
+    cursor: pointer;
+    float: right;
+}
+.icons:hover{
+    color: black;
+  }
+
+.navbar-collapse a:hover {
+    background-color: pink;
+    color: black;
+    border-radius: .3px;
+}
+
+/*footer*/
+.footer{
+    height: 67vh;
+    background-color: #D8D8D8;
+    text-indent: 5%;
+    padding: 2%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.destination_box{
+    display: flex;
+}
+.destination_box1{
+    width: 60%;
+}
+.destination_box2{
+    width: 18rem;
+    margin: 0;
+}
+.destination_box2 ul{
+    font-size: 17px; 
+    line-height: 25px;
+    list-style-type: none; 
+}
+.contact{
+    height: 22.2%;
+}
+.footer .flex-list{
+    list-style-type: none;
+    display: flex;
+    font-size: 14px;
+    justify-content: space-between;
+    padding-left: 7%;
+    line-height: 36px;
+    /*
+    flex-wrap: wrap;
+    gap: 5%;*/
+}
+ul .button{
+    background-color:  rgb(207, 84, 12);
+    cursor: pointer;
+    border: none;
+    height: 27px;
+    width: 50%;
+    border-radius: 3px;
+}
+ul .button:hover{
+    background-color:  rgb(177, 73, 13);
+}
+ul .button a{
+    text-decoration: none;
+    color: white;
+}
+.con_icons{
+    font-size: 20px;
+    margin: 2%;
+}
+.fa-brands{
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    text-align: center;
+}
+.con_icons i{
+    line-height: 42px;
+}
+.fa-facebook-f{
+    color: white;
+    background-color: rgb(5, 5, 159);
+}
+.fa-instagram{
+    color: white;
+    background: radial-gradient(
+        circle at 30% 107%,
+        #fdf497 0%,
+        #fdf497 5%,
+        #fd5949 45%,
+        #d6249f 60%,
+        #285aeb 90%);
+}
+.fa-youtube{
+    color: red;
+    background-color: white;
+}
+.fa-x-twitter{
+    color: white;
+    background-color: black;
+}
+.hotel{
+    width: 30%;
+    padding-top: 8px;
+    padding-left: 4%;
+}
+.hotel p{
+    font-size: 13px;
+}
+.footer_logo{
+    height: 60%;
+    display: flex;
+    gap: 4%;
+    margin-left: 13%;
+}
+.f-images{
+    height: 100%;
+}
+.brand_name{
+    padding-left: 8%;
+    flex-shrink: 0;
+}
+.f-brand{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 700px){
+    
+      .icons.menu{
+        display: block;
+      }
+      
+    .navbar-collapse{
+        width: 100vw;
+        height: 100vh;
+        position:relative;
+        z-index: 11;
+        display: flex;
+        justify-content: center;
+        align-items: justify;
+        flex-direction: column;
+        transition: .4s;
+        transform: translateX(100%);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        background-color: white;
+    }
+
+    .active .navbar-collapse{
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        
+    }
+    .active .icons.close{
+        display: block;  
+        margin-right: 4.1%;
+    }
+    .active .icons.menu{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .footer{
+        height: 95%;
+    }
+    .destination_box{
+        display: block;
+    }
+    .destination_box1{
+        width: 100%;
+    }
+    .destination_box2{
+        border: 2px dotted #696969;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .destination_box2 ul{
+        padding-left: 0;
+    }
+    .contact{
+        height: 6%;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 1%;
+    }
+    .brand_name{
+        padding-left: 0;
+    }
+}
+
+@media screen and (max-width: 635px){
+    .destination_box2 ul {
+        line-height: 15px;
+        font-size: 12px;
+    }
+    .fa-brands {
+        width: 30px;
+        height: 30px;
+    }
+    .con_icons i{
+        line-height: 30px;
+    }
+    .con_icons {
+        font-size: 15px;
+    }
+    .footer .flex-list{
+        font-size: 10px;
+    }
+    .footer_logo {
+        gap: 2%;
+    }
+    .hotel{
+        width: 100%;
+        padding-left: 0;
+    }
+}

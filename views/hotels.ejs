@@ -1,0 +1,471 @@
+<html>
+    <head>
+        <title>Hotels Golden View </title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel='stylesheet' href="/css/style1.css">
+        <link rel='stylesheet' href="/css/style2.css">
+
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!--for font awesome icons-->
+
+        <link rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+            integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+            crossorigin />
+
+        <!-- MarkerCluster CSS file -->
+        <link rel='stylesheet' href="/css/MarkerCluster.css">
+        <link rel='stylesheet' href="/css/MarkerCluster.Default.css">
+    </head>
+    <body id='content'>
+        <div id='container'>
+            <nav>
+                <div class="navbar" id='mynavbar'>
+                    <a href='/' class='logo'><img src='/logo (2).png'
+                            height='56px' width='80px'></a>
+
+                    <span class='icons menu'
+                        onclick="myfunction()">&#9776;</span>
+                    <!--HTML icons code for dropdown for designing responsive web page-->
+                    <span class='icons close'
+                        onclick="myfunction()">&#10006;</span>
+                    <div class="navbar-collapse">
+                        <a href="/hotels">Our Hotels</a>
+                        <a href="/booking">Manage Booking</a>
+                        <a href="/menu">Menu</a>
+                        <a href='/awards'>About</a>
+
+                        <a href="/contact"
+                            class="right">Contact Us</a>
+                        <a href="/login" class="right">Sign In</a>
+                    </div>
+                </div>
+            </nav>
+            <div class='container1'>
+                <div class='flex'>
+                    <h2> Golden View Hotels Destinations</h2>
+                    <div class='inner_container'>
+                        <div class='box box1'>
+                            <img src='/place1.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Agra")'>
+                                <h3>Agra</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place2.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Ahmedabad")'>
+                                <h3>Ahmedabad</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place3.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Amritsar")'>
+                                <h3>Amritsar</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place34.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Andamans")'>
+                                <h3>Andamans</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place4.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Bengaluru")'>
+                                <h3>Bengaluru</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place32.jpeg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Bekal")'>
+                                <h3>Bekal</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place5.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Bentota")'>
+                                <h3>Bentota</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place6.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Cape Town")'>
+                                <h3>Cape Town</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place7.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Chennai")'>
+                                <h3>Chennai</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place25.jpg' alt='agra'>
+                            <div class='text'
+                                onclick='zoomToCity("Chitwan National Park")'>
+                                <h3>Chitwan National Park</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place8.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Colombo")'>
+                                <h3>Colombo</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place9.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Coorg")'>
+                                <h3>Coorg</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place10.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Dubai")'>
+                                <h3>Dubai</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place33.webp' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Ernakulam")'>
+                                <h3>Ernakulam</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place27.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Gangtok")'>
+                                <h3>Gangtok</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place11.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Goa")'>
+                                <h3>Goa</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place31.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Gwalior")'>
+                                <h3>Gwalior</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place12.jpeg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Hyderabad")'>
+                                <h3>Hyderabad</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place28.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Jaipur")'>
+                                <h3>Jaipur</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place29.webp' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Jodhpur")'>
+                                <h3>Jodhpur</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place13.jpeg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Kolkata")'>
+                                <h3>Kolkata</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place35.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Kozhikode")'>
+                                <h3>Kozhikode</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place14.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("London")'>
+                                <h3>London</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place30.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Lusaka")'>
+                                <h3>Lusaka</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place15.webp' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Maldives")'>
+                                <h3>The Maldives</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place16.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Mumbai")'>
+                                <h3>Mumbai</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place17.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("New Delhi")'>
+                                <h3>New Delhi</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place18.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("New York")'>
+                                <h3>New York City</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place26.jpg' alt='agra'>
+                            <div class='text'
+                                onclick='zoomToCity("Panna National Park")'>
+                                <h3>Panna National Park</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place19.webp' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Rishikesh")'>
+                                <h3>Rishikesh</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place21.jpg' alt='agra'>
+                            <div class='text'
+                                onclick='zoomToCity("San Francisco")'>
+                                <h3>San Francisco</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place22.jpeg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Shimla")'>
+                                <h3>Shimla</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place23.jpg' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Udaipur")'>
+                                <h3>Udaipur</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place24.webp' alt='agra'>
+                            <div class='text' onclick='zoomToCity("Varanasi")'>
+                                <h3>Varanasi</h3>
+
+                            </div>
+                        </div>
+                        <div class='box box1'>
+                            <img src='/place20.jpg' alt='agra'>
+                            <div class='text'
+                                onclick='zoomToCity("Visakhapatnam")'>
+                                <h3>Visakhapatnam</h3>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="map"></div>
+            </div>
+            <div class='footer'>
+                <p>Destinations +</p>
+                <hr
+                    style="width: 90%; height: .2px; border: none; background-color: #606060;">
+                <div class='destination_box'>
+                    <div class='destination_box1'>
+                        <ul class='flex-list'>
+                            <div style='width: 35rem;'>
+                                <li>Airline & Frequent Flyer Partners</li>
+                                <li>Sunshine Magazine</li>
+                                <li>J Wellness Circle</li>
+                                <li>Site Map</li>
+                                <li>Terms Of Use</li>
+                                <li>Contact Us</li>
+                            </div>
+                            <div style='width: 15rem;'>
+                                <li>Accessibility</li>
+                                <li>Languages</li>
+                                <li>Privacy Policy</li>
+                                <li>Press Room</li>
+                                <li>Careers</li>
+                                <li>Blogs</li>
+                            </div>
+                            <div style='width: 26rem;'>
+                                <li>SAATHI</li>
+                                <li>NIDHI</li>
+                                <li>UTSAV</li>
+                                <li>INCREDIBLE INDIA FILM</li>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class='destination_box2'>
+                        <ul>
+                            <li>Join our newsletter</li>
+                            <li><button class='button'><a
+                                        href='/our_newsletter'>SUBSCRIBE</a></button></li>
+                            <br>
+                            <li>Connect with us:</li>
+                            <li>
+                                <div class='contact'>
+                                    <a class='con_icons' href='#'>
+                                        <i
+                                            class="fa-brands fa-facebook-f"></i></a>
+                                    <a class='con_icons' href='#'>
+                                        <i
+                                            class="fa-brands fa-instagram"></i></a>
+                                    <a class='con_icons' href='#'>
+                                        <i
+                                            class="fa-brands fa-x-twitter"></i></a>
+                                    <a class='con_icons' href='#'>
+                                        <i class="fa-brands fa-youtube"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class='f-brand'>
+                    <div class='hotel'>
+                        <img src='/brand_logo.png' width=90px height=37px>
+                        <p> The Indian Hotels Company Limited.</p>
+
+                        <hr
+                            style="width: 90%; height: .2px; border: none; background-color: #606060;">
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <!-- geojson data -->
+    <script type='text/javascript' src="/js/data.js"></script>
+
+    <script type='text/javascript' src="/js/script_hotel.js"></script>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/66e9241650c10f7a00abb45f/1i7vb9uu3';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin> 
+    </script>
+
+    <!-- MarkerCluster JS file -->
+    <script src="/js/leaflet.markercluster.js"></script>
+
+    <script>
+        //Map Initialization
+var map = L.map('map').setView([0, 0], 2);
+
+//OpenStreetMap Layer
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+//Tile-layer
+googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+});
+
+googleStreets.addTo(map);
+
+//Marker
+var myIcon = L.icon({
+    iconUrl: "/map_marker1.png",
+    iconSize: [40, 40],
+    iconAnchor: [19,42],
+    popupAnchor: [2, -20]
+    // shadowUrl: '../static/images/map_marker.png',
+    // shadowSize: [10, 10],
+    // shadowAnchor: [22, 94]
+});
+// let popupContent = 'Welcome to India!'
+// let marker = L.marker([28.38, 77.12], {icon: myIcon});
+// marker.bindPopup(popupContent).openPopup().addTo(map);
+
+// let secondMarker = L.marker([25.276987, 55.296249], {icon: myIcon});
+// secondMarker.bindPopup('Welcome to UAE!').openPopup().addTo(map);
+
+
+const geoMarker = {
+    radius : 8,
+    fillColor : '#ff7800',
+    color : '#000',
+    weight : 1,
+    opacity : 1,
+    fillOpacity : 0.8
+};
+
+    
+// loading geojson data 
+const lightData = L.geoJSON(data, {
+    onEachFeature : function(feature, layer){
+        let popupContent = feature.properties.Name;
+        layer.bindPopup(popupContent);
+    },
+    pointToLayer : function(feature, latlng){
+        return L.marker(latlng, {icon: myIcon});
+    }
+})
+
+// Marker Clustering
+const markers = L.markerClusterGroup().addLayer(lightData);
+map.addLayer(markers);
+
+//let linkContent = feature.properties.City;
+function zoomToCity(city){
+    let cityFeature = lightData.getLayers().find(layer => layer.feature.properties.City === city);
+    console.log(cityFeature)
+    let myVar = cityFeature._latlng;
+    console.log(cityFeature)
+    map.flyTo([myVar.lat, myVar.lng], 11);
+}
+    </script>
+</html>
