@@ -1,68 +1,191 @@
-<html>
-    <head>
-        <title>Login</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel='stylesheet'
-            href="/css/style3.css">
-        <link rel='stylesheet' href="/css/swiper-bundle.min.css">
-        <link rel='stylesheet' href="/css/style.css">
-        <link rel='stylesheet' href="/css/style1.css">
-        <!--Start of Tawk.to Script-->
-        <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/66e9241650c10f7a00abb45f/1i7vb9uu3';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-        <!--End of Tawk.to Script-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
 
-    </head>
-    <body>
-        <div id='container'>
-            <nav>
-                <div class="navbar" id='mynavbar'>
-                    <a href='/' class='logo'><img src='/logo (2).png'
-                            height='56px' width='80px'></a>
-                    <span class='icons menu'>&#9776;</span>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      
+      background-image: url('/footer-bg.jpg');
+    width: 100%;
+    height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
-                    <span class='icons close'>&#10006;</span>
-                    <div class="navbar-collapse">
-                        <a href="/hotels">Our Hotels</a>
-                        <a href="/booking">Manage Booking</a>
-                        <a href="/awards">About</a>
-                        <a href="/contact"
-                            class="right">Contact Us</a>
-                        <a href="/login" class="right">Sign In</a>
-                    </div>
-                </div>
-            </nav>
 
-            <div class='content'></div>
-            <div class='box'>
-                <div class='login_form'>
-                    <h1>Welcome to Golden View </h1>
-                    <p>Login page only for administrative purpose. Thank
-                        You!</p>
-                    <form action="/welcome">
-                        <input type='text' name='username'
-                            placeholder="Username"
-                            required><br>
-                        <input type='password' name='password'
-                            placeholder="Password" required><br>
-                        <input type='checkbox' class="checkbox"><span
-                            id=text>Remember Me</span><br>
-                        <input type='submit' value='Sign In' class='submit'>
-                    </form>
-                </div>
-                <div class='display'>
-                    <img src='/login3.jpeg'>
-                </div>
-            </div>
-        </div>
-    </body>
+
+
+    .container {
+            width: 350px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .logo {
+            display: block;
+            margin: 10px auto; 
+        }
+
+        .logo img {
+            width: 85px;
+            height: 65px;
+        }
+
+    .header {
+      background-color: #2961fbc8;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+    }
+
+    .form-container {
+      padding: 20px;
+    }
+
+    .form-container form {
+      display: none;
+    }
+
+    .form-container form.active {
+      display: block;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-group button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4e53f0;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .form-group button:hover {
+      background-color: #0056b3;
+    }
+
+    .toggle {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .toggle a {
+      color: #4d52f6;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .toggle a:hover {
+      text-decoration: underline;
+    }
+
+</style>
+  </head>
+
+  <body>
+
+    <div class="container">
+      <a href="/" class="logo">
+        <img src="/logo (2).png" width="85" height="65"
+          alt="Hotel Golden View">
+
+      </a>
+      <div class="header">
+        <h2>Login or Signup</h2>
+      </div>
+      <div class="form-container">
+
+        <form id="loginForm" class="active">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email"
+              placeholder="Enter your email">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password"
+              placeholder="Enter your password">
+          </div>
+          <div class="form-group">
+            <button type="submit">Login</button>
+          </div>
+          <div class="toggle">
+            Don't have an account? <a id="showSignup">Signup</a>
+          </div>
+        </form>
+
+        <!-- Signup Form -->
+        <form id="signupForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name"
+              placeholder="Enter your name">
+          </div>
+          <div class="form-group">
+            <label for="signupEmail">Email</label>
+            <input type="email" id="signupEmail"
+              placeholder="Enter your email">
+          </div>
+          <div class="form-group">
+            <label for="signupPassword">Password</label>
+            <input type="password" id="signupPassword"
+              placeholder="Enter your password">
+          </div>
+          <div class="form-group">
+            <button type="submit">Signup</button>
+          </div>
+          <div class="toggle">
+            Already have an account? <a id="showLogin">Login</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+    const showSignup = document.getElementById('showSignup');
+    const showLogin = document.getElementById('showLogin');
+
+    showSignup.addEventListener('click', () => {
+      loginForm.classList.remove('active');
+      signupForm.classList.add('active');
+    });
+
+    showLogin.addEventListener('click', () => {
+      signupForm.classList.remove('active');
+      loginForm.classList.add('active');
+    });
+  </script>
+
+  </body>
 </html>

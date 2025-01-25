@@ -142,3 +142,29 @@
         width: 100%;
     }
 }
+
+.rating {
+    direction: rtl; /* Right-to-left for intuitive star selection */
+    unicode-bidi: bidi-override;
+    display: flex;
+  }
+
+  .rating input {
+    display: none; /* Hide radio buttons */
+  }
+
+  .rating label {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+  }
+
+  .rating input:checked ~ label,
+  .rating input:hover ~ label {
+    color: #f5c518;
+  }
+
+  .rating label:hover,
+  .rating label:hover ~ label {
+    color: #ffc107;
+  }

@@ -1,9 +1,17 @@
 const express = require("express");
 const app = express();
+const dotenv = require('dotenv');
+
+
 const mongoose = require("mongoose");
 const path = require("path");
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const { Domain } = require("domain");
 app.use(express.json());
+
+// load variable
+
+dotenv.config();
 
 app.set("views", path.join(__dirname, "/views"));
 app.set("view engine", "ejs");
@@ -29,31 +37,16 @@ async function main(){
     await mongoose.connect(MONGO_URL);
 }
 
-// //Basic API Create
-
-// app.get("/", (req, res) => {
-//     res.send("Hii, I am Suryansh");
-//  });
-
-
-// const userSchema = mongoose.Schema({
-//     name: String,
-//     phone: Number,
-//     person: String,
-//     reservationDate: String,
-//     time: String,
-//     email: String,
-// })
-
-// const User = mongoose.model("users", userSchema);
-
-
 app.get("/", (req, res) => {
     res.render("my_template.ejs");
 });
 
 app.get("/booking", (req, res) => {
     res.render("booking.ejs");
+})
+
+app.get("/signin", (req, res) => {
+    res.render("signin.ejs");
 })
 
 app.get("/menu", (req, res) => {
@@ -118,12 +111,11 @@ app.post("/booked", async (req, res) => {
                 from: '<nigamsuryansh921@gmail.com>',
                 to: email,
                 subject: "Confirmation from Taj Hotel",
-                html: `<p>Thank you for choosing The Taj Hotel !! 
+                html: `<p>Thank you for choosing The  Hotel Golden view !! 
                 We're delighted to confirm your reservation for ${reservationDate} at ${time}. We look forward to welcoming you for a wonderful dining experience. Should you have any special requests or dietary requirements, please feel free to let us know in advance. See you soon !!</p>`
             });
 
             console.log("Message sent: %s", info.messageId);
-            // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
         }
 
         main().catch(console.error);
@@ -137,8 +129,43 @@ app.post("/booked", async (req, res) => {
 
 })
 
+//stripe
+
+// let stripeGateway = stripe(process.env.stripe_api);
+// app.post('/stripe-checkout', async (req,res) => {
+//     const lineItems= req.body.items.map((item) => {
+//         const unitAmount = parseInt = parseInt(item.price.replace(/[^0.9.-]+/g, "") * 100);
+//    console.log('item-price', item.price);
+//    console.log("unitAmount", unitAmount);
+
+//    return {
+//     price_data: 'usd',
+//     product_data: {
+//         name: item.title,
+//     },
+//     unit_amount: unitAmount,
 
 
+//    }
+   
+   
+//     });
+//     console.log("lineItems:", lineItems);
+
+//     const session = await stripeGateway.checkout.sessions.create({
+//         payment_method_type: ['card'],
+//         mode: 'payment',
+//         success_url: '${Domain}/success',
+//         cancel_url: '${Domain}/cancel',
+
+//         billing_adress_collection: "required",
+       
+//     });
+//     });
+
+
+
+//server start
 app.listen(8080, () => {
     console.log("Server is listening to port 8080");
 });
