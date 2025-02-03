@@ -1,7 +1,11 @@
 const express = require("express");
 const app = express();
 const dotenv = require('dotenv');
-
+const jwt = require('jsonwebtoken');
+const User = require('./models/userModel');
+const Room = require('./models/room')
+const Booking = require('./models/booking')
+const JWT_SECRET = "GoldenHotel"
 
 const mongoose = require("mongoose");
 const path = require("path");
@@ -9,12 +13,7 @@ const bodyParser = require('body-parser');
 
 const { Domain } = require("domain");
 
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const User = require('./models/userModel');
-const Room = require('./models/room')
-const Booking = require('./models/booking')
-const JWT_SECRET = "GoldenHotel"
+
 
 
 app.use(express.json());
@@ -166,13 +165,11 @@ app.post('/signup',async(req,res)=>{
           return res.status(400).json({ message: "Missing required fields" });
         }
     
-      
-        const hashedPassword = await bcrypt.hash(password, 10);
     
         const user = new User({
           name,
           email,
-          password: hashedPassword,
+          password,
           phoneNumber,
           age,
         });
@@ -208,29 +205,26 @@ app.post('/login',async (req,res)=>{
           return res.status(400).json({ message: "Invalid email or password" });
           req.flash("failure","error")
         }
-    
-    
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
-          return res.status(400).json({ message: "Invalid password" });
+        if (password !== user.password) {
+          return res.status(400).json({ message: "Invalid email or password" });
         }
-    
+
         const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, {
           expiresIn: "1h",
         });
-    
+
         res.status(200).json({
           success:true,
           token,
           user: { id: user._id, email: user.email, name: user.name },
         });
-      } catch (error) {
+            } catch (error) {
         console.error("Error logging in user:", error);
         res.status(500).json({
           message: "Error logging in user",
           error: error.message || error,
         });
-
+       
       }
 })
 
@@ -494,22 +488,7 @@ app.delete('/booking/:id', async (req, res) => {
 
 
 
-//    }
-   
-   
-//     });
-//     console.log("lineItems:", lineItems);
 
-//     const session = await stripeGateway.checkout.sessions.create({
-//         payment_method_type: ['card'],
-//         mode: 'payment',
-//         success_url: '${Domain}/success',
-//         cancel_url: '${Domain}/cancel',
-
-//         billing_adress_collection: "required",
-       
-//     });
-//     });
 
 
 
