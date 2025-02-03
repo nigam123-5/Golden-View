@@ -12,7 +12,7 @@
     </head>
     <body id='content'>
         <div id='container'>
-            <nav>
+            <!-- <nav>
                 <div class="navbar" id='mynavbar'>
                     <a href='/' class='logo'><img src='/logo (2).png'
                             height='56px' width='80px'></a>
@@ -28,9 +28,10 @@
                         <a href="/login" class="right">Sign In</a>
                     </div>
                 </div>
-            </nav>
+            </nav> -->
 
-            
+            <%- include('partials/navbar') %>
+
 
             <div class='form'>
                 <p class='heading'>Guest Details</p>
@@ -247,6 +248,8 @@
                 </div>
             </div>
         </div>
+        <script src="/js/navbar.js"></script>
+
     </body>
     <script type='text/javascript' src="/js/script_hotel.js"></script>
     <script type='text/javascript' src="/js/script_guest.js"></script>

@@ -1,61 +1,50 @@
-<html>
+<!-- <html>
     <head>
         <title>Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel='stylesheet'
-            href="/css/style3.css">
+        <link rel='stylesheet' href="/css/style3.css">
         <link rel='stylesheet' href="/css/swiper-bundle.min.css">
         <link rel='stylesheet' href="/css/style.css">
         <link rel='stylesheet' href="/css/style1.css">
-        <!--Start of Tawk.to Script-->
+       
         <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/66e9241650c10f7a00abb45f/1i7vb9uu3';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-        <!--End of Tawk.to Script-->
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/66e9241650c10f7a00abb45f/1i7vb9uu3';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+            })();
+        </script>
 
     </head>
     <body>
         <div id='container'>
             <nav>
                 <div class="navbar" id='mynavbar'>
-                    <a href='/' class='logo'><img src='/logo (2).png'
-                            height='56px' width='80px'></a>
+                    <a href='/' class='logo'><img src='/logo (2).png' height='56px' width='80px'></a>
                     <span class='icons menu'>&#9776;</span>
-
                     <span class='icons close'>&#10006;</span>
                     <div class="navbar-collapse">
                         <a href="/hotels">Our Hotels</a>
                         <a href="/booking">Manage Booking</a>
                         <a href="/awards">About</a>
-                        <a href="/contact"
-                            class="right">Contact Us</a>
+                        <a href="/contact" class="right">Contact Us</a>
                         <a href="/login" class="right">Sign In</a>
                     </div>
                 </div>
             </nav>
-
             <div class='content'></div>
             <div class='box'>
                 <div class='login_form'>
                     <h1>Welcome to Golden View </h1>
-                    <p>Login page only for administrative purpose. Thank
-                        You!</p>
-                    <form action="/login" method="POST">
-                        <input type='text' name='email'
-                            placeholder="Username"
-                            required><br>
-                        <input type='password' name='password'
-                            placeholder="Password" required><br>
-                        <input type='checkbox' class="checkbox"><span
-                            id=text>Remember Me</span><br>
+                    <p>Login page only for administrative purpose. Thank You!</p>
+                    <form id="loginForm">
+                        <input type='text' name='email' placeholder="Email" id="email" required><br>
+                        <input type='password' name='password' placeholder="Password" id="password" required><br>
+                        <input type='checkbox' class="checkbox"><span id="text">Remember Me</span><br>
                         <input type='submit' value='Sign In' class='submit'>
                     </form>
                 </div>
@@ -64,5 +53,370 @@
                 </div>
             </div>
         </div>
+        <script>
+            document.getElementById('loginForm').addEventListener('submit', async (event) => {
+             event.preventDefault();
+             const email = document.getElementById('email').value;
+             const password = document.getElementById('password').value;
+ 
+             const response = await fetch('/login', {
+                 method: 'POST',
+                 headers: {
+                     'Content-Type': 'application/json'
+                 },
+                 body: JSON.stringify({ email, password })
+             });
+ 
+             const data = await response.json();
+             if (data.token) {
+                 localStorage.setItem('token', data.token);
+                 window.location.href = '/';
+             } else {
+                 alert('Login failed!');
+             }
+         });
+         </script>
+    </body>
+</html> -->
+
+<!-- 
+<html>
+    <head>
+        <title>Login / Signup</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel='stylesheet' href="/css/style3.css">
+        <link rel='stylesheet' href="/css/swiper-bundle.min.css">
+        <link rel='stylesheet' href="/css/style.css">
+        <link rel='stylesheet' href="/css/style1.css">
+       
+        <script type="text/javascript">
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/66e9241650c10f7a00abb45f/1i7vb9uu3';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+            })();
+        </script>
+
+    </head>
+    <body>
+        <div id='container'>
+            <nav>
+                <div class="navbar" id='mynavbar'>
+                    <a href='/' class='logo'><img src='/logo (2).png' height='56px' width='80px'></a>
+                    <span class='icons menu'>&#9776;</span>
+                    <span class='icons close'>&#10006;</span>
+                    <div class="navbar-collapse">
+                        <a href="/hotels">Our Hotels</a>
+                        <a href="/booking">Manage Booking</a>
+                        <a href="/awards">About</a>
+                        <a href="/contact" class="right">Contact Us</a>
+                        <a href="/login" class="right">Sign In</a>
+                    </div>
+                </div>
+            </nav>
+            <div class='content'></div>
+            <div class='box'>
+               
+                <div class='login_form' id='loginFormContainer'>
+                    <h1>Welcome to Golden View</h1>
+                    <p>Please sign in to continue.</p>
+                    <form id="loginForm">
+                        <input type='email' name='email' placeholder="Email" id="email" required><br>
+                        <input type='password' name='password' placeholder="Password" id="password" required><br>
+                        <input type='checkbox' class="checkbox"><span id="text">Remember Me</span><br>
+                        <input type='submit' value='Sign In' class='submit'><br>
+                        <span>Don't have an account? <a href="#" id="showSignup">Click to sign up</a></span>
+                    </form>
+                </div>
+
+                
+                <div class='login_form' id='signupFormContainer' style="display:none;">
+                    <h1>Create an Account</h1>
+                    <p>Join us and experience exceptional service.</p>
+                    <form id="signupForm">
+                        <input type='text' name='name' placeholder="Full Name" id="name" required><br>
+                        <input type='email' name='email' placeholder="Email" id="signupEmail" required><br>
+                        <input type='password' name='password' placeholder="Password" id="signupPassword" required><br>
+                        <input type='password' name='confirm_password' placeholder="Confirm Password" id="confirmPassword" required><br>
+                        <input type='text' name='phoneNumber' placeholder="Phone Number" id="phoneNumber" required><br>
+                        <input type='number' name='age' placeholder="Age" id="age" required><br>
+                        <input type='submit' value='Sign Up' class='submit'><br>
+                        <span>Already have an account? <a href="#" id="showLogin">Click to sign in</a></span>
+                    </form>
+                </div>
+                <div class='display'>
+                    <img src='/login3.jpeg'>
+                </div>
+            </div>
+        </div>
+        <script>
+            // Toggle between login and signup forms
+            document.getElementById('showSignup').addEventListener('click', function(e){
+                e.preventDefault();
+                document.getElementById('loginFormContainer').style.display = 'none';
+                document.getElementById('signupFormContainer').style.display = 'block';
+            });
+
+            document.getElementById('showLogin').addEventListener('click', function(e){
+                e.preventDefault();
+                document.getElementById('signupFormContainer').style.display = 'none';
+                document.getElementById('loginFormContainer').style.display = 'block';
+            });
+
+           
+            document.getElementById('loginForm').addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+                if (data.token) {
+                    localStorage.setItem('token', data.token);
+                    window.location.href = '/';
+                } else {
+                    alert('Login failed!');
+                }
+            });
+
+          
+            document.getElementById('signupForm').addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('signupEmail').value;
+                const password = document.getElementById('signupPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                const phoneNumber = document.getElementById('phoneNumber').value;
+                const age = document.getElementById('age').value;
+
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match!');
+                    return;
+                }
+
+                try {
+                    const response = await fetch('/signup', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ name, email, password, phoneNumber, age })
+                    });
+
+                    const data = await response.json();
+                    if (data.success) {
+                        localStorage.setItem('token', data.token);
+                        window.location.href = '/';
+                    } else {
+                        alert('Signup failed! ' + (data.message || ''));
+                    }
+                } catch (error) {
+                    console.error('Error during signup:', error);
+                    alert('An error occurred during signup.');
+                }
+            });
+        </script>
+    </body>
+</html> -->
+
+
+<html>
+    <head>
+        <title>Login / Signup</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel='stylesheet' href="/css/style3.css">
+        <link rel='stylesheet' href="/css/swiper-bundle.min.css">
+        <link rel='stylesheet' href="/css/style.css">
+        <link rel='stylesheet' href="/css/style1.css">
+       
+        <script type="text/javascript">
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/66e9241650c10f7a00abb45f/1i7vb9uu3';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+            })();
+        </script>
+
+    </head>
+    <body>
+        <div id='container'>
+            
+           <!--Included navbar-->
+            <%- include('partials/navbar') %>
+
+            <div class='content'></div>
+            <div class='box'>
+                <!-- Login Form -->
+                <div class='login_form' id='loginFormContainer'>
+                    <h1>Welcome to Golden View</h1>
+                    <p>Please sign in to continue.</p>
+                    <form id="loginForm">
+                        <input type='email' name='email' placeholder="Email" id="email" required><br>
+                        <input type='password' name='password' placeholder="Password" id="password" required><br>
+                        <input type='checkbox' class="checkbox"><span id="text">Remember Me</span><br>
+                        <input type='submit' value='Sign In' class='submit'><br>
+                        <span>Don't have an account? <a href="#" id="showSignup">Click to sign up</a></span>
+                    </form>
+                </div>
+
+                <!-- Signup Form -->
+                <div class='login_form' id='signupFormContainer' style="display:none;">
+                    <h1>Create an Account</h1>
+                    <p>Join us and experience exceptional service.</p>
+                    <form id="signupForm">
+                        <input type='text' name='name' placeholder="Full Name" id="name" required><br>
+                        <input type='email' name='email' placeholder="Email" id="signupEmail" required><br>
+                        <input type='password' name='password' placeholder="Password" id="signupPassword" required><br>
+                        <input type='password' name='confirm_password' placeholder="Confirm Password" id="confirmPassword" required><br>
+                        <input type='text' name='phoneNumber' placeholder="Phone Number" id="phoneNumber" required><br>
+                        <input type='number' name='age' placeholder="Age" id="age" required><br>
+                        <input type='submit' value='Sign Up' class='submit'><br>
+                        <span>Already have an account? <a href="#" id="showLogin">Click to sign in</a></span>
+                    </form>
+                </div>
+                <div class='display'>
+                    <img src='/login3.jpeg'>
+                </div>
+            </div>
+        </div>
+        
+        <script src="/js/navbar.js"></script>
+
+        <script>
+            // Wrap your code inside DOMContentLoaded to ensure the DOM is fully loaded
+            document.addEventListener('DOMContentLoaded', function() {
+
+                // Function to update navbar
+                function updateNavbar() {
+                    const navbarCollapse = document.getElementById('navbarCollapse');
+                    let authLink = document.getElementById('authLink');
+
+                    if (authLink) {
+                        authLink.remove();
+                    }
+
+                    const token = localStorage.getItem('token');
+
+                    authLink = document.createElement('a');
+                    authLink.className = 'right';
+                    authLink.id = 'authLink';
+
+                    if (token) {
+                        // User is logged in - show Logout
+                        authLink.href = '/';
+                        authLink.textContent = 'Logout';
+                        authLink.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            localStorage.removeItem('token');
+                            updateNavbar();
+                            window.location.href = '/';
+                        });
+                    } else {
+                        // User is not logged in - show Sign In
+                        authLink.href = '/login';
+                        authLink.textContent = 'Sign In';
+                    }
+
+                    navbarCollapse.appendChild(authLink);
+                }
+
+                // Initial navbar update
+                updateNavbar();
+                // Toggle between login and signup forms
+                document.getElementById('showSignup').addEventListener('click', function(e){
+                    e.preventDefault();
+                    document.getElementById('loginFormContainer').style.display = 'none';
+                    document.getElementById('signupFormContainer').style.display = 'block';
+                });
+
+                document.getElementById('showLogin').addEventListener('click', function(e){
+                    e.preventDefault();
+                    document.getElementById('signupFormContainer').style.display = 'none';
+                    document.getElementById('loginFormContainer').style.display = 'block';
+                });
+
+                // Login form submission
+                document.getElementById('loginForm').addEventListener('submit', async (event) => {
+                    event.preventDefault();
+                    const email = document.getElementById('email').value;
+                    const password = document.getElementById('password').value;
+
+                    try {
+                        const response = await fetch('/login', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ email, password })
+                        });
+
+                        const data = await response.json();
+                        if (data.token) {
+                            localStorage.setItem('token', data.token);
+                            updateNavbar();
+                            window.location.href = '/';
+                        } else {
+                            alert('Login failed! ' + (data.message || ''));
+                        }
+                    } catch (error) {
+                        console.error('Error during login:', error);
+                        alert('An error occurred during login.');
+                    }
+                });
+
+                // Signup form submission
+                document.getElementById('signupForm').addEventListener('submit', async (event) => {
+                    event.preventDefault();
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('signupEmail').value;
+                    const password = document.getElementById('signupPassword').value;
+                    const confirmPassword = document.getElementById('confirmPassword').value;
+                    const phoneNumber = document.getElementById('phoneNumber').value;
+                    const age = document.getElementById('age').value;
+
+                    if (password !== confirmPassword) {
+                        alert('Passwords do not match!');
+                        return;
+                    }
+
+                    try {
+                        const response = await fetch('/signup', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ name, email, password, phoneNumber, age })
+                        });
+
+                        const data = await response.json();
+                        if (data.success) {
+                            localStorage.setItem('token', data.token);
+                            updateNavbar();
+                            window.location.href = '/';
+                        } else {
+                            alert('Signup failed! ' + (data.message || ''));
+                        }
+                    } catch (error) {
+                        console.error('Error during signup:', error);
+                        alert('An error occurred during signup.');
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

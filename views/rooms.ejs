@@ -12,26 +12,27 @@
     </head>
     <body id='content'>
         <div id='container'>
-            <nav>
+            <!-- <nav>
                 <div class="navbar" id='mynavbar'>
                     <a href='/' class='logo'><img src='/logo (2).png'
                             height='56px' width='120px'></a>
                     <span class='icons menu'
-                        onclick="myfunction()">&#9776;</span>
+                        onclick="myfunction()">&#9776;</span> -->
                     <!--HTML icons code for dropdown for designing responsive web page-->
-                    <span class='icons close'
+                    <!-- <span class='icons close'
                         onclick="myfunction()">&#10006;</span>
                     <div class="navbar-collapse">
                         <a href="/hotels">Our Hotels</a>
-                        <a href="/booking">Manage Booking</a>
+                        <a href="/booking">Manage Booking</a> -->
                         <!-- <a href = '/awards'>Awards</a> change to Awards section see Oberoi hotel -->
-                        <a href="/https://www.tajhotels.com/en-in/contact-us"
+                        <!-- <a href="/https://www.tajhotels.com/en-in/contact-us"
                             class="right">Contact Us</a>
                         <a href="/login" class="right">Sign In</a>
                     </div>
                 </div>
-            </nav>
-
+            </nav> -->
+            <%- include('partials/navbar') %>
+ 
             <div class='header'>
                 <p>My hotel</p>
             </div>
@@ -294,6 +295,8 @@
                 </div>
             </div>
         </div>
+        <script src="/js/navbar.js"></script>
+
     </body>
     <script type='text/javascript' src="/js/script_hotel.js"></script>
     <!--Start of Tawk.to Script-->
