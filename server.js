@@ -12,6 +12,7 @@ const path = require("path");
 const bodyParser = require('body-parser');
 
 const { Domain } = require("domain");
+const bcrypt = require('bcryptjs');
 
 
 
@@ -54,9 +55,9 @@ app.get("/booking", (req, res) => {
     res.render("booking.ejs");
 })
 
-app.get("/signin", (req, res) => {
-    res.render("signin.ejs");
-})
+// app.get("/signin", (req, res) => {
+//     res.render("signin.ejs");
+// })
 
 app.get("/menu", (req, res) => {
     res.render("menu.ejs");
@@ -159,17 +160,19 @@ app.post('/signup',async(req,res)=>{
 
     try {
         const { name, email, password, phoneNumber, age } = req.body;
-    
-       
+          
         if (!name || !email || !password || !phoneNumber || !age) {
           return res.status(400).json({ message: "Missing required fields" });
         }
-    
-    
+
+        // Hash the password using bcrypt
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+
         const user = new User({
           name,
           email,
-          password,
+          password: hashedPassword,
           phoneNumber,
           age,
         });
@@ -195,38 +198,37 @@ app.post('/signup',async(req,res)=>{
 })
 
 // // user login endpoint
-app.post('/login',async (req,res)=>{
-    try {
-        const { email, password } = req.body;
-    
-    
-        const user = await User.findOne({email});
-        if (!user) {
-          return res.status(400).json({ message: "Invalid email or password" });
-          req.flash("failure","error")
-        }
-        if (password !== user.password) {
-          return res.status(400).json({ message: "Invalid email or password" });
-        }
+app.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-        const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, {
-          expiresIn: "1h",
-        });
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ message: "Invalid email or password" });
+    }
 
-        res.status(200).json({
-          success:true,
-          token,
-          user: { id: user._id, email: user.email, name: user.name },
-        });
-            } catch (error) {
-        console.error("Error logging in user:", error);
-        res.status(500).json({
-          message: "Error logging in user",
-          error: error.message || error,
-        });
-       
-      }
-})
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: "Invalid password" });
+    }
+
+    const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, {
+      expiresIn: "1h",
+    });
+
+    res.status(200).json({
+      success: true,
+      token,
+      user: { id: user._id, email: user.email, name: user.name },
+    });
+  } catch (error) {
+    console.error("Error logging in user:", error);
+    res.status(500).json({
+      message: "Error logging in user",
+      error: error.message || error,
+    });
+  }
+});
 
 
 //room apis
