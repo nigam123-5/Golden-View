@@ -92,15 +92,16 @@
             </div>
             <div class="form-container">
                 <!-- Login Form -->
-                <form id="loginForm" class="active">
+                <form id="loginForm" class="active" action="/login"
+                    method="POST">
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email"
+                        <input type="email" id="email" name="email"
                             placeholder="Enter your email">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" id="password"
+                        <input type="password" id="password" name="password"
                             placeholder="Enter your password">
                     </div>
                     <div class="form-group">
@@ -112,7 +113,7 @@
                 </form>
 
                 <!-- Signup Form -->
-                <form id="signupForm">
+                <form id="signupForm" action="/signup" method="POST">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name"
@@ -152,6 +153,22 @@
             showLogin.addEventListener('click', () => {
                 signupForm.classList.remove('active');
                 loginForm.classList.add('active');
+            });
+
+            loginForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const formData = new FormData(loginForm);
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+                if (data.success) {
+                    console.log(data);
+                    localStorage.setItem('token', data.token);
+                } else {
+                    console.error('Login failed');
+                }
             });
         </script>
     </body>
