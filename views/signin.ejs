@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login & Signup</title>
+
+        <style>
+            /* Existing styles */
+
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-image: url('/fort.jpg');
+                background-size: cover;
+                background-position: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                height: 100vh;
+            }
+
+            .navbar {
+                width: 100%;
+                background-color: #007bff;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .navbar .logo {
+                color: white;
+                font-size: 20px;
+                font-weight: bold;
+                text-decoration: none;
+            }
+
+            .navbar .nav-links {
+                display: flex;
+                gap: 15px;
+            }
+
+            .navbar .nav-links a {
+                color: white;
+                text-decoration: none;
+                font-size: 16px;
+                transition: color 0.3s ease;
+            }
+
+            .navbar .nav-links a:hover {
+                color: #d4e1ff;
+            }
+
+            .container {
+                width: 350px;
+                background: #fff;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                overflow: hidden;
+                margin-top: 50px; /* Adjust for navbar spacing */
+            }
+
+            .header {
+                background-color: #007bff;
+                color: #fff;
+                text-align: center;
+                padding: 15px;
+            }
+
+            /* Rest of your existing styles */
+        </style>
+    </head>
+
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar">
+            <a href="#" class="logo">MyWebsite</a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+
+        <!-- Login & Signup Container -->
+        <div class="container">
+            <div class="header">
+                <h2>Login or Signup</h2>
+            </div>
+            <div class="form-container">
+                <!-- Login Form -->
+                <form id="loginForm" class="active">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email"
+                            <form id="loginForm" class="active" action="/login"
+                            method="POST">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email"
+                                </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+
+                                <input type="password" id="password"
+                                    <input type="password" id="password"
+                                    name="password">>>>>>>
+                                505a0224a10373bd47c8a8a5468c967f17038a03
+                                placeholder="Enter your password">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit">Login</button>
+                            </div>
+                            <div class="toggle">
+                                Don't have an account? <a
+                                    id="showSignup">Signup</a>
+                            </div>
+                        </form>
+
+                        <!-- Signup Form -->
+
+                        <form id="signupForm">
+
+                            <form id="signupForm" action="/signup"
+                                method="POST">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name"
+                                        placeholder="Enter your name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="signupEmail">Email</label>
+                                    <input type="email" id="signupEmail"
+                                        placeholder="Enter your email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="signupPassword">Password</label>
+                                    <input type="password" id="signupPassword"
+                                        placeholder="Enter your password">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit">Signup</button>
+                                </div>
+                                <div class="toggle">
+                                    Already have an account? <a
+                                        id="showLogin">Login</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <script>
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            const showSignup = document.getElementById('showSignup');
+            const showLogin = document.getElementById('showLogin');
+
+            showSignup.addEventListener('click', () => {
+                loginForm.classList.remove('active');
+                signupForm.classList.add('active');
+            });
+
+            showLogin.addEventListener('click', () => {
+                signupForm.classList.remove('active');
+                loginForm.classList.add('active');
+            });
+
+            loginForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const formData = new FormData(loginForm);
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+                if (data.success) {
+                    console.log(data);
+                    localStorage.setItem('token', data.token);
+                } else {
+                    console.error('Login failed');
+                }
+            });
+        </script>
+                </body>
+            </html>

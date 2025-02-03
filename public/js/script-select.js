@@ -23,7 +23,7 @@ const searchInput = document.getElementById('searchInput');
 const itemList = document.getElementById('itemList');
 const items = document.getElementById('items');
 const selectedItemInput = document.getElementById('selectedItem');
-const trendingSearches = ["Mumbai", "New Delhi", "Bhopal", "Hyderabad", "Pune", "Lucknow"];
+const trendingSearches = ["Lucknow", "Agra", "Varansi", "Ayodhya", "Gwalior" ];
 
 
   function displayTrendingSearches(){
@@ -177,6 +177,8 @@ const trendingSearches = ["Mumbai", "New Delhi", "Bhopal", "Hyderabad", "Pune", 
     }
 });
 
+//ok or kya kya kiye ho dikhao
+// ky ky dekhoge ye jo rooms display kiye ho usko static hi info duye ho ya data,js se render kr k display 
   // Listen for input in the search bar and call populateOptions with the user's query
   searchInput.addEventListener('input', () => {
     const query = searchInput.value;
