@@ -96,49 +96,63 @@
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" id="email"
-                            placeholder="Enter your email">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password"
-                            placeholder="Enter your password">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit">Login</button>
-                    </div>
-                    <div class="toggle">
-                        Don't have an account? <a id="showSignup">Signup</a>
-                    </div>
-                </form>
+                            <form id="loginForm" class="active" action="/login"
+                            method="POST">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email"
+                                </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
 
-                <!-- Signup Form -->
-                <form id="signupForm">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name"
-                            placeholder="Enter your name">
-                    </div>
-                    <div class="form-group">
-                        <label for="signupEmail">Email</label>
-                        <input type="email" id="signupEmail"
-                            placeholder="Enter your email">
-                    </div>
-                    <div class="form-group">
-                        <label for="signupPassword">Password</label>
-                        <input type="password" id="signupPassword"
-                            placeholder="Enter your password">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit">Signup</button>
-                    </div>
-                    <div class="toggle">
-                        Already have an account? <a id="showLogin">Login</a>
-                    </div>
-                </form>
-            </div>
-        </div>
+                                <input type="password" id="password"
+                                    <input type="password" id="password"
+                                    name="password">>>>>>>
+                                505a0224a10373bd47c8a8a5468c967f17038a03
+                                placeholder="Enter your password">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit">Login</button>
+                            </div>
+                            <div class="toggle">
+                                Don't have an account? <a
+                                    id="showSignup">Signup</a>
+                            </div>
+                        </form>
 
-        <script>
+                        <!-- Signup Form -->
+
+                        <form id="signupForm">
+
+                            <form id="signupForm" action="/signup"
+                                method="POST">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name"
+                                        placeholder="Enter your name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="signupEmail">Email</label>
+                                    <input type="email" id="signupEmail"
+                                        placeholder="Enter your email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="signupPassword">Password</label>
+                                    <input type="password" id="signupPassword"
+                                        placeholder="Enter your password">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit">Signup</button>
+                                </div>
+                                <div class="toggle">
+                                    Already have an account? <a
+                                        id="showLogin">Login</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <script>
             const loginForm = document.getElementById('loginForm');
             const signupForm = document.getElementById('signupForm');
             const showSignup = document.getElementById('showSignup');
@@ -153,6 +167,22 @@
                 signupForm.classList.remove('active');
                 loginForm.classList.add('active');
             });
+
+            loginForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const formData = new FormData(loginForm);
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+                if (data.success) {
+                    console.log(data);
+                    localStorage.setItem('token', data.token);
+                } else {
+                    console.error('Login failed');
+                }
+            });
         </script>
-    </body>
-</html>
+                </body>
+            </html>
