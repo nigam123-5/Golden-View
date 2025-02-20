@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Resort booking form</title>
+        <link rel="stylesheet" href="/css/services.css">
+        <link rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class='nav'>
+                <a href="/" class="logo">
+                    <img src="/logo (2).png" width="88" height="70"
+                        alt="Hotel Golden View">
+
+                </a></div>
+            <form class="form-group">
+                <div id="form">
+                    <h1 class="text-white text-center">Booking Now</h1>
+
+                    <div id="first-group">
+
+                        <div id="content">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <input type="text" id="input-group"
+                                placeholder="First name">
+                        </div>
+
+                        <div id="content">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <input type="number" id="input-group"
+                                placeholder="Phone number">
+                        </div>
+
+                        <div id="content">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                            <!-- <input type="date" id="input-group"
+                                placeholder="Departure Date"> -->
+                            <input type='date' oninput="changeColor(this)"
+                                class='datepicker' placeholder="Departure
+                                Date">
+                        </div>
+
+                        <div id="content">
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                            <select id="input-group"
+                                style="background-color: black;">
+                                <option value>No.of guests</option>
+                                <option value>1-5</option>
+                                <option value>6-10</option>
+                                <option value>11-20</option>
+                                <option value>20-40</option>
+                                <option value>40-80</option>
+                                <option value>80-150</option>
+                                <option value>Above 80</option>
+
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div id="second-group">
+
+                        <div id="content">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <input type="text" id="input-group"
+                                placeholder="Last name">
+                        </div>
+
+                        <div id="content">
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                            <input type="email" id="input-group"
+                                placeholder="Email">
+                        </div>
+
+                        <div id="content">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                            <!-- <input type="date" id="input-group"
+                                placeholder="Arrival Date"> -->
+                            <input type='date' oninput="changeColor(this)"
+                                class='datepicker'>
+                        </div>
+
+                        <div id="content">
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                            <select id="input-group"
+                                style="background-color: black;">
+                                <option value> Room, Events </option>
+                                <option value>AC</option>
+                                <option value>Hall</option>
+                                <option value>Meeting Hall- AC</option>
+                                <option value>Party</option>
+                                <!-- <option value>Non-AC Hall</option> -->
+                                <option value>Dinning</option>
+                                <option value>Marriage Garden</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" value="Submit" id="submit-btn">Book
+                        Now</button>
+
+                </div>
+            </form>
+            <!-- <div class='display'>
+                <img src='/login3.jpeg'>
+            </div> -->
+        </div>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Razorpay Payment</title>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    </head>
+    <body>
+        <button id="pay-btn">Make Payment</button>
+
+        <script>
+        document.getElementById("pay-btn").addEventListener("click", async () => {
+            try {
+                const response = await fetch("/create-payment", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ amount: <%= JSON.stringify(amount) %> }) // Fixed
+                });
+
+                const data = await response.json();
+                console.log(data);
+
+                // Yahan Razorpay checkout logic bhi add kar sakte hain
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        });
+    </script>
+
+    </body>
+</html>

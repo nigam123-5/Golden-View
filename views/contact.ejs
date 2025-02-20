@@ -24,28 +24,9 @@
     </head>
     <body>
         <div id='container'>
-            <!-- <nav>
-                <div class="navbar" id='mynavbar'>
-                    <a href='/' class='logo'><img src='/logo (2).png'
-                            height='56px' width='80px'></a>
-                    <span class='icons menu'>&#9776;</span>
 
-                    <span class='icons close'>&#10006;</span>
-                    <div class="navbar-collapse">
-                        <a href="/hotels">Our Hotels</a>
-                        <a href="/booking">Manage Booking</a>
-                        <a href="/menu">Menu</a>
-                        <a href="/awards">About</a>
-
-                        <a href="/contact"
-                            class="right">Contact Us</a>
-                        <a href="/login" class="right">Sign In</a>
-                    </div>
-                </div>
-            </nav> -->
             <%- include('partials/navbar') %>
 
-            
             <div class='content'></div>
             <div class='box'>
                 <div class='login_form'>
@@ -61,8 +42,14 @@
                         <input type='text' name='username'
                             placeholder="Contact"
                             required><br>
+
+                        <input type='text' name='E-mail'
+                            placeholder="E-mail"
+                            required><br>
+
                         <input type='string' name='Name'
                             placeholder="Query" required><br>
+
                         <!-- <input type='checkbox' class="checkbox"><span
                             id=text>Remember Me</span><br> -->
                         <input type='submit' value='Submit' class='submit'>
@@ -70,7 +57,7 @@
                     </form>
                 </div>
                 <div class='display'>
-                    <img src='/123 (2).jpg'>
+                    <img src='/reservation.jpg'>
                 </div>
             </div>
         </div>
