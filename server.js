@@ -13,6 +13,7 @@ const Razorpay = require("razorpay");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
 const rooms = require("./public/js/roomsData");
+require('dotenv').config();
 
 // Load environment variables
 dotenv.config();
@@ -109,13 +110,14 @@ app.get("/rooms", (req, res) => {
 
 app.get("/guest_details/:id", (req, res) => {
     const roomId = parseInt(req.params.id);
+    const apiKey = process.env.RAZORPAY_KEY_ID;
     const selectedRoom = rooms.find(room => room.id === roomId);
 
     if (!selectedRoom) {
         return res.status(404).send("Room not found");
     }
 
-    res.render("guest_details.ejs",{room: selectedRoom});
+    res.render("guest_details.ejs",{room: selectedRoom, apiKey:apiKey});
 });
 
 app.get("/hotels", (req, res) => {

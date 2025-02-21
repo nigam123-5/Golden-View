@@ -9,7 +9,7 @@ const rooms = [
         guests: 'Up to 3 guests',
         bed: 'King',
         highlight: 'Spacious rooms and bathrooms.',
-        price: '₹ 14,000'
+        price: '14000'
     },
     {
         id: 2,

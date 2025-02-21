@@ -11,6 +11,8 @@
             crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body id='content'>
+     
+
         <div id='container'>
 
             <%- include('partials/navbar') %>
@@ -101,8 +103,7 @@
                         <p>Card Details</p>
                         <div class='payment'>
                             <div class='button'>
-                                <button type='button' id='key1' class='active'
-                                    onclick='key_function()'>Pay Now</button>
+                                <button type="button" id="payButton" class="active">Pay Now</button>
                                 <button type='button' id='key2' class='inactive'
                                     onclick='key_function()'>Pay at
                                     Hotel</button>
@@ -196,77 +197,39 @@
                     </div>
                 </form>
             </div>
-
-            <!-- <div class='footer'>
-                <p>Destinations +</p> -->
-                <!-- <hr
-                    style="width: 90%; height: .2px; border: none; background-color: #606060;">
-                <div class='destination_box'>
-                    <div class='destination_box1'>
-                        <ul class='flex-list'>
-                            <div style='width: 35rem;'>
-                                <li>Airline & Frequent Flyer Partners</li>
-                                <li>Taj Magazine</li>
-                                <li>J Wellness Circle</li>
-                                <li>Site Map</li>
-                                <li>Terms Of Use</li>
-                                <li>Contact Us</li>
-                            </div>
-                            <div style='width: 15rem;'>
-                                <li>Accessibility</li>
-                                <li>Languages</li>
-                                <li>Privacy Policy</li>
-                                <li>Press Room</li>
-                                <li>Careers</li>
-                                <li>Blogs</li>
-                            </div>
-                            <div style='width: 26rem;'>
-                                <li>SAATHI</li>
-                                <li>NIDHI</li>
-                                <li>UTSAV</li>
-                                <li>INCREDIBLE INDIA FILM</li>
-                            </div>
-                        </ul>
-                    </div>
-                    <div class='destination_box2'>
-                        <ul>
-                            <li>Join our newsletter</li>
-                            <li><button class='button'><a
-                                        href='/our_newsletter'>SUBSCRIBE</a></button></li>
-                            <br>
-                            <li>Connect with us:</li>
-                            <li>
-                                <div class='contact'>
-                                    <a class='con_icons' href='#'>
-                                        <i
-                                            class="fa-brands fa-facebook-f"></i></a>
-                                    <a class='con_icons' href='#'>
-                                        <i
-                                            class="fa-brands fa-instagram"></i></a>
-                                    <a class='con_icons' href='#'>
-                                        <i
-                                            class="fa-brands fa-x-twitter"></i></a>
-                                    <a class='con_icons' href='#'>
-                                        <i class="fa-brands fa-youtube"></i></a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <p>Loyalty Programs +</p>
-                <hr
-                    style="width: 90%; height: .2px; border: none; background-color: #606060;">
-                <div class='f-brand'>
-                    <div class='hotel'>
-                        <img src='/brand_logo.png' width=90px height=37px>
-                        <p> The Indian Hotels Company Limited.</p>
-                    </div> -->
-
-                </div>
-            </div>
         </div>
         <%- include('partials/footer') %>
         <script src="/js/navbar.js"></script>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    const roomPrice = <%= room.price %>*100;
+    const apiKey = '<%= apiKey %>';
+    document.getElementById("payButton").addEventListener("click", function () {
+        
+        var options = {
+            "key":apiKey , // Replace with your Razorpay Key ID
+            "amount": roomPrice , // Amount in paise (₹500 = 50000 paise)
+            "currency": "INR",
+            "name": "Test Payment",
+            "description": "Testing Razorpay Payment",
+            "image": "https://yourlogo.com/logo.png", // Optional logo
+            "handler": function (response) {
+                alert("Payment Successful!\nPayment ID: " + response.razorpay_payment_id);
+            },
+            "prefill": {
+                "name": "John Doe",
+                "email": "johndoe@example.com",
+                "contact": "9876543210"
+            },
+            "theme": { "color": "#3399cc" }
+        };
+
+        var rzp = new Razorpay(options);
+        rzp.open();
+    });
+</script>
+
+        
 
     </body>
     <script type='text/javascript' src="/js/script_hotel.js"></script>

@@ -17,13 +17,37 @@
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({ amount: <%= JSON.stringify(amount) %> }) // Fixed
+                    body: JSON.stringify({ amount:"1400" }) // Fixed
                 });
 
                 const data = await response.json();
-                console.log(data);
-
-                // Yahan Razorpay checkout logic bhi add kar sakte hain
+                var options = {
+                    "key": data.key, // Enter the Key ID generated from the Dashboard
+                    "amount": data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 1400 refers to 1400 paise
+                    "currency": "INR",
+                    "name": "Merchant Name",
+                    "description": "Test Transaction",
+                    "image": "https://example.com/your_logo",
+                    "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                    "handler": function (response){
+                        alert(response.razorpay_payment_id);
+                        alert(response.razorpay_order_id);
+                        alert(response.razorpay_signature)
+                    },
+                    "prefill": {
+                        "name": "Gaurav Kumar",
+                        "email": "gaurav.kumar@example.com",
+                        "contact": "9999999999"
+                    },
+                    "notes": {
+                        "address": "Razorpay Corporate Office"
+                    },
+                    "theme": {
+                        "color": "#3399cc"
+                    }
+                };
+                var rzp1 = new Razorpay(options);
+                rzp1.open();
             } catch (error) {
                 console.error("Error:", error);
             }
