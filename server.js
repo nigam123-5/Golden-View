@@ -12,6 +12,7 @@ const bcrypt = require('bcryptjs');
 const Razorpay = require("razorpay");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
+const rooms = require("./public/js/roomsData");
 
 // Load environment variables
 dotenv.config();
@@ -23,9 +24,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "/public")));
 
+
 // Set up EJS
 app.set("views", path.join(__dirname, "/views"));
 app.set("view engine", "ejs");
+
+
+
 
 // MongoDB connection
 const MONGO_URL = "mongodb+srv://nigamsuryansh11:eSTwBDp3cHp8N2mr@cluster0.sm9sa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
@@ -98,11 +103,19 @@ app.get("/awards", (req, res) => {
 });
 
 app.get("/rooms", (req, res) => {
-    res.render("rooms.ejs");
+    console.log("Rooms Data:", rooms);
+    res.render("rooms.ejs",{rooms});
 });
 
-app.get("/guest_details", (req, res) => {
-    res.render("guest_details.ejs");
+app.get("/guest_details/:id", (req, res) => {
+    const roomId = parseInt(req.params.id);
+    const selectedRoom = rooms.find(room => room.id === roomId);
+
+    if (!selectedRoom) {
+        return res.status(404).send("Room not found");
+    }
+
+    res.render("guest_details.ejs",{room: selectedRoom});
 });
 
 app.get("/hotels", (req, res) => {
