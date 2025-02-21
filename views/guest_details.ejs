@@ -12,27 +12,43 @@
     </head>
     <body id='content'>
         <div id='container'>
-            <!-- <nav>
-                <div class="navbar" id='mynavbar'>
-                    <a href='/' class='logo'><img src='/logo (2).png'
-                            height='56px' width='80px'></a>
-                    <span class='icons menu'>&#9776;</span>
-                    <span class='icons close'>&#10006;</span>
-                    <div class="navbar-collapse">
-                        <a href="/hotels">Our Hotels</a>
-                        <a href="/booking">Manage Booking</a>
-                        <a href="/awards">About</a>
-                        <a href="/menu">Menu</a>
-                        <a href="/contact"
-                            class="right">Contact Us</a>
-                            <a href="/signin">Register</a>
-                        <a href="/login" class="right">Sign In</a>
-                    </div>
-                </div>
-            </nav> -->
 
             <%- include('partials/navbar') %>
-
+            <style>
+                .selected-room {
+                    border: 1px solid #ccc;
+                    padding: 20px;
+                    margin: 20px 0;
+                    border-radius: 10px;
+                    background-color: #f9f9f9;
+                    display: flex;
+                    align-items: center;
+                }
+                .selected-room h2 {
+                    margin-bottom: 15px;
+                }
+                .selected-room img.room-image {
+                    max-width: 12%;
+                    height: auto;
+                    border-radius: 10px;
+                    margin-right: 20px;
+                }
+                .selected-room .room-details {
+                    flex: 1;
+                }
+                .selected-room p {
+                    margin: 5px 0;
+                }
+            </style>
+            <div class="selected-room">
+                <img src="<%= room.image %>" alt="Room Image" class="room-image">
+                <div class="room-details">
+                    <h2>Selected Room Details</h2>
+                    <p><strong>Room Type:</strong> <%= room.type %></p>
+                    <p><strong>Price:</strong> $<%= room.price %> per night</p>
+                    <p><strong>Description:</strong> <%= room.description %></p>
+                </div>
+            </div>
 
             <div class='form'>
                 <p class='heading'>Guest Details</p>
@@ -249,6 +265,7 @@
                 </div>
             </div>
         </div>
+        <%- include('partials/footer') %>
         <script src="/js/navbar.js"></script>
 
     </body>
