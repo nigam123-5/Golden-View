@@ -127,7 +127,7 @@ app.get("/payment", (req, res) => {
 });
 
 // Booked route with email notification
-app.post("/booked", async (req, res) => {
+app.post("/confirmation", async (req, res) => {
     const { name, phone, person, reservationDate, time, email } = req.body;
     const user = new User({
         name, phone, person, reservationDate, time, email
@@ -152,7 +152,9 @@ app.post("/booked", async (req, res) => {
                 to: email,
                 subject: "Confirmation from Hotel Golden View",
                 html: `<p>Thank you for choosing The Hotel Golden view !! 
-                We're delighted to confirm your reservation for ${reservationDate} at ${time}. We look forward to welcoming you for a wonderful dining experience. Should you have any special requests or dietary requirements, please feel free to let us know in advance. See you soon !!</p>`
+                We're delighted to confirm your reservation for ${reservationDate} at ${time}. We look forward to welcoming you for a wonderful dining
+                 experience. Should you have any special requests or dietary requirements, 
+                please feel free to let us know in advance. See you soon !!</p>`
             });
 
             console.log("Message sent: %s", info.messageId);
@@ -160,7 +162,7 @@ app.post("/booked", async (req, res) => {
 
         main().catch(console.error);
 
-        res.render("booked.ejs");
+        res.render("confirmation_page.ejs");
         console.log("Booked");
     } catch (err) {
         console.error('Error saving reservation:', err);
