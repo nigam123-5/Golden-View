@@ -1,60 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rooms</title>
-    
-    <link rel="stylesheet" href="/css/style1.css">
-    <link rel="stylesheet" href="/css/style6.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rooms</title>
 
-<body id="content">
-    <div id="container">
-        <%- include('partials/navbar') %>
+        <link rel="stylesheet" href="/css/style1.css">
+        <link rel="stylesheet" href="/css/style6.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
 
-        <div class="header">
-            <p>My Hotel</p>
-        </div>
+    <body id="content">
+        <div id="container">
+            <%- include('partials/navbar') %>
 
-        <div class="container1">
-            <p>Select a Room</p>
-            <div class="rooms">
-                <% rooms.forEach(room => { %>
+            <div class="header">
+                <p>My Hotel</p>
+            </div>
+
+            <div class="container1">
+                <p>Select a Room</p>
+                <div class="rooms">
+                    <% rooms.forEach(room => { %>
                     <div class="luxury-room">
                         <img src="<%= room.image %>" alt="<%= room.title %>">
                         <div class="info">
                             <h3><%= room.title %></h3>
                             <p><%= room.description %></p>
                             <div class="fonts">
-                                <div class="box"><i class="fa-sharp fa-regular fa-square"></i> <span><%= room.size %></span></div>
-                                <div class="box"><i class="fa fa-wifi"></i> <span><%= room.wifi %></span></div>
-                                <div class="box"><i class="fa-regular fa-user"></i><i class="fa-regular fa-user"></i> <span><%= room.guests %></span></div>
-                                <div class="box"><i class="fa-solid fa-bed"></i> <span><%= room.bed %></span></div>
-                                <div class="box box1"><i class="fa-regular fa-star star"></i> <span><%= room.highlight %></span></div>
+                                <div class="box"><i
+                                        class="fa-sharp fa-regular fa-square"></i>
+                                    <span><%= room.size %></span></div>
+                                <div class="box"><i class="fa fa-wifi"></i>
+                                    <span><%= room.wifi %></span></div>
+                                <div class="box"><i
+                                        class="fa-regular fa-user"></i><i
+                                        class="fa-regular fa-user"></i>
+                                    <span><%= room.guests %></span></div>
+                                <div class="box"><i class="fa-solid fa-bed"></i>
+                                    <span><%= room.bed %></span></div>
+                                <div class="box box1"><i
+                                        class="fa-regular fa-star star"></i>
+                                    <span><%= room.highlight %></span></div>
                             </div>
                         </div>
                         <div class="rate">
                             <p><%= room.price %></p>
                             <p class="duration">Starting Rate/Night</p>
-                            <a href="/guest_details/<%= room.id %>"><button type="button">Book Now</button></a>
+                            <a href="/guest_details/<%= room.id %>"><button
+                                    type="button">Book Now</button></a>
                         </div>
                     </div>
-                <% }) %>
+                    <% }) %>
+                </div>
             </div>
         </div>
-    </div>
-    <%- include('partials/footer') %>
-    <script src="/js/navbar.js"></script>
-</body>
+        <script src="/js/navbar.js"></script>
+    </body>
 
-<script type='text/javascript' src="/js/script_hotel.js"></script>
+    <script type='text/javascript' src="/js/script_hotel.js"></script>
 
-<script type="text/javascript">
+    <script type="text/javascript">
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
     (function(){
         var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
@@ -65,6 +74,5 @@
         s0.parentNode.insertBefore(s1, s0);
     })();
 </script>
-
 
 </html>
