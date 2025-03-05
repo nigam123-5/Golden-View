@@ -75,14 +75,14 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <!-- <tbody> -->
-                <!-- <% rooms.forEach(room => { %> -->
-                <!-- <tr> -->
-                <!-- <td><%= room.category %></td>
+                <tbody>
+                <% rooms.forEach(room => { %>
+                <tr>
+                <td><%= room.category %></td>
                         <td><%= room.capacity %></td>
                         <td>$<%= room.price %></td>
-                        <td><%= room.city %></td> -->
-                <!-- <td class="action-buttons">
+                        <td><%= room.city %></td>
+                <td class="action-buttons">
                             <a href="/edit-room/<%= room._id %>"
                                 class="edit-btn">Edit</a>
                             <form action="/delete-room/<%= room._id %>"
@@ -91,10 +91,13 @@
                                     class="delete-btn">Delete</button>
                             </form>
                         </td>
-                    </tr> -->
-                <!-- <% }); %> -->
-                <!-- </tbody> -->
+                    </tr>
+                <% }); %>
+                </tbody>
             </table>
         </div>
+        <script>
+            console.log(rooms,"rooms")
+        </script>
     </body>
 </html>

@@ -202,13 +202,22 @@
         <script src="/js/navbar.js"></script>
         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
-    const roomPrice = <%= room.price %>*100;
+    const roomPrice = <%= room.price %>;
     const apiKey = '<%= apiKey %>';
-    document.getElementById("payButton").addEventListener("click", function () {
-        
+    document.getElementById("payButton").addEventListener("click", async () => {
+        try {
+                const response = await fetch("http://localhost:8080/create-razorpay-order", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ amount:roomPrice}) // Fixed
+                });
+   
+        const data = await response.json();
         var options = {
             "key":apiKey , // Replace with your Razorpay Key ID
-            "amount": roomPrice , // Amount in paise (₹500 = 50000 paise)
+            "amount":data.amount , // Amount in paise (₹500 = 50000 paise)
             "currency": "INR",
             "name": "Test Payment",
             "description": "Testing Razorpay Payment",
@@ -226,6 +235,9 @@
 
         var rzp = new Razorpay(options);
         rzp.open();
+    } catch (error) {
+                console.error("Error:", error);
+            }
     });
 </script>
 
