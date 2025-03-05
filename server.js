@@ -13,8 +13,12 @@ const Razorpay = require("razorpay");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
 const rooms = require("./public/js/roomsData");
-const bookingRoutes = require('./Routes/bookingRoutes');
 require('dotenv').config();
+
+
+const  roomRoutes = require('./Routes/roomRoutes')
+const bookingRoutes = require('./Routes/bookingRoutes');
+const userRoutes = require('./Routes/userRoutes');
 
 // Load environment variables
 dotenv.config();
@@ -49,6 +53,8 @@ const razorpay = new Razorpay({
 
 // Require booking routes
 app.use('/api', bookingRoutes);
+app.use('/api', roomRoutes);
+app.use('/api', userRoutes);
 
 // Routes
 app.get("/", (req, res) => {
