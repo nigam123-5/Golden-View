@@ -21,7 +21,7 @@ const rooms = [
         guests: 'Up to 3 guests',
         bed: 'King',
         highlight: 'Classic decor providing a sense of history',
-        price: '₹ 10,000'
+        price: '10000'
     },
     {
         id: 3,
@@ -33,7 +33,7 @@ const rooms = [
         guests: 'Up to 3 guests',
         bed: 'King',
         highlight: 'Grand architecture, spacious rooms and bathrooms.',
-        price: '₹ 15,000'
+        price: '15000'
     },
     {
         id: 4,
@@ -45,7 +45,7 @@ const rooms = [
         guests: 'Up to 4 guests',
         bed: 'King',
         highlight: 'Unique suite offering a Rajasthani splendour',
-        price: '₹ 12,000'
+        price: '12000'
     }
 ];
 
