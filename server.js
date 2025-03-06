@@ -69,9 +69,7 @@ app.get("/admin/dashboard", (req, res) => {
     res.render("admin/dashboard.ejs");
 });
 
-app.get("/admin/login", (req, res) => {
-    res.render("admin/login.ejs");
-});
+
 
 app.get("/admin/signup", (req, res) => {
     res.render("admin/signup.ejs");
@@ -85,7 +83,7 @@ app.get("/admin/addfood", (req, res) => {
     res.render("admin/addfood.ejs");
 });
 
-app.get("/adminlogin", (req, res) => {
+app.get("/admin/adminlogin", (req, res) => {
     res.render("admin/adminlogin.ejs");
 });
 

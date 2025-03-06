@@ -4,7 +4,7 @@ body{
 .container1{
     width: 100%;
     margin-top: 5%;
-    height: 85%;
+    height: 55%;
     display: flex;
     padding: 0 4%;
     justify-content: space-between;
@@ -69,8 +69,8 @@ footer {
         height: 75%;
     }
     .box img {
-        width: 100px;
-        height: 76px;
+        width: 115px;
+        height: 96px;
     }
     .text h3{
         font-size: 15px;
