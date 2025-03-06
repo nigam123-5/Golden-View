@@ -17,130 +17,124 @@
 
     </head>
     <body id='content'>
+        
+    
         <div id='container'>
             
 
-            <%- include('partials/navbar') %>
+                <%- include('partials/navbar') %>
 
-            <div class='container0 swiper-container'>
-                <div class='slider swiper-wrapper'>
-                    <img class="animated_ swiper-slide" src='/slide2.jpg'>
+                <div class='container0 swiper-container'>
+                    <div class='slider swiper-wrapper'>
+                        <img class="animated_ swiper-slide" src='/slide2.jpg'>
+                        
+                        <img class="animated_ swiper-slide" src='/slide5.jpg'>
+                        <img class="animated_ swiper-slide" src='/slide3.jpg'>
+                        <img class="animated_ swiper-slide" src='/slide4.jpg'>
+                        <img class="animated_ swiper-slide" src='/home2.jpg'>
+                    </div>
+                    <div
+                        class="swiper-button-next swiper-button-next1 nepr_butn"></div>
+                    <div
+                        class="swiper-button-prev swiper-button-prev1 nepr_butn"></div>
+                    <div class="swiper-pagination swiper-pagination1"></div>
                     
-                    <img class="animated_ swiper-slide" src='/slide5.jpg'>
-                    <img class="animated_ swiper-slide" src='/slide3.jpg'>
-                    <img class="animated_ swiper-slide" src='/slide4.jpg'>
-                    <img class="animated_ swiper-slide" src='/home2.jpg'>
                 </div>
-                <div
-                    class="swiper-button-next swiper-button-next1 nepr_butn"></div>
-                <div
-                    class="swiper-button-prev swiper-button-prev1 nepr_butn"></div>
-                <div class="swiper-pagination swiper-pagination1"></div>
+
                 
-            </div>
 
-            
-
-            <div class='conteiner1'>
-                <h1>BOOK YOUR STAY</h1>
-            </div>
-
-            <div class='search_box' id='search-bar'>
-                <div class='book-your-stay display'><p>Book your stay</p>
-                    <i class="fa-solid fa-xmark" id='form-mark'
-                        onclick="formfunction()"></i></div>
-
-                <form action="/rooms" id='form'
-                    onsubmit="return checkFields()">
-                    <div class='search des'>
-                        <div class='input-container'>
-                            <label for="searchInput"><i
-                                    class="fas fa-search search_icon"></i></label>
-                            <input type='text' placeholder="Search Destination"
-                                id='searchInput'>
-                        </div>
-                        <div id='itemList'>
-                            <ul id='items'></ul>
-                        </div>
-                        <input type="hidden" id='selectedItem'>
-                    </div>
-                    <div class='search date'>
-                        <div class='in-date'>
-                            <span class='extra'>Check-In</span>
-                            <input type='date' oninput="changeColor(this)"
-                                class='datepicker'>
-                        </div>
-                        <div class='in-date'>
-                            <span>Check-Out</span>
-                            <input type='date' oninput="changeColor(this)"
-                                class='datepicker'>
-                        </div>
-                    </div>
-                    <div class='this-container search'>
-                        <div class='room'>
-                            <div class='room-num'>Room 01</div>
-                            <div class="room-box display line-height">
-                                <ul class='roomss'>
-                                    <li data-value="1" class='list-select'>Room
-                                        01</li>
-                                    <li data-value="2">Room 02</li>
-                                    <li data-value="3">Room 03</li>
-                                    <li data-value="4">Room 04</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class='room guest'>
-                            <div class='guest-num'>Guest 02</div>
-                            <div class='guest-box display line-height'>
-                                <div class='blocks'>
-                                    <span class='room-no'>Room 1</span>
-                                    <span class='x-mark display bar'><i
-                                            class="fa-regular fa-circle-xmark i-mark"></i></span>
-                                    <span class='edit display'>Edit</span>
-                                    <div class='final-list display'>
-                                    </div>
-                                    <div class='tot-guest'>
-                                        <div class='people'><p>Adult</p>
-                                            <ul class='number adult'>
-                                                <li data-value='1'>1</li>
-                                                <li data-value='2'
-                                                    class='selected'>2</li>
-                                            </ul>
-                                        </div>
-                                        <div class='people'><p>Children</p>
-                                            <ul class='number child'>
-                                                <li data-value='1'>1</li>
-                                                <li data-value='2'>2</li>
-                                                <li class='display'><i
-                                                        class="fa-regular fa-circle-xmark"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class='child-age'>
-                                    </div>
-                                </div>
-                                <div class='done'>
-                                    <div class='add-room'>ADD ROOM</div>
-                                    <p class='finish'>Done</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    
-
-                            <div class='click-button'>
-                            <input type="submit" value='View Availibility'
-                                class='press' id='viewB'>
-                            <p class='guarantee'>Best Rate Guarantee</p>
-                        </div>
-
-
-                    </form>
-                    <div id='error'></div>
+                <div class='conteiner1'>
+                    <h1>BOOK YOUR STAY</h1>
                 </div>
 
-               
+                <div class='search_box' id='search-bar'>
+                    <div class='book-your-stay display'><p>Book your stay</p>
+                        <i class="fa-solid fa-xmark" id='form-mark'
+                            onclick="formfunction()"></i></div>
+
+                    <form id='form'  onsubmit="return checkFields()">
+                        <div class='search des'>
+                            <div class="input-container">
+                                <label for="searchInput"><i class="fas fa-search search_icon"></i></label>
+                                <input type="text" placeholder="Search Destination" id="searchInput">
+                            </div>
+                            <div id='itemList'>
+                                <ul id='items'></ul>
+                            </div>
+                            <input type="hidden" id='selectedItem'>
+                        </div>
+                        <div class='search date'>
+                            <div class='in-date'>
+                                <span class='extra'>Check-In</span>
+                                <input type='date' oninput="changeColor(this)"
+                                    class='datepicker'>
+                            </div>
+                            <div class='in-date'>
+                                <span>Check-Out</span>
+                                <input type='date' oninput="changeColor(this)"
+                                    class='datepicker'>
+                            </div>
+                        </div>
+                        <div class='this-container search'>
+                            <div class='room'>
+                                <div class='room-num'>Room 01</div>
+                                <div class="room-box display line-height">
+                                    <ul class='roomss'>
+                                        <li data-value="1" class='list-select'>Room
+                                            01</li>
+                                        <li data-value="2">Room 02</li>
+                                        <li data-value="3">Room 03</li>
+                                        <li data-value="4">Room 04</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class='room guest'>
+                                <div class='guest-num'>Guest 02</div>
+                                <div class='guest-box display line-height'>
+                                    <div class='blocks'>
+                                        <span class='room-no'>Room 1</span>
+                                        <span class='x-mark display bar'><i
+                                                class="fa-regular fa-circle-xmark i-mark"></i></span>
+                                        <span class='edit display'>Edit</span>
+                                        <div class='final-list display'>
+                                        </div>
+                                        <div class='tot-guest'>
+                                            <div class='people'><p>Adult</p>
+                                                <ul class='number adult'>
+                                                    <li data-value='1'>1</li>
+                                                    <li data-value='2'
+                                                        class='selected'>2</li>
+                                                </ul>
+                                            </div>
+                                            <div class='people'><p>Children</p>
+                                                <ul class='number child'>
+                                                    <li data-value='1'>1</li>
+                                                    <li data-value='2'>2</li>
+                                                    <li class='display'><i
+                                                            class="fa-regular fa-circle-xmark"></i></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class='child-age'>
+                                        </div>
+                                    </div>
+                                    <div class='done'>
+                                        <div class='add-room'>ADD ROOM</div>
+                                        <p class='finish'>Done</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                            <div class="click-button">
+                                <input type="submit" value="View Availability" class="press" id="viewB">
+                                <p class="guarantee">Best Rate Guarantee</p>
+                            </div>
+
+                        </form>
+                        <div id='error'></div>
+                </div>
 
                 <div class='container1'>
                     <h1>OFFERS AND PROMOTIONS</h1>
@@ -325,16 +319,14 @@
                         </div>
                     </div>
                 </div>
-
-
-                
-                </div>
-            </div>
         </div>
-        <script src="/js/navbar.js"></script>
+           <script src="/js/navbar.js"></script>
 
     </body>
 
+
+    
+      
     <!--JS-->
     <script type='text/javascript' src="/js/swiper-bundle.min.js"></script>
     <script type='text/javascript' src="/js/script.js"></script>

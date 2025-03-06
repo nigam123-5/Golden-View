@@ -42,11 +42,12 @@
                     margin: 5px 0;
                 }
             </style>
+        
             <div class="selected-room">
                 <img src="<%= room.image %>" alt="Room Image" class="room-image">
                 <div class="room-details">
                     <h2>Selected Room Details</h2>
-                    <p><strong>Room Type:</strong> <%= room.type %></p>
+                    <p><strong>Room Type:</strong> <%= room.category %></p>
                     <p><strong>Price:</strong> $<%= room.price %> per night</p>
                     <p><strong>Description:</strong> <%= room.description %></p>
                 </div>
