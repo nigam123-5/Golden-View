@@ -390,6 +390,15 @@ input[type = 'date']{
       width: 11.8%;
     }
 }
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #2C3E50;
+  color: white;
+  margin-top: 20px;
+}
 @media screen and (max-width:835px) {
     
     .button-container{

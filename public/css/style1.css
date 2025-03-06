@@ -23,6 +23,14 @@ a.logo {
     float: left;
     padding: 7px 10px 2px 37px;
 }
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #2C3E50;
+    color: white;
+    margin-top: 20px;
+}
 
 .navbar a {
     float: left;

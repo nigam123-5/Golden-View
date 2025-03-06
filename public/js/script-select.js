@@ -23,7 +23,11 @@ const searchInput = document.getElementById('searchInput');
 const itemList = document.getElementById('itemList');
 const items = document.getElementById('items');
 const selectedItemInput = document.getElementById('selectedItem');
+<<<<<<< HEAD
 const trendingSearches = ["Lucknow", "Agra", "Varansi" ];
+=======
+const trendingSearches = ["Lucknow", "Agra", "Varanasi" ];
+>>>>>>> e4f3f5376386910ae158d88c218b004b2b070095
 
 
   function displayTrendingSearches(){
@@ -212,43 +216,99 @@ const trendingSearches = ["Lucknow", "Agra", "Varansi" ];
 
   let height = document.getElementById('search-bar');
   let errorBox = document.getElementById('error');
-  function checkFields(){
-    let click_content = document.getElementById('content');
+  
+//   function checkFields(){
+//     let click_content = document.getElementById('content');
 
-    if (!selectedItemInput.value || selectedItemInput.value !== searchInput.value){
-      if (searchInput.value.trim() === ''){
-        errorBox.innerHTML = 'Please select hotel';
-      }
-      else{
-        errorBox.innerHTML = 'Select among the hotels provided';
-      }
-      if (screenWidth > 835){
-        height.style.height = '83px';
-      }
-      return false;
-    }
-    else if(dateInput[0].value === ''){
-      errorBox.innerHTML = 'Kindly select your check-in date';
-      if (screenWidth > 835){
-        height.style.height = '83px';
-      }
-      return false;
-    }
-    else if(dateInput[1].value === ''){
-      errorBox.innerHTML = 'Please select check-out date';
+//     if (!selectedItemInput.value || selectedItemInput.value !== searchInput.value){
+//       if (searchInput.value.trim() === ''){
+//         errorBox.innerHTML = 'Please select hotel';
+//       }
+//       else{
+//         errorBox.innerHTML = 'Select among the hotels provided';
+//       }
+//       if (screenWidth > 835){
+//         height.style.height = '83px';
+//       }
+//       return false;
+//     }
+//     else if(dateInput[0].value === ''){
+//       errorBox.innerHTML = 'Kindly select your check-in date';
+//       if (screenWidth > 835){
+//         height.style.height = '83px';
+//       }
+//       return false;
+//     }
+//     else if(dateInput[1].value === ''){
+//       errorBox.innerHTML = 'Please select check-out date';
 
-      if (screenWidth > 835){
-        height.style.height = '83px';
-      }
-      return false;
+//       if (screenWidth > 835){
+//         height.style.height = '83px';
+//       }
+//       return false;
+//     }
+//     height.classList.remove('active-bar');
+//     click_content.style.overflow = 'visible';
+//     height.style.height = '75px';
+//     console.log(roomValue)
+//     return true;
+// }
+
+
+function checkFields(){
+  let click_content = document.getElementById('content');
+
+  // Check if the selected hotel (hidden input) matches the search input value.
+  if (!selectedItemInput.value || selectedItemInput.value !== searchInput.value){
+    if (searchInput.value.trim() === ''){
+      errorBox.innerHTML = 'Please select hotel';
+    } else {
+      errorBox.innerHTML = 'Select among the hotels provided';
     }
-    height.classList.remove('active-bar');
-    click_content.style.overflow = 'visible';
-    height.style.height = '75px';
-    console.log(roomValue)
-    return true;
+    if (screenWidth > 835){
+      height.style.height = '83px';
+    }
+    return false;
+  }
+  // Check if check-in date is provided.
+  else if(dateInput[0].value === ''){
+    errorBox.innerHTML = 'Kindly select your check-in date';
+    if (screenWidth > 835){
+      height.style.height = '83px';
+    }
+    return false;
+  }
+  // Check if check-out date is provided.
+  else if(dateInput[1].value === ''){
+    errorBox.innerHTML = 'Please select check-out date';
+    if (screenWidth > 835){
+      height.style.height = '83px';
+    }
+    return false;
+  }
+
+  // Remove the active bar and reset the height/overflow styling.
+  height.classList.remove('active-bar');
+  click_content.style.overflow = 'visible';
+  height.style.height = '75px';
+  console.log(roomValue);
+
+  // Retrieve the city name from the search input and update the form action.
+  let city = searchInput.value.trim();
+  console.log("City:", city);
+  let form = document.getElementById('form');
+  form.action = "/rooms/city=" + encodeURIComponent(city);
+  console.log("Updated form action:", form.action);
+
+  return true;
 }
+
+
+
 //Any changes in input box either a text added or removed will also trigger errorBox to hide
+
+
+
 searchInput.addEventListener('change', function(){
   errorBox.innerHTML = '';
   if (screenWidth > 835){

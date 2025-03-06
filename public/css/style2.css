@@ -16,6 +16,14 @@ body{
     height: 90px;
     width: 120px;
 }
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #2C3E50;
+    color: white;
+    margin-top: 20px;
+}
 .inner_container{
     height: 78.5%;
     width: 100%;

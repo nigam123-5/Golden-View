@@ -121,7 +121,14 @@ contained in a single div container 'horizontal', see above class 'photobanner' 
     margin: auto;
     position: relative;
 }
-
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #2C3E50;
+    color: white;
+    margin-top: 20px;
+}
 .swiper::before{
     position: absolute;
     content: "";

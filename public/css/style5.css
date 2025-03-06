@@ -16,6 +16,14 @@
 .nav{
     padding: 4% 6%; 
 }
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #2C3E50;
+    color: white;
+    margin-top: 20px;
+}
 .container{
     position: absolute;
     top: 0;

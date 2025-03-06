@@ -69,6 +69,10 @@ app.get("/admin/dashboard", (req, res) => {
     res.render("admin/dashboard.ejs");
 });
 
+app.get("/adminHome", (req, res) => {
+    res.render("adminHome.ejs");
+});
+
 app.get("/admin/addfood", (req, res) => {
     res.render("admin/addfood.ejs");
 });
@@ -123,27 +127,27 @@ app.get("/awards", (req, res) => {
     res.render("awards.ejs");
 });
 
-app.get("/rooms",async (req, res) => {
+app.get("/rooms/city=:city", async (req, res) => {
     try {
-        const rooms = await Room.find(); // Fetch the room data (your original API call)
+        const city = req.params.city;
+        const rooms = await Room.find({ city: city }); // Fetch rooms for the dynamic city
         res.render("rooms.ejs", { rooms: rooms }); // Pass the data to the template
     } catch (error) {
         console.error("Error fetching rooms:", error);
         res.status(500).send("Error fetching room data"); // Handle errors appropriately
     }
-    // res.render("rooms.ejs",{rooms});
 });
 
-app.get("/guest_details/:id", (req, res) => {
-    const roomId = parseInt(req.params.id);
+app.get("/guest_details/:id", async (req, res) => {
+    const roomId = req.params.id;
     const apiKey = process.env.RAZORPAY_KEY_ID;
-    const selectedRoom = rooms.find(room => room.id === roomId);
+    const selectedRoom = await Room.findOne({ _id: roomId });
 
     if (!selectedRoom) {
         return res.status(404).send("Room not found");
     }
 
-    res.render("guest_details.ejs",{room: selectedRoom, apiKey:apiKey});
+    res.render("guest_details.ejs", { room: selectedRoom, apiKey: apiKey });
 });
 
 app.get("/hotels", (req, res) => {

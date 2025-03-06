@@ -119,6 +119,15 @@
     color: rgb(255, 0, 81);
     text-transform: uppercase;
 }
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #2C3E50;
+    color: white;
+    margin-top: 20px;
+}
 .l1{
     padding-top: 2%;
     margin-left: 1%;

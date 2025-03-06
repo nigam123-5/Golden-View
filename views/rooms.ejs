@@ -28,20 +28,24 @@
                     <div class="luxury-room">
                         <img src="<%= room.image %>" alt="<%= room.title %>">
                         <div class="info">
-                            <h3><%= room.title %></h3>
+                            <h3><%= room.category %></h3>
                             <p><%= room.description %></p>
                             <div class="fonts">
                                 <div class="box"><i
                                         class="fa-sharp fa-regular fa-square"></i>
-                                    <span><%= room.size %></span></div>
-                                <div class="box"><i class="fa fa-wifi"></i>
-                                    <span><%= room.wifi %></span></div>
+                                    <span><%= room.area %></span></div>
+                                <% if (room.wifi) { %>
+                                    <div class="box">
+                                        <i class="fa fa-wifi"></i>
+                                        <span>Available</span>
+                                    </div>
+                                <% } %>
                                 <div class="box"><i
                                         class="fa-regular fa-user"></i><i
                                         class="fa-regular fa-user"></i>
-                                    <span><%= room.guests %></span></div>
+                                    <span>Upto <%= room.capacity %> guests</span></div>
                                 <div class="box"><i class="fa-solid fa-bed"></i>
-                                    <span><%= room.bed %></span></div>
+                                    <span><%= room.bedSize %></span></div>
                                 <div class="box box1"><i
                                         class="fa-regular fa-star star"></i>
                                     <span><%= room.highlight %></span></div>

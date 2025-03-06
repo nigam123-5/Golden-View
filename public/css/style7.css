@@ -18,6 +18,14 @@ form p{
 form hr{
     margin-top: 18px;
 }
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #2C3E50;
+    color: white;
+    margin-top: 20px;
+}
 .flex{
     display: flex;
     flex-wrap: wrap;

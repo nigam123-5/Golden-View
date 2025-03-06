@@ -16,6 +16,15 @@
 .container1{
     margin: 2% 7%;
 }
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #2C3E50;
+    color: white;
+    margin-top: 20px;
+}
 .container1 p{
     font-size: 23px;
 }
