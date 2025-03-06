@@ -101,11 +101,11 @@ app.get("/food", (req, res) => {
 
 app.get("/admin/roomList", async(req, res) => {
     try {
-        const rooms = await Room.find(); // Fetch the room data (your original API call)
-        res.render("admin/roomList", { rooms: rooms }); // Pass the data to the template
+        const rooms = await Room.find(); 
+        res.render("admin/roomList", { rooms: rooms }); 
     } catch (error) {
         console.error("Error fetching rooms:", error);
-        res.status(500).send("Error fetching room data"); // Handle errors appropriately
+        res.status(500).send("Error fetching room data"); 
     }
 });
 
@@ -136,11 +136,11 @@ app.get("/awards", (req, res) => {
 app.get("/rooms/city=:city", async (req, res) => {
     try {
         const city = req.params.city;
-        const rooms = await Room.find({ city: city }); // Fetch rooms for the dynamic city
-        res.render("rooms.ejs", { rooms: rooms }); // Pass the data to the template
+        const rooms = await Room.find({ city: city }); 
+        res.render("rooms.ejs", { rooms: rooms }); 
     } catch (error) {
         console.error("Error fetching rooms:", error);
-        res.status(500).send("Error fetching room data"); // Handle errors appropriately
+        res.status(500).send("Error fetching room data"); 
     }
 });
 
@@ -180,6 +180,30 @@ app.get("/payment", (req, res) => {
     const amount = 50000; // Example amount in paise (₹500)
     res.render("payment", { amount }); // Pass the amount to the EJS template
 });
+
+// Razorpay order creation
+app.post("/create-razorpay-order", async (req, res) => {
+    const { amount } = req.body;
+    const options = {
+        amount: amount * 100, // Amount in paise
+        currency: "INR",
+    };
+
+    try {
+        const order = await razorpay.orders.create(options);
+        res.json(order);
+    } catch (error) {
+        console.error("Error creating Razorpay order: ", error);
+        res.status(500).json({ error: "Failed to create order" });
+    }
+});
+
+app.get("/payment", (req, res) => {
+  const amount = 500; // Ya jo bhi actual amount ho
+  res.render("payment", { amount });
+});
+
+
 
 // Booked route with email notification
 app.post("/confirmation", async (req, res) => {
@@ -223,6 +247,11 @@ app.post("/confirmation", async (req, res) => {
         console.error('Error saving reservation:', err);
         res.status(500).send('Error submitting data');
     }
+});
+
+// Start the server
+app.listen(8080, () => {
+    console.log("Server is listening to port 8080");
 });
 
 // // User signup route
@@ -297,27 +326,6 @@ app.post("/confirmation", async (req, res) => {
 //     }
 // });
 
-// Razorpay order creation
-app.post("/create-razorpay-order", async (req, res) => {
-    const { amount } = req.body;
-    const options = {
-        amount: amount * 100, // Amount in paise
-        currency: "INR",
-    };
-
-    try {
-        const order = await razorpay.orders.create(options);
-        res.json(order);
-    } catch (error) {
-        console.error("Error creating Razorpay order: ", error);
-        res.status(500).json({ error: "Failed to create order" });
-    }
-});
-
-app.get("/payment", (req, res) => {
-  const amount = 500; // Ya jo bhi actual amount ho
-  res.render("payment", { amount });
-});
 
 
 // Room management routes
@@ -621,7 +629,3 @@ app.get("/payment", (req, res) => {
 //     }
 // });
 
-// Start the server
-app.listen(8080, () => {
-    console.log("Server is listening to port 8080");
-});
