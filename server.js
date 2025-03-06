@@ -16,7 +16,7 @@ const rooms = require("./public/js/roomsData");
 require('dotenv').config();
 
 
-const  roomRoutes = require('./Routes/roomRoutes')
+const  roomRoutes = require('./Routes/roomRoutes');
 const bookingRoutes = require('./Routes/bookingRoutes');
 const userRoutes = require('./Routes/userRoutes');
 
@@ -123,9 +123,15 @@ app.get("/awards", (req, res) => {
     res.render("awards.ejs");
 });
 
-app.get("/rooms", (req, res) => {
-    console.log("Rooms Data:", rooms);
-    res.render("rooms.ejs",{rooms});
+app.get("/rooms",async (req, res) => {
+    try {
+        const rooms = await Room.find(); // Fetch the room data (your original API call)
+        res.render("rooms.ejs", { rooms: rooms }); // Pass the data to the template
+    } catch (error) {
+        console.error("Error fetching rooms:", error);
+        res.status(500).send("Error fetching room data"); // Handle errors appropriately
+    }
+    // res.render("rooms.ejs",{rooms});
 });
 
 app.get("/guest_details/:id", (req, res) => {
@@ -154,6 +160,10 @@ app.get("/maps", (req, res) => {
 
 app.get("/confirmation_page", (req, res) => {
     res.render("confirmation_page.ejs");
+});
+
+app.get("/confirm_contact", (req, res) => {
+    res.render("confirm_contact.ejs");
 });
 
 app.get("/payment", (req, res) => {

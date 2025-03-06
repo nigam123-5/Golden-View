@@ -1,54 +1,157 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
     <head>
-        <title>Contact</title>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel='stylesheet'
-            href="/css/style3.css">
         <link rel='stylesheet' href="/css/swiper-bundle.min.css">
-        <link rel='stylesheet' href="/css/style.css">
         <link rel='stylesheet' href="/css/style1.css">
-        <!--Start of Tawk.to Script-->
-        <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/66e9241650c10f7a00abb45f/1i7vb9uu3';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-        <!--End of Tawk.to Script-->
-
+        <link
+            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            rel="stylesheet">
+        <title>Contact</title>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        
+        .l-heading {
+            text-align: center;
+            color: #333;
+        }
+        
+        .text-primary {
+            color: #d9534f;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #f25f0f;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .btn:hover {
+            background: #c9302c;
+        }
+        
+        #contact-info {
+            display: flex;
+            justify-content: space-around;
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .box {
+            flex: 1;
+        }
+        
+        .fa {
+            margin-bottom: 10px;
+        }
+        
+        #main-footer {
+            text-align: center;
+            padding: 10px;
+            background: #222;
+            color: white;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+    </style>
     </head>
+
     <body>
-        <div id='container'>
-
+        <header>
             <%- include('partials/navbar') %>
+        </header>
 
-            <div class='content'></div>
-            <div class='box'>
-                <div class='login_form'>
-                    <h1>Welcome to Golden View </h1>
-                    <!-- <p> Thank
-                        You!</p> -->
-                    <p><i> nigamsuryansh921@gmail.com</i> </p>
-                    <form action="/confirmation_page">
-                        <input type='text' name='username'
-                            placeholder="Name"node
-                        <!-- <input type='checkbox' class="checkbox"><span
-                            id=text>Remember Me</span><br> -->
-                        <input type='submit' value='Submit' class='submit'>
-
-                    </form>
-                </div>
-                <div class='display'>
-                    <img src='/reservation.jpg'>
-                </div>
+        <section id="contact-form" class="py-3">
+            <div class="container">
+                <h1 class="l-heading"><span class="text-primary">Contact</span>
+                    Us</h1>
+                <p>Please fill out the form below to contact us</p>
+                <form action="/confirm_contact">
+                    <div class="form-group">
+                        <label for="name" aria-required="true">Name</label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea name="message" id="message"
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Submit</button>
+                </form>
             </div>
-        </div>
-        <script src="/js/navbar.js"></script>
+        </section>
 
+        <section id="contact-info">
+            <div class="box">
+                <i class="fa fa-building fa-3x"></i>
+                <h3>Location</h3>
+                <p>Lucknow UP</p>
+            </div>
+            <div class="box">
+                <i class="fa fa-phone fa-3x"></i>
+                <h3>Phone Number</h3>
+                <p>+91 7318248290</p>
+            </div>
+            <div class="box">
+                <i class="fa fa-envelope fa-3x"></i>
+                <h3>Email Address</h3>
+                <p>nigamsuryansh921@gmail.com</p>
+            </div>
+        </section>
+
+        <footer id="main-footer">
+            <p>Thank You for Choosing us !!</p>
+        </footer>
+
+        <script src="/js/navbar.js"></script>
     </body>
 </html>
