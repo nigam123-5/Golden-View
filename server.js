@@ -69,7 +69,15 @@ app.get("/admin/dashboard", (req, res) => {
     res.render("admin/dashboard.ejs");
 });
 
-app.get("/adminHome", (req, res) => {
+app.get("/admin/login", (req, res) => {
+    res.render("admin/login.ejs");
+});
+
+app.get("/admin/signup", (req, res) => {
+    res.render("admin/signup.ejs");
+});
+
+app.get("/admin/adminHome", (req, res) => {
     res.render("adminHome.ejs");
 });
 
