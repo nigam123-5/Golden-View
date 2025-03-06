@@ -23,7 +23,7 @@ const searchInput = document.getElementById('searchInput');
 const itemList = document.getElementById('itemList');
 const items = document.getElementById('items');
 const selectedItemInput = document.getElementById('selectedItem');
-const trendingSearches = ["Lucknow", "Agra", "Varansi", "Ayodhya", "Gwalior" ];
+const trendingSearches = ["Lucknow", "Agra", "Varansi" ];
 
 
   function displayTrendingSearches(){
