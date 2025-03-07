@@ -83,7 +83,7 @@ app.get("/admin/addfood", (req, res) => {
     res.render("admin/addfood.ejs");
 });
 
-app.get("/admin/adminlogin", (req, res) => {
+app.get("/admin/login", (req, res) => {
     res.render("admin/adminlogin.ejs");
 });
 

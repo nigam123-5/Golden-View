@@ -23,11 +23,8 @@ const searchInput = document.getElementById('searchInput');
 const itemList = document.getElementById('itemList');
 const items = document.getElementById('items');
 const selectedItemInput = document.getElementById('selectedItem');
-<<<<<<< HEAD
-const trendingSearches = ["Lucknow", "Agra", "Varansi" ];
-=======
+
 const trendingSearches = ["Lucknow", "Agra", "Varanasi" ];
->>>>>>> e4f3f5376386910ae158d88c218b004b2b070095
 
 
   function displayTrendingSearches(){

@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Add Food Item</title>
         <link rel="stylesheet" href="/css/styles.css">
+        <link rel='stylesheet' href="/css/style1.css">
         <style>
         body {
             font-family: Arial, sans-serif;
@@ -58,6 +59,7 @@
     </style>
     </head>
     <body>
+        <%- include('../partials/adminNav') %>
         <div class="container">
             <h2>Add Food Item</h2>
             <form action="/add-food" method="POST"
