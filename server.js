@@ -76,14 +76,14 @@ app.get("/admin/signup", (req, res) => {
 });
 
 app.get("/admin/adminHome", (req, res) => {
-    res.render("adminHome.ejs");
+    res.render("admin/adminHome.ejs");
 });
 
 app.get("/admin/addfood", (req, res) => {
     res.render("admin/addfood.ejs");
 });
 
-app.get("/admin/adminlogin", (req, res) => {
+app.get("/admin/login", (req, res) => {
     res.render("admin/adminlogin.ejs");
 });
 
