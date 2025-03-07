@@ -76,7 +76,7 @@ app.get("/admin/signup", (req, res) => {
 });
 
 app.get("/admin/adminHome", (req, res) => {
-    res.render("adminHome.ejs");
+    res.render("admin/adminHome.ejs");
 });
 
 app.get("/admin/addfood", (req, res) => {

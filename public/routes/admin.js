@@ -6,8 +6,8 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 // Admin Login Page
-router.get('/login', (req, res) => {
-    res.render('admin/login');
+router.get('/adminlogin', (req, res) => {
+    res.render('admin/adminlogin');
 });
 
 // Admin Login Handling
