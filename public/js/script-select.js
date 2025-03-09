@@ -251,11 +251,84 @@ const trendingSearches = ["Lucknow", "Agra", "Varanasi" ];
 //     return true;
 // }
 
+function handleFormSubmit(event) {
+  event.preventDefault(); // Prevent default form submission
+  if (checkFields()) {
+      // If checkFields returns true, you can manually submit the form if needed
+      document.getElementById('form').submit(); // Uncomment to submit form
+  }
+} 
 
-function checkFields(){
+
+// function checkFields(){
+//   let click_content = document.getElementById('content');
+
+//   // Check if the selected hotel (hidden input) matches the search input value.
+//   if (!selectedItemInput.value || selectedItemInput.value !== searchInput.value){
+//     if (searchInput.value.trim() === ''){
+//       errorBox.innerHTML = 'Please select hotel';
+//     } else {
+//       errorBox.innerHTML = 'Select among the hotels provided';
+//     }
+//     if (screenWidth > 835){
+//       height.style.height = '83px';
+//     }
+//     return false;
+//   }
+//   // Check if check-in date is provided.
+//   else if(dateInput[0].value === ''){
+//     errorBox.innerHTML = 'Kindly select your check-in date';
+//     if (screenWidth > 835){
+//       height.style.height = '83px';
+//     }
+//     return false;
+//   }
+//   // Check if check-out date is provided.
+//   else if(dateInput[1].value === ''){
+//     errorBox.innerHTML = 'Please select check-out date';
+//     if (screenWidth > 835){
+//       height.style.height = '83px';
+//     }
+//     return false;
+//   }
+
+//   // Remove the active bar and reset the height/overflow styling.
+//   height.classList.remove('active-bar');
+//   click_content.style.overflow = 'visible';
+//   height.style.height = '75px';
+//   console.log(roomValue);
+
+//   // Retrieve the city name from the search input and update the form action.
+//   let city = searchInput.value.trim();
+//   console.log("City:", city);
+//   let form = document.getElementById('form');
+//   form.action = "/rooms/city=" + encodeURIComponent(city);
+//   console.log("Updated form action:", form.action);
+
+
+//   // Console log all the form data
+//   console.log("Form Data:");
+//   console.log("Destination:", selectedItemInput.value);
+//   console.log("Check-in Date:", dateInput[0].value);
+//   console.log("Check-out Date:", dateInput[1].value);
+//   console.log("Room Value:", roomValue);
+//   console.log("Guest List:", list);
+//   console.log("Total Guest:", guestNum.textContent);
+//   console.log("Room Number: ", roomNum.textContent);
+
+
+//   return true;
+// }
+
+
+
+//Any changes in input box either a text added or removed will also trigger errorBox to hide
+
+function checkFields() {
   let click_content = document.getElementById('content');
 
   // Check if the selected hotel (hidden input) matches the search input value.
+    // Check if the selected hotel (hidden input) matches the search input value.
   if (!selectedItemInput.value || selectedItemInput.value !== searchInput.value){
     if (searchInput.value.trim() === ''){
       errorBox.innerHTML = 'Please select hotel';
@@ -296,15 +369,23 @@ function checkFields(){
   let form = document.getElementById('form');
   form.action = "/rooms/city=" + encodeURIComponent(city);
   console.log("Updated form action:", form.action);
+  let formData = {
+    city: searchInput.value,
+    checkIn: dateInput[0].value,
+    checkOut: dateInput[1].value,
+    roomCount: roomValue,
+    guestList: list,
+    totalGuest: guestNum.textContent
+};
 
-  return true;
+sessionStorage.setItem('bookingData', JSON.stringify(formData));
+let encodedCity = encodeURIComponent(city);
+let url = `/rooms/city/${encodedCity}`; // Correct URL construction
+console.log(url);
+window.location.href = url; 
+  //window.location.href = '/rooms/city/:${encodeURIComponent(city)}';
+  return false; // Prevent default form submission
 }
-
-
-
-//Any changes in input box either a text added or removed will also trigger errorBox to hide
-
-
 
 searchInput.addEventListener('change', function(){
   errorBox.innerHTML = '';

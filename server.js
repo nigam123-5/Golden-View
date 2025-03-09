@@ -133,14 +133,28 @@ app.get("/awards", (req, res) => {
     res.render("awards.ejs");
 });
 
-app.get("/rooms/city=:city", async (req, res) => {
+// app.get("/rooms/city=:city", async (req, res) => {
+//     try {
+//         const city = decodeURIComponent(req.params.city);
+//         console.log(city,"city");
+//         const rooms = await Room.find({ city: city }); 
+//         res.render("rooms.ejs", { rooms: rooms }); 
+//     } catch (error) {
+//         console.error("Error fetching rooms:", error);
+//         res.status(500).send("Error fetching room data"); 
+//     }
+// });
+
+app.get("/rooms/city/:city", async (req, res) => {
     try {
-        const city = req.params.city;
-        const rooms = await Room.find({ city: city }); 
-        res.render("rooms.ejs", { rooms: rooms }); 
+        const city = decodeURIComponent(req.params.city);
+        console.log(city, "city");
+        const rooms = await Room.find({ city: city });
+        res.render("rooms.ejs", { rooms: rooms });
     } catch (error) {
         console.error("Error fetching rooms:", error);
-        res.status(500).send("Error fetching room data"); 
+        console.error("Error details:", error.stack); // Log the error stack trace
+        res.status(500).send("Error fetching room data");
     }
 });
 

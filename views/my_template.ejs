@@ -47,7 +47,9 @@
                     <i class="fa-solid fa-xmark" id='form-mark'
                         onclick="formfunction()"></i></div>
 
-                <form id='form' onsubmit="return checkFields()">
+                <!-- <form id='form' onsubmit="return checkFields()"> -->
+             <form id='form' onsubmit="return handleFormSubmit(event)">
+                   
                     <div class='search des'>
                         <div class="input-container">
                             <label for="searchInput"><i
