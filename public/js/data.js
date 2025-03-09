@@ -131,18 +131,5 @@ const data = {"type":"FeatureCollection","features":[
     "geometry":{"coordinates":[73.19504690805354,22.297306374942607],"type":"Point"}},
     {"type":"Feature","properties":{"Name": "Ginger Thane, Maharashtra", 'City': 'Thane'},
     "geometry":{"coordinates":[72.97053837895265,19.193461172729428],"type":"Point"}},
-    {"type":"Feature","properties":{"Name": "Ginger Vapi, Gujarat", 'City': 'Vapi'},
-    "geometry":{"coordinates":[72.91763400000053,20.414314066134537],"type":"Point"}},
-    {"type":"Feature","properties":{'Name': 'Golden View Dubai', 'City': 'Dubai'},
-    "geometry":{"coordinates":[55.26728408465695,25.19230602489985],"type":"Point"}},
-    {"type":"Feature","properties":{'Name': 'Golden View Exotica Resort & Spa, The Palm, Dubai', 'City': 'Dubai'},
-    "geometry":{"coordinates":[55.15426755187087,25.12423319476079],"type": "Point"}},
-    {"type":"Feature","properties":{'Name': 'Golden View Jumeirah Lakes Towers, Dubai', 'City': 'Dubai'},
-    "geometry":{"coordinates":[55.154038542325395,25.080579943567457],"type": "Point"}},
-    {"type":"Feature","properties":{'Name': 'Golden View 51 Buckingham Gate Suites and Residences, London', 'City': 'London'},
-    "geometry":{"coordinates":[-0.13741521358667796,51.49859270259773],"type": "Point"}},
-    {"type":"Feature","properties":{"Name": "Golden View Exotica Resort & Spa, Maldives", 'City': 'Maldives'},
-    "geometry":{"coordinates":[73.52584722842303,4.102408618203086],"type": "Point"}},
-    {"type":"Feature","properties":{"Name": "Golden View Coral Reef Resort & Spa, Maldives", 'City': 'Maldives'},
-    "geometry":{"coordinates":[73.4944538723667,4.230383903876074],"type": "Point"}}
+    
 ]}
