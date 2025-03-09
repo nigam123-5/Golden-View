@@ -178,9 +178,7 @@ const trendingSearches = ["Lucknow", "Agra", "Varanasi" ];
     }
 });
 
-//ok or kya kya kiye ho dikhao
-// ky ky dekhoge ye jo rooms display kiye ho usko static hi info duye ho ya data,js se render kr k display 
-  // Listen for input in the search bar and call populateOptions with the user's query
+
   searchInput.addEventListener('input', () => {
     const query = searchInput.value;
     populateOptions(query);
