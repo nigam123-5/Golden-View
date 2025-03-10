@@ -2,14 +2,14 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const authenticateUser = (req, res, next) => {
-    const token = req.header('Authorization').replace('Bearer ', '');
+    const token = req.header('Authorization');
 
     if (!token) {
         return res.status(401).send({ error: 'Authentication token is missing' });
     }
 
     try {
-        const decoded = jwt.verify(token, JWT_SECRET);
+        const decoded = jwt.verify(token, 'GoldenHotel');
         req.user = decoded;
         next();
     } catch (error) {

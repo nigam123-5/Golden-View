@@ -7,12 +7,12 @@ const {allocateRoom,
     updateBooking} = require('../controllers/bookingController');
 
 const router = express.Router();
-
+const authenticateUser = require('../middleware/authenticateUser');
 // Controller functions (you need to create these in a separate file)
 
 // Routes
 // router.get('/', getAllBookings);
-router.post('/booking', createBooking);
+router.post('/booking', authenticateUser, createBooking);
  router.get('/booking/:id', getBookingById);
 router.put('/booking/:id', updateBooking);
 router.patch('/booking/:id', cancelBooking);
