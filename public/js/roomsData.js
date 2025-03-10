@@ -9,7 +9,9 @@ const rooms = [
         guests: 'Up to 3 guests',
         bed: 'King',
         highlight: 'Spacious rooms and bathrooms.',
-        price: '14000'
+        price: '14000',
+        rating: '4.5'
+       
     },
     {
         id: 2,
@@ -22,6 +24,7 @@ const rooms = [
         bed: 'King',
         highlight: 'Classic decor providing a sense of history',
         price: '10000'
+        
     },
     {
         id: 3,

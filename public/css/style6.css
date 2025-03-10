@@ -16,6 +16,12 @@
 .container1{
     margin: 2% 7%;
 }
+.star {
+    color: gold;
+    font-size: 18px;
+    margin-right: 3px;
+}
+
 
 /* Footer */
 footer {
@@ -83,7 +89,37 @@ footer {
 }
 .box1{
     width: 100%;
+    display: flex;
+    align-items: center;
+
 }
+
+/* Ensures icons are displayed properly */
+.box i {
+    font-size: 18px;
+    color: #555;
+    margin-right: 5px;
+}
+
+/* For the rating stars */
+.checked {
+    color: gold; /* Gold color for selected stars */
+    font-size: 18px;
+}
+
+/* Unchecked stars (if needed) */
+.star {
+    color: #ccc; /* Grey color for unselected stars */
+}
+
+/* Box styling for proper alignment */
+.box {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 5px 0;
+}
+
 .box span{
     padding-left: 12px;
 }

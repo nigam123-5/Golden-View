@@ -54,6 +54,13 @@ a.right {
     float: right;
 }
 
+.star {
+    color: gold;
+    font-size: 18px;
+    margin-right: 3px;
+}
+
+
 .icons {
     display: none;
     font-size: 25px;
