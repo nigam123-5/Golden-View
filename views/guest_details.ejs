@@ -60,44 +60,36 @@
                         <p>Guest Details</p>
                         <div class='flex'>
                             <div class='input-control'>
-                                <input type="text" placeholder="First Name"
-                                    id='first-name'>
+                                <input type="text" placeholder="First Name" id='first-name' required>
                                 <div class='error-box'></div>
                             </div>
                             <div class='input-control'>
-                                <input type="text" placeholder="Last Name"
-                                    id='last-name'>
+                                <input type="text" placeholder="Last Name" id='last-name' required>
                                 <div class='error-box'></div>
                             </div>
                         </div>
                         <div class='flex'>
                             <div class='input-control'>
-                                <input type="text" placeholder="Mobile"
-                                    id='mobile'>
+                                <input type="text" placeholder="Mobile" id='mobile' required>
                                 <div class='error-box'></div>
                             </div>
                             <div class='input-control'>
-                                <input type="email" placeholder="Email Address"
-                                    id='email'>
+                                <input type="email" placeholder="Email Address" id='email' required>
                                 <div class='error-box'></div>
-                                <p class='mail-detail'>This is the email we will
-                                    send your confirmation to.</p>
+                                <p class='mail-detail'>This is the email we will send your confirmation to.</p>
                             </div>
                         </div>
                         <p>Address</p>
                         <div class='input-control'>
-                            <input type="text" placeholder="Country"
-                                id='country'>
+                            <input type="text" placeholder="Country" id='country' required>
                             <div class='error-box'></div>
                         </div>
                         <div class='input-control'>
-                            <input type="text" placeholder="Address 1"
-                                id='address'>
+                            <input type="text" placeholder="Address 1" id='address' required>
                             <div class='error-box'></div>
                         </div>
                         <div class='input-control'>
-                            <input type="text" placeholder="Postal / Zip Code"
-                                id='zip-code'>
+                            <input type="text" placeholder="Postal / Zip Code" id='zip-code' required>
                             <div class='error-box'></div>
                         </div>
                         <hr>
@@ -105,74 +97,123 @@
                         <div class='payment'>
                             <div class='button'>
                                 <button type="button" id="payButton" class="active">Pay Now</button>
-                                <button type='button' id='key2' class='inactive'
-                                    onclick='key_function()'>Pay at
-                                    Hotel</button>
+                                <button type='button' id='key2' class='inactive' onclick='key_function()'>Pay at Hotel</button>
                             </div>
-                            <p id='para1'>Please provide a valid payment
-                                method.</p>
-                            <p id='para2'>Payment information is only needed to
-                                guarantee your reservation. Full amount billed
-                                during the stay
-                                will be charged at the property. As per Reserve
-                                Bank of India guidelines on data protection, we
-                                are unable to
-                                store our guests' card details. In order to
-                                process your booking, we need to validate your
-                                card online. You will
-                                soon receive details of tokenising your card on
-                                the registered email id.</p>
+                            <p id='para1'>Please provide a valid payment method.</p>
+                            <p id='para2'>Payment information is only needed to guarantee your reservation. Full amount billed during the stay will be charged at the property. As per Reserve Bank of India guidelines on data protection, we are unable to store our guests' card details. In order to process your booking, we need to validate your card online. You will soon receive details of tokenising your card on the registered email id.</p>
                             <img src='/payment.jpg'>
                         </div>
-                        
-
                     </div>
                     <div class='policy'>
                         <p>Policies:</p>
-                        <h3>Check-in
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check-out</h3>
-                        <p class='time'>After 2:00 PM
-                            &nbsp;&nbsp;&nbsp;&nbsp;Before 12:00 PM</p>
+                        <h3>Check-in &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check-out</h3>
+                        <p class='time'>After 2:00 PM &nbsp;&nbsp;&nbsp;&nbsp;Before 12:00 PM</p>
                         <p>
                             Guarantee Policy<br>
-                            Your credit card will be charged with the final bill
-                            amount at the hotel. In case of late cancellation or
-                            No Show, hotel
-                            is authorised to charge the applicable cancellation
-                            charge, including any taxes and fees on the credit
-                            card used to
-                            guarantee the stay. </p>
+                            Your credit card will be charged with the final bill amount at the hotel. In case of late cancellation or No Show, hotel is authorised to charge the applicable cancellation charge, including any taxes and fees on the credit card used to guarantee the stay.
+                        </p>
                         <p>
                             Cancel Policy<br>
-                            Guaranteed reservations may be cancelled 30 days
-                            prior to date of arrival without any cancellation
-                            charge. Cancellations
-                            received less than 30 days prior to arrival will
-                            incur 100% cancellation charge of the entire stay
-                            including applicable
-                            taxes and fees.
+                            Guaranteed reservations may be cancelled 30 days prior to date of arrival without any cancellation charge. Cancellations received less than 30 days prior to arrival will incur 100% cancellation charge of the entire stay including applicable taxes and fees.
                         </p>
                     </div>
                     <div class='akg'>
                         <p>Acknowledgement</p>
-                        <p>By completing this booking, I agree with the Booking
-                            Conditions.</p>
-                        <input type='checkbox' class='check' id='mark'><span
-                            class='agree'>* I agree with the Privacy
-                            Policy.</span>
+                        <p>By completing this booking, I agree with the Booking Conditions.</p>
+                        <input type='checkbox' class='check' id='mark'><span class='agree'>* I agree with the Privacy Policy.</span>
                         <div id='error'></div>
                     </div>
                     <div class='final'>
-                        <input type='submit' value='Complete Booking'
-                            class='submit'>
-                            <div class="nav-links"></div>
-                <a href="https://test.instamojo.com/@hs7570377/"
-                    rel="im-checkout" data-text="Pay"
-                    data-css-style="color:#ffffff; background:#75c26a; width:180px; border-radius:4px"></a>
-
-            </div>
+                        <input type='submit' value='Complete Booking' class='submit'>
+                        <div class="nav-links"></div>
+                        <a href="https://test.instamojo.com/@hs7570377/" rel="im-checkout" data-text="Pay" data-css-style="color:#ffffff; background:#75c26a; width:180px; border-radius:4px"></a>
                     </div>
                 </form>
+                <script>
+                    document.getElementById('form').addEventListener('submit', async function(e) {
+                        // Prevent form submission until data is saved on backend
+                        e.preventDefault();
+                
+                        // Gather form data
+                        const guestDetails = {
+                            firstName: document.getElementById('first-name').value,
+                            lastName: document.getElementById('last-name').value,
+                            mobile: document.getElementById('mobile').value,
+                            email: document.getElementById('email').value,
+                            country: document.getElementById('country').value,
+                            address: document.getElementById('address').value,
+                            zipCode: document.getElementById('zip-code').value,
+                            agreePrivacyPolicy: document.getElementById('mark').checked
+                        };
+                        
+                        // Store the data in session storage
+                        sessionStorage.setItem('guestDetails', JSON.stringify(guestDetails));
+                        // Call backend API to save guest details
+                        const bookingData = sessionStorage.getItem('bookingData');
+                        try {
+                            const response = await fetch(`/booking/<%= room.id %>`, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ guestDetails, bookingData })
+                            });
+                            console.log(guestDetails);
+                            if (!response.ok) {
+                                throw new Error('Failed to save guest details.');
+                            }
+                            
+                            // If the API call is successful, submit the form
+                            e.target.submit();
+                        } catch (error) {
+                            console.error('Error saving guest details:', error);
+                            // Optionally display an error message to the user
+                        }
+                    });
+                </script>
+                <!-- <script>
+                    document.getElementById('form').addEventListener('submit', async function(e) {
+                        // Prevent form submission until data is saved on backend
+                        e.preventDefault();
+
+                        // Gather form data
+                        const guestDetails = {
+                            firstName: document.getElementById('first-name').value,
+                            lastName: document.getElementById('last-name').value,
+                            mobile: document.getElementById('mobile').value,
+                            email: document.getElementById('email').value,
+                            country: document.getElementById('country').value,
+                            address: document.getElementById('address').value,
+                            zipCode: document.getElementById('zip-code').value,
+                            agreePrivacyPolicy: document.getElementById('mark').checked
+                        };
+                        
+                        // Store the data in session storage
+                        sessionStorage.setItem('guestDetails', JSON.stringify(guestDetails));
+                        // Call backend API to save guest details
+                        const bookingData =sessionStorage.getItem('bookingData');
+                        try {
+                            const response = await fetch('/booking/<%= room.id %>', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({guestDetails, bookingData})
+                               
+                            });
+                            console.log(guestDetails);
+                            if (!response.ok) {
+                                throw new Error('Failed to save guest details.');
+                            }
+                            
+                        //     // If the API call is successful, submit the form
+                              e.target.submit();
+                        } catch (error) {
+                            console.error('Error saving guest details:', error);
+                            // Optionally display an error message to the user
+                        }
+                    });
+                </script> -->
             </div>
         </div>
         <%- include('partials/footer') %>

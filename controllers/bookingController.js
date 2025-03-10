@@ -59,14 +59,28 @@ const allocateRoom = async (req, res) => {
     }
 };
 
-
 const createBooking = async (req, res) => {
     try {
-        const { firstName, lastName, mobile, email, country, address, zipCode, date } = req.body;
-        const userId = '67336425b3f8d02a7c2ac1db'; // Replace with actual user ID from JWT
-        const { room, city } = req.params;
+        const {
+            firstName,
+            lastName,
+            mobile,
+            email,
+            date,
+            guestList,
+            roomCount,
+            totalGuest,
+            country,
+            address,
+            city,
+            zipCode,
+            payment, // Corrected spelling
+            room
+        } = req.body;
 
-        if (!firstName || !lastName || !mobile || !email || !country || !address || !zipCode || !room || !date || !city) {
+        const userId = req.user?.id || '67336425b3f8d02a7c2ac1db'; // Dynamic ID assignment
+
+        if ([firstName, lastName, mobile, email, date, guestList, roomCount, totalGuest, country, address, city, zipCode, payment, room].some(field => !field)) {
             return res.status(400).json({ message: "Please provide all required fields" });
         }
 
@@ -76,38 +90,130 @@ const createBooking = async (req, res) => {
             mobile,
             email,
             date,
+            guestList,
+            roomCount,
+            totalGuest,
             country,
             address,
+            city,
             zipCode,
+            payment,
             room,
-            user: userId,
-            city, // Include city in the booking document
+            user: userId
         });
 
-        await newBooking.save();
-
-        const updatedRoom = await Room.findByIdAndUpdate(room, { $push: { booking: newBooking._id } }, { new: true });
-
-        if (!updatedRoom) {
-            return res.status(404).json({ message: "Room not found" });
+        try {
+            await newBooking.save();
+        } catch (error) {
+            if (error.name === "ValidationError") {
+                return res.status(400).json({ message: "Validation Error", details: error.errors });
+            }
+            throw error;
         }
 
         if (userId) {
-            await User.findByIdAndUpdate(userId, { $push: { bookings: newBooking._id } }, { new: true });
+            await User.findByIdAndUpdate(
+                userId,
+                { $push: { bookings: newBooking._id } },
+                { new: true }
+            );
         }
 
-        res.status(201).json({ message: "Booking created successfully!", bookings: newBooking });
+        res.status(201).json({ message: "Booking created successfully!", booking: newBooking });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Error creating booking." });
+    } finally {
+        console.info("Booking process completed.");
     }
 };
+
+// const createBooking = async (req, res) => {
+//     try {
+//         const {
+//             firstName,
+//             lastName,
+//             mobile,
+//             email,
+//             date,
+//             guestList,
+//             roomCount,
+//             totalGuest,
+//             country,
+//             address,
+//             city,
+//             zipCode,
+//             pyment,
+//             room
+//         } = req.body;
+//         const userId = '67336425b3f8d02a7c2ac1db'; // Replace with the actual user ID from JWT
+         
+//         console.log(req.body);
+//         // Validate required fields
+//         if (
+//             !firstName ||
+//             !lastName ||
+//             !mobile ||
+//             !email ||
+//             !date ||
+//             !guestList ||
+//             !roomCount ||
+//             !totalGuest ||
+//             !country ||
+//             !address ||
+//             !city ||
+//             !zipCode ||
+//             !pyment ||
+//             !room
+//         ) {
+//             return res.status(400).json({ message: "Please provide all required fields" });
+//         }
+
+//         const newBooking = new Booking({
+//             firstName,
+//             lastName,
+//             mobile,
+//             email,
+//             date,
+//             guestList,
+//             roomCount,
+//             totalGuest,
+//             country,
+//             address,
+//             city,
+//             zipCode,
+//             pyment,
+//             room,
+//             user: userId
+//         });
+
+//         await newBooking.save();
+
+//         // Update room's booking list (assuming Room schema includes a booking array)
+//         // Removed the room booking update section as of now.
+
+//         // Update user's booking list, if applicable
+//         if (userId) {
+//             await User.findByIdAndUpdate(
+//                 userId,
+//                 { $push: { bookings: newBooking._id } },
+//                 { new: true }
+//             );
+//         }
+
+//         res.status(201).json({ message: "Booking created successfully!", booking: newBooking });
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({ message: "Error creating booking." });
+//     }finally{
+//         console.log("booking created successfully");
+//     }
+// };
 
 
 // Update booking route
 const updateBooking =  async (req, res) => {
     try {
-        const { id: bookingId } = req.params;
         const { firstName, lastName, mobile, email, country, address, zipCode, cancellation, checkIn, checkOut, date } = req.body;
 
         const updatedBooking = await Booking.findByIdAndUpdate(bookingId, {

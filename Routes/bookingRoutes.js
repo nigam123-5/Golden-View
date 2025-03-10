@@ -12,8 +12,8 @@ const router = express.Router();
 
 // Routes
 // router.get('/', getAllBookings);
-router.post('//booking/:room/:city', createBooking);
- router.get('/booking/:id:id', getBookingById);
+router.post('/booking', createBooking);
+ router.get('/booking/:id', getBookingById);
 router.put('/booking/:id', updateBooking);
 router.patch('/booking/:id', cancelBooking);
 router.put('/admin/allocateRoom/:bookingId', allocateRoom);

@@ -22,6 +22,29 @@ const Booking = mongoose.model('Booking', {
         type: String,
         required: true,
     },
+    guestList: [{
+        adult: {
+            type: Number,
+            required: true
+        },
+        child: {
+            count: {
+                type: Number,
+                required: true
+            },
+            age: {
+                type: [Number]
+            }
+        }
+    }],
+    roomCount: {
+        type: String,
+        required: true
+    },
+    totalGuest: {
+        type: String,
+        required: true
+    },
     country: {
         type: String,
         required: true,
@@ -67,7 +90,7 @@ const Booking = mongoose.model('Booking', {
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Users",
+        ref: "User",
         required: true
     },
     room: {
