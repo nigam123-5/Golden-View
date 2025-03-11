@@ -1,7 +1,7 @@
 const rooms = [
     {
         id: 1,
-        image: '/room1.jpg',
+        image: '/images/room1.jpg',
         title: 'LUXURY ROOM',
         description: 'These cozy rooms located in the historic Palace Wing are the gateway to a memorable experience...',
         size: '33 sq mt',
@@ -15,7 +15,7 @@ const rooms = [
     },
     {
         id: 2,
-        image: '/room2.jpg',
+        image: '/images/room2.jpg',
         title: 'EXECUTIVE SUITE',
         description: 'These thematic suites offer an exclusive host of amenities such as access to buffet breakfast...',
         size: '70 sq mt',
@@ -28,7 +28,7 @@ const rooms = [
     },
     {
         id: 3,
-        image: '/room4.jpg',
+        image: '/images/room4.jpg',
         title: 'DELUXE SUITE',
         description: 'They exude an aura of the old-world charm and elegance...',
         size: '87 sq mt',
@@ -40,7 +40,7 @@ const rooms = [
     },
     {
         id: 4,
-        image: '/room3.jpg',
+        image: '/images/room3.jpg',
         title: 'SIGNATURE SUITE',
         description: 'These storied suites each have a unique history and offer breathtaking views...',
         size: '121 sq mt',

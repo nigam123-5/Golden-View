@@ -339,7 +339,7 @@ body.nav-active {
 }
 
 .section-subtitle::after {
-    content: url('/public/separator.svg');
+    content: url('/public/images/separator.svg');
     display: block;
     width: 100px;
     margin-inline: auto;
@@ -1027,7 +1027,7 @@ body.nav-active {
     transform: translateX(-50%);
     width: 140px;
     height: 100%;
-    background-image: url('../images/img-pattern.svg');
+    background-image: url('./images/img-pattern.svg');
     background-position: center;
     background-size: cover;
     background-repeat: repeat;
@@ -1108,13 +1108,13 @@ body.nav-active {
     left: 50%;
     transform: translateX(-50%);
     width: 140px;
-    background-image: url('../images/img-pattern.svg');
+    background-image: url('./images/img-pattern.svg');
     background-repeat: repeat;
 }
 
 .about .abs-img-2::before {
     inset: 0;
-    background-image: url('../images/badge-2-bg.png');
+    background-image: url('./images/badge-2-bg.png');
     background-repeat: no-repeat;
     background-size: contain;
     animation: rotate360 15s linear infinite;
@@ -1460,7 +1460,7 @@ textarea.input-fiel d {
 .footer-brand {
     position: relative;
     padding: 50px 40px;
-    background: var(--smoky-black-1) url("../images/footer-form-bg.png");
+    background: var(--smoky-black-1) url("./images/footer-form-bg.png");
     background-position: center top;
     background-repeat: repeat;
 }
@@ -1470,7 +1470,7 @@ textarea.input-fiel d {
     top: 0;
     width: 15px;
     height: 100%;
-    background-image: url("/public/footer-form-pattern.svg");
+    background-image: url("/public/images/footer-form-pattern.svg");
 }
 
 .footer-brand::before {
