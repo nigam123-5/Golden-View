@@ -6,76 +6,181 @@ const User = require('../models/userModel'); // Import the User model
 
 const allocateRoom = async (req, res) => {
     try {
-        const { bookingId } = req.params;
-        const { roomId, roomNo } = req.body;
+      const { bookingId } = req.params;
+      const { roomId, roomNo } = req.body;
+  
+      console.log(req.body, "req.body", bookingId);
+  
+      // Validate required input
+      if (!roomId || roomNo === undefined) {
+        return res.status(400).json({ message: "Please provide roomId and roomNo in the request body" });
+      }
+  
+      // Parse room number to ensure it's a number (as defined in your Booking model)
+      const roomNoParsed = parseInt(roomNo, 10);
+      if (isNaN(roomNoParsed)) {
+        return res.status(400).json({ message: "Invalid room number provided" });
+      }
+  
+      // Fetch the booking details using the bookingId
+      const booking = await Booking.findById(bookingId);
+      if (!booking) {
+        return res.status(404).json({ message: "Booking not found" });
+      }
+  
+      // Find the room document that has an available room number matching roomNoParsed
+      const room = await Room.findOne({
+        _id: roomId,
+        roomNumbers: { $elemMatch: { roomNo: roomNoParsed, available: true } }
+      });
+      if (!room) {
+        return res.status(404).json({
+          message: "Room not found or not available with the provided room number and id"
+        });
+      }
+  
+      // Find the specific room number subdocument
+      const roomNumber = room.roomNumbers.find(rn => rn.roomNo === roomNoParsed);
+      if (!roomNumber || !roomNumber.available) {
+        return res.status(400).json({ message: "Room number is not available" });
+      }
+  
+      // Update booking with the selected room information.
+      // We use findByIdAndUpdate with runValidators:false to bypass full validation 
+      // (since some required fields may already be missing).
+      const updatedBooking = await Booking.findByIdAndUpdate(
+        bookingId,
+        { $set: { roomNo: roomNoParsed, room: room._id } },
+        { new: true, runValidators: false }
+      );
+  
+      // Mark the room number as allocated in the Room document:
+      // set available to false, and push this booking's reference into the bookings array of the subdocument.
+      await Room.updateOne(
+        { _id: room._id, "roomNumbers.roomNo": roomNoParsed },
+        {
+          $set: { "roomNumbers.$.available": false },
+          $push: { "roomNumbers.$.bookings": booking._id }
+        }
+      );
+  
+      return res
+        .status(200)
+        .json({ message: `Room ${roomNoParsed} allocated successfully!`, booking: updatedBooking });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: "Error allocating room." });
+    }
+  };
+  
+const checkoutBooking = async (req, res) => {
+    try {
+        const { id: bookingId } = req.params;
 
-        // Validate required fields
-        if (!roomId || !roomNo) {
-            return res.status(400).json({ message: "Please provide roomId and roomNo in the request body" });
+        const booking = await Booking.findById(bookingId);
+        if (!booking) {
+            return res.status(404).json({ message: "Booking not found" });
         }
 
-        // Fetch the booking details
-        const booking = await Booking.findById(bookingId);
+        const updatedBooking = await Booking.findByIdAndUpdate(
+            bookingId,
+            {
+                $set: {
+                    "checkOut.status": "checkedOut",
+                    "checkOut.date": new Date(),
+                },
+            },
+            { new: true }
+        );
+
+        // Mark the room number as available again in the Room document
+        if (booking.room && booking.roomNo !== undefined) {
+            await Room.updateOne(
+                { _id: booking.room, "roomNumbers.roomNo": booking.roomNo },
+                { $set: { "roomNumbers.$.available": true } }
+            );
+        }
+
+        res.json({ message: "Booking checked out successfully", booking: updatedBooking });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Error during checkout." });
+    }
+};
+
+const confirmBooking = async (req, res) => {
+    try {
+        const { id: bookingId } = req.params;
+        const booking = await Booking.findByIdAndUpdate(
+            bookingId,
+            { status: "confirmed" },
+            { new: true }
+        );
 
         if (!booking) {
             return res.status(404).json({ message: "Booking not found" });
         }
 
-        // Fetch the room by roomId that contains the room number
-        const room = await Room.findOne({
-            _id: roomId,
-            "roomNumbers.roomNo": roomNo,
-            available: true
-        });
-
-        if (!room) {
-            return res.status(404).json({ message: "Room not found or not available with the provided room number and id" });
-        }
-
-        // Find the specific room number object
-        const roomNumber = room.roomNumbers.find(rn => rn.roomNo === roomNo);
-
-        if (!roomNumber || !roomNumber.available) {
-            return res.status(400).json({ message: "Room number is not available" });
-        }
-
-        // Allocate the room by updating the booking
-        booking.roomNo = roomNo;
-        booking.room = room._id; // Update the room reference
-        await booking.save();
-
-        // Update the room number's availability to false
-        await Room.updateOne(
-            { _id: room._id, "roomNumbers.roomNo": roomNo },
-            {
-                $set: { "roomNumbers.$.available": false },
-                $push: { "roomNumbers.$.bookings": booking._id }
-            }
-        );
-
-        res.status(200).json({ message: `Room ${roomNo} allocated successfully!`, booking });
+        res.json({ message: "Booking confirmed successfully", booking });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "Error allocating room." });
+        res.status(500).json({ message: "Error confirming booking." });
     }
 };
 
+
 const createBooking = async (req, res) => {
     try {
-        const { firstName, lastName, mobile, email, date, guestList, roomCount, totalGuest, country, address, city, zipCode, room, pyment, status } = req.body;
-        const user = req.user.id;
-        console.log(user,"users",req.body) // Replace with the actual user ID from JWT
-        // Check required fields
-        if (!firstName || !lastName || !mobile || !email || !date || !guestList || !roomCount || !totalGuest || !country || !address || !city || !zipCode || !room || !pyment || !status) {
-            return res.status(400).json({ success: false, message: "All required fields must be provided." });
+        const { 
+            firstName, 
+            lastName, 
+            mobile, 
+            email, 
+            guestList, 
+            roomCount, 
+            totalGuest, 
+            country, 
+            address, 
+            city, 
+            zipCode, 
+            agreePrivacyPolicy, 
+            room, 
+            payment,
+            checkIn,
+            checkOut
+        } = req.body;
+        // console.log(req.body,"req.body")
+        const user = req.user?.id; // Ensure user is correctly retrieved from JWT
+
+        // Validate required fields including payment details
+        if (
+            !firstName || 
+            !lastName || 
+            !mobile || 
+            !email || 
+            !guestList || 
+            !roomCount || 
+            !totalGuest || 
+            !country || 
+            !address || 
+            !city || 
+            !zipCode || 
+            agreePrivacyPolicy === undefined || 
+            !room || 
+            !payment || 
+            !payment.mode || 
+            !payment.status ||
+            !checkIn ||
+            !checkOut
+        ) {
+            return res.status(400).json({ message: "All required fields, including payment details, must be provided" });
         }
         
-        const booking = new Booking({
+        const newBooking = new Booking({
             firstName,
             lastName,
             mobile,
             email,
-            date,
             guestList,
             roomCount,
             totalGuest,
@@ -83,22 +188,20 @@ const createBooking = async (req, res) => {
             address,
             city,
             zipCode,
-            room,
-            pyment,
-            status,
-            user
+            agreePrivacyPolicy,
+            user,
+            room, 
+            checkIn:{ date: new Date(checkIn) },
+            checkOut:{ date: new Date(checkOut) },
+            payment // Payment details added here
         });
-        await booking.save();
         
-        // Associate the booking with the user
-        await User.findByIdAndUpdate(user, { $push: { bookings: booking._id } });
-        
-        res.status(201).json({ success: true, data: booking });
+        await newBooking.save();
+        res.status(201).json({ message: "Booking created successfully", booking: newBooking });
     } catch (error) {
-        res.status(400).json({ success: false, error: error.message });
+        res.status(400).json({ message: "Error creating booking", error: error.message });
     }
 };
-
 
 
 // Update booking route
@@ -201,7 +304,9 @@ module.exports = {
     getBookingById,
     cancelBooking,
     deleteBooking,
-    updateBooking
+    updateBooking,
+    confirmBooking,
+    checkoutBooking
 
 };
 

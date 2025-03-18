@@ -115,8 +115,15 @@ app.get("/admin/foodList", (req, res) => {
     res.render("admin/foodList.ejs");
 });
 
-app.get("/admin/bookingList", (req, res) => {
-    res.render("admin/bookingList.ejs");
+app.get("/admin/bookingList", async (req, res) => {
+    try {
+        const bookings = await Booking.find().populate("room");
+        const rooms = await Room.find();
+        res.render("admin/bookingList.ejs", { bookings, rooms });
+    } catch (error) {
+        console.error("Error fetching bookings:", error);
+        res.status(500).send("Error retrieving booking data.");
+    }
 });
 
 app.get("/contact", (req, res) => {

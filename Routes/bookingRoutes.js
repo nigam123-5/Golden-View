@@ -4,7 +4,9 @@ const {allocateRoom,
     getBookingById,
     cancelBooking,
     deleteBooking,
-    updateBooking} = require('../controllers/bookingController');
+    updateBooking,
+    confirmBooking,
+    checkoutBooking} = require('../controllers/bookingController');
 
 const router = express.Router();
 const authenticateUser = require('../middleware/authenticateUser');
@@ -16,7 +18,10 @@ router.post('/booking', authenticateUser, createBooking);
  router.get('/booking/:id', getBookingById);
 router.put('/booking/:id', updateBooking);
 router.patch('/booking/:id', cancelBooking);
+router.patch('/confirmBooking/:id', confirmBooking);
 router.put('/admin/allocateRoom/:bookingId', allocateRoom);
 router.delete('/:id', deleteBooking);
+router.patch('/checkout/:id', checkoutBooking);
+
 
 module.exports = router;

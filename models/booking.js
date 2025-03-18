@@ -18,10 +18,6 @@ const Booking = mongoose.model('Booking', {
         type: String,
         required: true,
     },
-    date: {
-        type: String,
-        required: true,
-    },
     guestList: [{
         adult: {
             type: Number,
@@ -38,7 +34,7 @@ const Booking = mongoose.model('Booking', {
         }
     }],
     roomCount: {
-        type: String,
+        type: Number,
         required: true
     },
     totalGuest: {
@@ -58,7 +54,7 @@ const Booking = mongoose.model('Booking', {
         required: true,
     },
     zipCode: {
-        type: Number,
+        type: String,
         required: true,
     },
     cancellation: { 
@@ -98,15 +94,26 @@ const Booking = mongoose.model('Booking', {
         ref: "Room",
         required: true
     },
-    pyment: {
-        type: String,
-        required: true
-    },
     status: {
         type: String,
         enum: ["pending", "confirmed", "cancelled"],
         default: "pending",
+    },
+    agreePrivacyPolicy: {
+        type: Boolean,
         required: true
+      },
+    payment: {  
+        mode: {
+            type: String,
+            enum: ["Pay Now", "Pay at Hotel"],
+            required: true
+        },
+        status: {
+            type: String,
+            enum: ["Pending", "Completed"],
+            required: true
+        }
     },
     createdAt: {
         type: Date,

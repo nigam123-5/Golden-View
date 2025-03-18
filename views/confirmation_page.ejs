@@ -15,6 +15,7 @@
             "Thank you for choosing us""
         </h1>
         <h2> Your booking is confirmed. </h2>
+        <h2>You will be redirected shortly...</h2>
         <h3> See you soon .... </h3>
 
         <style>
@@ -73,6 +74,12 @@
        
         
     </style>
+
+   <script>
+    setTimeout(() => {
+      window.location.href = '/';
+    }, 3000);
+    </script>
         <%- include('partials/footer') %>
 
     </body>

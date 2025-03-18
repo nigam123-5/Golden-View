@@ -322,67 +322,127 @@ function handleFormSubmit(event) {
 
 //Any changes in input box either a text added or removed will also trigger errorBox to hide
 
+// function checkFields() {
+//   let click_content = document.getElementById('content');
+
+//   // Check if the selected hotel (hidden input) matches the search input value.
+//     // Check if the selected hotel (hidden input) matches the search input value.
+//   if (!selectedItemInput.value || selectedItemInput.value !== searchInput.value){
+//     if (searchInput.value.trim() === ''){
+//       errorBox.innerHTML = 'Please select hotel';
+//     } else {
+//       errorBox.innerHTML = 'Select among the hotels provided';
+//     }
+//     if (screenWidth > 835){
+//       height.style.height = '83px';
+//     }
+//     return false;
+//   }
+//   // Check if check-in date is provided.
+//   else if(dateInput[0].value === ''){
+//     errorBox.innerHTML = 'Kindly select your check-in date';
+//     if (screenWidth > 835){
+//       height.style.height = '83px';
+//     }
+//     return false;
+//   }
+//   // Check if check-out date is provided.
+//   else if(dateInput[1].value === ''){
+//     errorBox.innerHTML = 'Please select check-out date';
+//     if (screenWidth > 835){
+//       height.style.height = '83px';
+//     }
+//     return false;
+//   }
+
+//   // Remove the active bar and reset the height/overflow styling.
+//   height.classList.remove('active-bar');
+//   click_content.style.overflow = 'visible';
+//   height.style.height = '75px';
+//   console.log(roomValue);
+
+//   // Retrieve the city name from the search input and update the form action.
+//   let city = searchInput.value.trim();
+//   console.log("City:", city);
+//   let form = document.getElementById('form');
+//   form.action = "/rooms/city=" + encodeURIComponent(city);
+//   console.log("Updated form action:", form.action);
+//   let formData = {
+//     city: searchInput.value,
+//     checkIn: dateInput[0].value,
+//     checkOut: dateInput[1].value,
+//     roomCount: roomValue,
+//     guestList: list.map(guest => ({
+//          adult: guest.adult,
+//          child: {
+//              count: guest.child.count,
+//              age: guest.child.age ? guest.child.age.map(age => age) : []
+//          }
+//     })),
+//     totalGuest: guestNum.textContent
+//   };
+
+// sessionStorage.setItem('bookingData', JSON.stringify(formData));
+// let encodedCity = encodeURIComponent(city);
+// let url = `/rooms/city/${encodedCity}`; // Correct URL construction
+// console.log(url);
+// window.location.href = url; 
+//   //window.location.href = '/rooms/city/:${encodeURIComponent(city)}';
+//   return false; // Prevent default form submission
+// }
+
+
 function checkFields() {
   let click_content = document.getElementById('content');
 
-  // Check if the selected hotel (hidden input) matches the search input value.
-    // Check if the selected hotel (hidden input) matches the search input value.
   if (!selectedItemInput.value || selectedItemInput.value !== searchInput.value){
-    if (searchInput.value.trim() === ''){
-      errorBox.innerHTML = 'Please select hotel';
-    } else {
-      errorBox.innerHTML = 'Select among the hotels provided';
-    }
-    if (screenWidth > 835){
-      height.style.height = '83px';
-    }
-    return false;
-  }
-  // Check if check-in date is provided.
-  else if(dateInput[0].value === ''){
-    errorBox.innerHTML = 'Kindly select your check-in date';
-    if (screenWidth > 835){
-      height.style.height = '83px';
-    }
-    return false;
-  }
-  // Check if check-out date is provided.
-  else if(dateInput[1].value === ''){
-    errorBox.innerHTML = 'Please select check-out date';
-    if (screenWidth > 835){
-      height.style.height = '83px';
-    }
+    errorBox.innerHTML = searchInput.value.trim() === '' ? 'Please select a hotel' : 'Select among the hotels provided';
+    if (screenWidth > 835) height.style.height = '83px';
     return false;
   }
 
-  // Remove the active bar and reset the height/overflow styling.
+  if (dateInput[0].value === ''){
+    errorBox.innerHTML = 'Kindly select your check-in date';
+    if (screenWidth > 835) height.style.height = '83px';
+    return false;
+  }
+
+  if (dateInput[1].value === ''){
+    errorBox.innerHTML = 'Please select check-out date';
+    if (screenWidth > 835) height.style.height = '83px';
+    return false;
+  }
+
   height.classList.remove('active-bar');
   click_content.style.overflow = 'visible';
   height.style.height = '75px';
   console.log(roomValue);
 
-  // Retrieve the city name from the search input and update the form action.
   let city = searchInput.value.trim();
-  console.log("City:", city);
   let form = document.getElementById('form');
-  form.action = "/rooms/city=" + encodeURIComponent(city);
+  form.action = `/rooms/city=${encodeURIComponent(city)}`;
   console.log("Updated form action:", form.action);
+
   let formData = {
-    city: searchInput.value,
+    city,
     checkIn: dateInput[0].value,
     checkOut: dateInput[1].value,
     roomCount: roomValue,
-    guestList: list,
+    guestList: list.map(guest => ({
+      adult: guest.adult,
+      child: {
+        count: guest.child.count,
+        age: guest.child.age ? guest.child.age.map(age => age) : []
+      }
+    })),
     totalGuest: guestNum.textContent
-};
+  };
 
-sessionStorage.setItem('bookingData', JSON.stringify(formData));
-let encodedCity = encodeURIComponent(city);
-let url = `/rooms/city/${encodedCity}`; // Correct URL construction
-console.log(url);
-window.location.href = url; 
-  //window.location.href = '/rooms/city/:${encodeURIComponent(city)}';
-  return false; // Prevent default form submission
+  sessionStorage.setItem('bookingData', JSON.stringify(formData));
+  let url = `/rooms/city/${encodeURIComponent(city)}`;
+  console.log(url);
+  window.location.href = url;
+  return false;
 }
 
 searchInput.addEventListener('change', function(){
