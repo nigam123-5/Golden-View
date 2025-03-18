@@ -153,69 +153,77 @@
             </tr>
         </thead>
         <tbody id="bookingTableBody">
-            <% 
-              // Added allocatedRoom, paymentStatus, and checkedOut for demonstration.
-              const bookings = [
-                    { id: 1, name: 'John Doe', room: 'Deluxe', checkIn: '2023-10-01', checkOut: '2023-10-05', status: 'Confirmed', allocatedRoom: 101, paymentStatus: 'Paid', checkedOut: false },
-                    { id: 2, name: 'Jane Smith', room: 'Standard', checkIn: '2023-10-02', checkOut: '2023-10-06', status: 'Pending' },
-                    { id: 3, name: 'Alice Johnson', room: 'Suite', checkIn: '2023-10-03', checkOut: '2023-10-07', status: 'Cancelled' },
-                    { id: 4, name: 'Bob Williams', room: 'Deluxe', checkIn: '2023-10-04', checkOut: '2023-10-08', status: 'Confirmed', allocatedRoom: 104, paymentStatus: 'Paid', checkedOut: true },
-                    { id: 5, name: 'Eva Brown', room: 'Standard', checkIn: '2023-10-05', checkOut: '2023-10-09', status: 'Confirmed' },
-                    { id: 6, name: 'David Lee', room: 'Suite', checkIn: '2023-10-06', checkOut: '2023-10-10', status: 'Cancelled' }
-              ]; 
-            %>
             <% bookings.forEach(booking => { %>
                 <tr>
-                    <td><%= booking.id %></td>
-                    <td><%= booking.name %></td>
-                    <td><%= booking.room %></td>
-                    <td><%= booking.allocatedRoom ? booking.allocatedRoom : '-' %></td>
-                    <td><%= booking.allocatedRoom ? booking.paymentStatus : '-' %></td>
-                    <td><%= booking.checkIn %></td>
-                    <td><%= booking.checkOut %></td>
+                    <td><%= booking._id %></td>
+                    <td><%= booking.firstName %></td>
+                    <td><%= booking.room ? booking.room.category : '-' %></td>
+                    <td><%= booking.roomNo ? booking.roomNo : '-' %></td>
+                    <td><%= booking.payment ? booking.payment.status : '-' %></td>
+                    <td><%= new Date(booking.checkIn.date).toLocaleDateString('en-GB') %></td>
+                    <td><%= new Date(booking.checkOut.date).toLocaleDateString('en-GB') %></td>
                     <td class="status-<%= booking.status.toLowerCase() %>"><%= booking.status %></td>
                     <td>
-                        <% if (booking.allocatedRoom) { %>
-                            <% if (booking.checkedOut) { %>
+                        <% if (booking.roomNo) { %>
+                            <% if (booking.checkOut.status === "checkedOut") { %>
                                 <button class="allocate-btn" disabled style="background-color: #d3d3d3; color: #666; cursor: not-allowed;">Checked Out</button>
                             <% } else { %>
-                                <button class="allocate-btn" onclick="checkoutRoom(<%= booking.id %>)">Checkout</button>
+                                <button class="allocate-btn" onclick="checkoutRoom('<%= booking._id %>')">Checkout</button>
                             <% } %>
                         <% } else if (booking.status.toLowerCase() === "confirmed") { %>
-                            <button class="allocate-btn" onclick="showModal(<%= booking.id %>, '<%= booking.room %>')">Allocate Room</button>
+                            <button class="allocate-btn" onclick="showModal('<%= booking._id %>', '<%= booking.room.category %>')">Allocate Room</button>
                         <% } else if (booking.status.toLowerCase() === "pending") { %>
-                            <button class="allocate-btn" onclick="confirmBooking(<%= booking.id %>)">Confirm Booking</button>
+                            <button class="allocate-btn" onclick="confirmBooking('<%= booking._id %>')">Confirm Booking</button>
                         <% } else if (booking.status.toLowerCase() === "cancelled") { %>
                             <button class="allocate-btn" disabled style="background-color: #d3d3d3; color: #666; cursor: not-allowed;">Confirm Booking</button>
                         <% } %>
                     </td>
+                    <div id="myModal" class="modal">
+                        <div class="modal-content">
+                          <span class="close" onclick="closeModal()">&times;</span>
+                          <h2>Available Rooms</h2>
+                          <ul id="roomList" class="room-list">
+                            <% rooms.forEach(room => { %>
+                              <% if (Array.isArray(room.roomNumbers)) { %>
+                                <% room.roomNumbers.forEach(num => { %>
+                                  <% if (num.available === true) { %>
+                                    <li 
+                                      class="room-item" 
+                                      data-room-type="<%= room.category %>" 
+                                      data-city="<%= room.city %>">
+                                      Room <%= room.category %> - <%= room.city %> - Room No: <%= num.roomNo %> 
+                                      <button class="allocate-btn" 
+                                        onclick="allocateRoom('<%= room._id %>', '<%= num.roomNo %>', currentBookingId)">
+                                        Allocate
+                                      </button>
+                                    </li>
+                                  <% } %>
+                                <% }); %>
+                              <% } %>
+                            <% }); %>
+                          </ul>
+                        </div>
+                      </div>
                 </tr>
+                
+                  
             <% }); %>
+
         </tbody>
     </table>
 
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Available Rooms</h2>
-            <ul id="roomList" class="room-list">
-                <li class="room-item" data-room-type="Deluxe">
-                    Room 101 - Deluxe 
-                    <button class="allocate-btn" onclick="allocateRoom(101)">Allocate</button>
-                </li>
-                <li class="room-item" data-room-type="Standard">
-                    Room 102 - Standard 
-                    <button class="allocate-btn" onclick="allocateRoom(102)">Allocate</button>
-                </li>
-                <li class="room-item" data-room-type="Suite">
-                    Room 103 - Suite 
-                    <button class="allocate-btn" onclick="allocateRoom(103)">Allocate</button>
-                </li>
-            </ul>
-        </div>
-    </div>
+
+     
+      
+    
 
     <script>
+        var bookingsData = <%- JSON.stringify(bookings) %>;
+        console.log("Booking data:", bookingsData);
+        var currentBookingId = null;
+        var roomsData = <%- JSON.stringify(rooms) %>;
+        
+        console.log("roooms data:", roomsData);
         function filterBookings() {
             const searchInput = document.getElementById('searchInput').value.toLowerCase();
             const statusFilter = document.getElementById('statusFilter').value;
@@ -236,41 +244,114 @@
             }
         }
 
+
+        
         function showModal(bookingId, roomType) {
             const modal = document.getElementById('myModal');
             const roomList = document.getElementById('roomList');
             const roomItems = roomList.getElementsByClassName('room-item');
 
-            for (let i = 0; i < roomItems.length; i++) {
-                if (roomItems[i].getAttribute('data-room-type') === roomType) {
-                    roomItems[i].style.display = 'flex';
-                } else {
-                    roomItems[i].style.display = 'none';
-                }
+            // Find the booking by its ID to get the city
+            const booking = bookingsData.find(b => b._id === bookingId);
+            if (!booking || !booking.city) {
+                console.error("Booking not found or city is missing!");
+                return; // Exit if no valid booking is found
             }
+            const bookingCity = booking.city;
+
+            // Set the global currentBookingId using the selected bookingId
+            currentBookingId = bookingId;
+
+            // Filter rooms based on roomType and bookingCity
+            for (let i = 0; i < roomItems.length; i++) {
+                const isMatchingType = roomItems[i].getAttribute('data-room-type') === roomType;
+                const isMatchingCity = roomItems[i].getAttribute('data-city') === bookingCity;
+
+                // Show the list item if both conditions are met
+                roomItems[i].style.display = isMatchingType && isMatchingCity ? 'flex' : 'none';
+            }
+
+            // Display the modal
             modal.style.display = "block";
         }
-
         function closeModal() {
             document.getElementById('myModal').style.display = "none";
         }
 
-        function allocateRoom(roomId) {
-            // In a real application, update the booking status and allocated room via AJAX.
-            alert('Room ' + roomId + ' allocated successfully!');
+
+
+        // Global variable to store the booking id when a modal is opened
+
+        function allocateRoom(roomId, roomNo, selectedBookingId) {
+            fetch(`/api/admin/allocateRoom/${selectedBookingId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ roomId: roomId, roomNo: Number(roomNo) })
+            })
+            .then(response => {
+            if (!response.ok) {
+                throw new Error('Unable to allocate room.');
+            }
+            return response.json();
+            })
+            .then(data => {
+            alert(data.message);
             closeModal();
-            // Reload or update the table accordingly.
+            location.reload(); // Optionally update the table or reload the page
+            })
+            .catch(error => {
+            console.error('Error:', error);
+            alert('Error allocating room.');
+            });
         }
 
         function confirmBooking(bookingId) {
-            // Add your confirmation logic here (e.g., AJAX request). For now, it displays an alert.
-            alert('Booking ' + bookingId + ' confirmed successfully!');
+            fetch(`/api/confirmBooking/${bookingId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+            })
+            .then(response => {
+            if (!response.ok) {
+                throw new Error('Unable to confirm booking.');
+            }
+            return response.json();
+            })
+            .then(data => {
+            alert(data.message);
+            // Optionally update the table or reload the page to reflect changes.
+            location.reload();
+            })
+            .catch(error => {
+            console.error('Error:', error);
+            alert('Error confirming booking.');
+            });
         }
 
         function checkoutRoom(bookingId) {
-            // Add your checkout logic here. For now, it displays an alert.
-            alert('Booking ' + bookingId + ' checked out successfully!');
-            // In a real app, update the booking record and refresh the table.
+            fetch(`/api/checkout/${bookingId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+            })
+            .then(response => {
+            if (!response.ok) {
+                throw new Error('Unable to checkout room.');
+            }
+            return response.json();
+            })
+            .then(data => {
+            alert(data.message);
+            location.reload();
+            })
+            .catch(error => {
+            console.error('Error:', error);
+            alert('Error during checkout.');
+            });
         }
     </script>
 </body>
