@@ -215,19 +215,18 @@ app.post("/create-razorpay-order", async (req, res) => {
 });
 
 app.get("/payment", (req, res) => {
-  const amount = 500; // Ya jo bhi actual amount ho
+  const amount = 500; 
   res.render("payment", { amount });
 });
 
 
 
 // Booked route with email notification
-app.post("/confirmation", async (req, res) => {
+app.post("/confirmation_page", async (req, res) => {
     const { name, phone, person, reservationDate, time, email } = req.body;
     const user = new User({
         name, phone, person, reservationDate, time, email
-    });
-
+    })
     try {
         await user.save();
 
@@ -245,25 +244,26 @@ app.post("/confirmation", async (req, res) => {
             const info = await transporter.sendMail({
                 from: '<nigamsuryansh921@gmail.com>',
                 to: email,
-                subject: "Confirmation from Hotel Golden View",
-                html: `<p>Thank you for choosing The Hotel Golden view !! 
-                We're delighted to confirm your reservation for ${reservationDate} at ${time}. We look forward to welcoming you for a wonderful dining
-                 experience. Should you have any special requests or dietary requirements, 
-                please feel free to let us know in advance. See you soon !!</p>`
+                subject: "Confirmation from Grilli Restaurant",
+                html: `<p>Thank you for choosing Grilli Restaurant !! 
+                We're delighted to confirm your reservation for ${reservationDate} at ${time}. We look forward to welcoming you for a wonderful dining experience. Should you have any special requests or dietary requirements, please feel free to let us know in advance. See you soon !!</p>`
             });
 
             console.log("Message sent: %s", info.messageId);
+            // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
         }
 
         main().catch(console.error);
 
-        res.render("confirmation_page.ejs");
+        res.render("booked.ejs")
         console.log("Booked");
     } catch (err) {
         console.error('Error saving reservation:', err);
         res.status(500).send('Error submitting data');
     }
-});
+
+})
+
 
 // Start the server
 app.listen(8080, () => {

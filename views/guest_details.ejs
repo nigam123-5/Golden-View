@@ -213,49 +213,7 @@
                         }
                     });
                 </script>
-                <!-- <script>
-                    document.getElementById('form').addEventListener('submit', async function(e) {
-                        // Prevent form submission until data is saved on backend
-                        e.preventDefault();
 
-                        // Gather form data
-                        const guestDetails = {
-                            firstName: document.getElementById('first-name').value,
-                            lastName: document.getElementById('last-name').value,
-                            mobile: document.getElementById('mobile').value,
-                            email: document.getElementById('email').value,
-                            country: document.getElementById('country').value,
-                            address: document.getElementById('address').value,
-                            zipCode: document.getElementById('zip-code').value,
-                            agreePrivacyPolicy: document.getElementById('mark').checked
-                        };
-                        
-                        // Store the data in session storage
-                        sessionStorage.setItem('guestDetails', JSON.stringify(guestDetails));
-                        // Call backend API to save guest details
-                        const bookingData =sessionStorage.getItem('bookingData');
-                        try {
-                            const response = await fetch('/booking/<%= room.id %>', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify({guestDetails, bookingData})
-                               
-                            });
-                            console.log(guestDetails);
-                            if (!response.ok) {
-                                throw new Error('Failed to save guest details.');
-                            }
-                            
-                        //     // If the API call is successful, submit the form
-                              e.target.submit();
-                        } catch (error) {
-                            console.error('Error saving guest details:', error);
-                            // Optionally display an error message to the user
-                        }
-                    });
-                </script> -->
             </div>
         </div>
         <%- include('partials/footer') %>
