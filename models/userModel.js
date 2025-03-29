@@ -10,16 +10,16 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true,  
+    // unique: true,  
     trim: true,
     lowercase: true,  
     match: [/.+@.+\..+/, 'Please enter a valid email address'] 
   },
-  password: {
-    type: String,
-    required: true,
-    minlength: 6  
-  },
+  // password: {
+  //   type: String,
+  //   required: true,
+  //   minlength: 6  
+  // },
   phoneNumber: {
     type: String,
     required: false,

@@ -142,18 +142,6 @@ app.get("/awards", (req, res) => {
     res.render("awards.ejs");
 });
 
-// app.get("/rooms/city=:city", async (req, res) => {
-//     try {
-//         const city = decodeURIComponent(req.params.city);
-//         console.log(city,"city");
-//         const rooms = await Room.find({ city: city }); 
-//         res.render("rooms.ejs", { rooms: rooms }); 
-//     } catch (error) {
-//         console.error("Error fetching rooms:", error);
-//         res.status(500).send("Error fetching room data"); 
-//     }
-// });
-
 app.get("/rooms/city/:city", async (req, res) => {
     try {
         const city = decodeURIComponent(req.params.city);
@@ -162,7 +150,7 @@ app.get("/rooms/city/:city", async (req, res) => {
         res.render("rooms.ejs", { rooms: rooms });
     } catch (error) {
         console.error("Error fetching rooms:", error);
-        console.error("Error details:", error.stack); // Log the error stack trace
+        console.error("Error details:", error.stack); 
         res.status(500).send("Error fetching room data");
     }
 });
@@ -251,9 +239,11 @@ app.post("/confirmation_page", async (req, res) => {
             const info = await transporter.sendMail({
                 from: '<nigamsuryansh921@gmail.com>',
                 to: email,
-                subject: "Confirmation from Grilli Restaurant",
-                html: `<p>Thank you for choosing Grilli Restaurant !! 
-                We're delighted to confirm your reservation for ${reservationDate} at ${time}. We look forward to welcoming you for a wonderful dining experience. Should you have any special requests or dietary requirements, please feel free to let us know in advance. See you soon !!</p>`
+                subject: "Confirmation from Hotel Golden View - Restaurant",
+                html: `<p>Thank you for choosing  Golden View Restaurant !! 
+                We're delighted to confirm your reservation for ${reservationDate} at ${time}. 
+                We look forward to welcoming you for a wonderful dining experience. 
+                Should you have any special requests or dietary requirements, please feel free to let us know in advance. See you soon !!</p>`
             });
 
             console.log("Message sent: %s", info.messageId);
@@ -262,7 +252,7 @@ app.post("/confirmation_page", async (req, res) => {
 
         main().catch(console.error);
 
-        res.render("booked.ejs")
+        res.render("confirmation_page.ejs")
         console.log("Booked");
     } catch (err) {
         console.error('Error saving reservation:', err);
