@@ -48,8 +48,7 @@
                 <div class="room-details">
                     <h2>Selected Room Details</h2>
                     <p><strong>Room Type:</strong> <%= room.category %></p>
-                    <p><strong>Price:</strong> Rs. <%= room.price %> per
-                        night</p>
+                    <p><strong>Price:</strong> Rs. <%= room.price %> per night</p>
                     <p><strong>Description:</strong> <%= room.description %></p>
                 </div>
             </div>
@@ -112,11 +111,9 @@
                                     Hotel</button>
                             </div> -->
                             <div class="button">
-                                <button type="button" id="payButton"
-                                    class="inactive">Pay Now</button>
-                                <button type="button" id="key2"
-                                    class="inactive">Pay at Hotel</button>
-                            </div>
+                                <button type="button" id="payButton" class="inactive">Pay Now</button>
+                                <button type="button" id="key2" class="inactive">Pay at Hotel</button>
+                              </div>
                             <p id='para1'>Please provide a valid payment
                                 method.</p>
                             <p id='para2'>Payment information is only needed to
@@ -173,54 +170,104 @@
                             rel="im-checkout" data-text="Pay"
                             data-css-style="color:#ffffff; background:#75c26a; width:180px; border-radius:4px"></a>
                     </div>
-                </form>
-                <script>
-                    document.getElementById('form').addEventListener('submit', async function(e) {
-                        // Prevent form submission until data is saved on backend
-                        e.preventDefault();
-                
-                        // Gather form data
-                        const guestDetails = {
-                            firstName: document.getElementById('first-name').value,
-                            lastName: document.getElementById('last-name').value,
-                            mobile: document.getElementById('mobile').value,
-                            email: document.getElementById('email').value,
-                            country: document.getElementById('country').value,
-                            address: document.getElementById('address').value,
-                            zipCode: document.getElementById('zip-code').value,
-                            room: '<%= room._id %>',
-                            agreePrivacyPolicy: document.getElementById('mark').checked
-                        };
-                        e.target.submit();
-                        // Store the data in session storage
-                        sessionStorage.setItem('guestDetails', JSON.stringify(guestDetails));
-                        // Call backend API to save guest details
-                        const bookingData = JSON.stringify(sessionStorage.getItem('bookingData'));
-                        console.log(bookingData,"booking adata");
-                        try {
-                            const response = await fetch(`/api/booking`, {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                    'Authorization':localStorage.getItem('token')
-                                },
-                                body: JSON.stringify({ ...guestDetails},{bookingData})
-                            });
-                            console.log(guestDetails);
-                            if (!response.ok) {
-                                throw new Error('Failed to save guest details.');
-                            }
-                            alert('Booking Successful');
-                            window.location.href = './';
-                            // If the API call is successful, submit the form
-                            
-                        } catch (error) {
-                            console.error('Error saving guest details:', error);
-                            // Optionally display an error message to the user
-                        }
-                    });
-                </script>
+                </form>   
+            </div>
+           <script>
+               document.addEventListener("DOMContentLoaded", function () {
+  // Payment selection logic
+  const payNowBtn = document.getElementById("payButton");
+  const payAtHotelBtn = document.getElementById("key2");
+  let selectedPaymentMethod = null;
 
+  function updatePaymentButtons(activeButton, inactiveButton) {
+    activeButton.classList.add("active");
+    activeButton.classList.remove("inactive");
+    inactiveButton.classList.add("inactive");
+    inactiveButton.classList.remove("active");
+  }
+
+  payNowBtn.addEventListener("click", function () {
+    selectedPaymentMethod = { mode: "Pay Now", status: "Completed" };
+    updatePaymentButtons(payNowBtn, payAtHotelBtn);
+  });
+
+  payAtHotelBtn.addEventListener("click", function () {
+    selectedPaymentMethod = { mode: "Pay at Hotel", status: "Pending" };
+    updatePaymentButtons(payAtHotelBtn, payNowBtn);
+  });
+
+  // Form submission handler
+  document.getElementById('form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    // Validate that all required fields exist in the DOM
+    const requiredFields = ['first-name', 'last-name', 'mobile', 'email', 'country', 'address', 'zip-code'];
+    const missingFields = requiredFields.filter(id => !document.getElementById(id));
+    if (missingFields.length > 0) {
+      alert("Some required fields are missing: " + missingFields.join(', '));
+      return;
+    }
+
+    // Validate that a payment method is selected
+    if (!selectedPaymentMethod) {
+      alert("Please select a payment method before proceeding.");
+      return;
+    }
+
+    // Retrieve guest details from the form
+    const guestDetails = {
+      firstName: document.getElementById('first-name').value.trim(),
+      lastName: document.getElementById('last-name').value.trim(),
+      mobile: document.getElementById('mobile').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      country: document.getElementById('country').value.trim(),
+      address: document.getElementById('address').value.trim(),
+      zipCode: document.getElementById('zip-code').value.trim(),
+      // Try to get room id from a hidden input, otherwise fallback to server rendered value
+      room: document.getElementById('room-id')?.value || '<%= room._id %>',
+      agreePrivacyPolicy: document.getElementById('mark')?.checked || false,
+      payment: selectedPaymentMethod // Include payment details
+    };
+
+    // Retrieve any existing booking data from sessionStorage
+    let existingBookingData = {};
+    try {
+      const storedData = sessionStorage.getItem('bookingData');
+      if (storedData) {
+        existingBookingData = JSON.parse(storedData);
+      }
+    } catch (error) {
+      console.error("Error parsing bookingData:", error);
+    }
+
+    // Merge existing booking data with the new guest details
+    const combinedData = { ...existingBookingData, ...guestDetails };
+    sessionStorage.setItem('bookingData', JSON.stringify(combinedData));
+
+    // Send combined data to the backend
+    try {
+      const response = await fetch(`/api/booking`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('token')
+        },
+        body: JSON.stringify(combinedData)
+      });
+      if (!response.ok) throw new Error('Failed to save guest details.');
+      alert('Booking Successful');
+      // Wait for 3 seconds before redirecting to the home page
+      sessionStorage.removeItem('bookingData');
+      window.location.href = '/confirmation_page?';
+    } catch (error) {
+      console.error('Error saving guest details:', error);
+      alert("There was an error saving your details. Please try again.");
+    }
+  });
+});
+
+
+            </script>                  
             </div>
         </div>
         <%- include('partials/footer') %>
