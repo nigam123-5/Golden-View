@@ -4,6 +4,8 @@ Overview
 
 Hotel Golden View is a full-stack web-based hotel management system developed using Node.js, Express, EJS, and MongoDB. The project aims to provide an intuitive platform for customers to book rooms, explore hotel amenities, and manage their reservations efficiently.
 
+# Live Demo Link - https://golden-view.onrender.com/
+
 # Features
 
 Responsive UI: Designed using CSS and JavaScript for an enhanced user experience.
