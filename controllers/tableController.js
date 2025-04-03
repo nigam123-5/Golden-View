@@ -38,8 +38,8 @@ const CreateTable = async (req, res) => {
           <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #fff8e1; padding: 20px; border: 1px solid #ffd54f; border-radius: 10px;">
             <h2 style="color: #ff9800; text-align: center; margin-bottom: 20px;">Hotel Golden View Restaurant</h2>
             <p style="font-size: 16px;">Dear <strong>${name}</strong>,</p>
-            <p style="font-size: 16px;">Thank you for choosing <strong style="color: #ffb74d;">Hotel Golden View Restaurant</strong>!</p>
-            <p style="font-size: 16px;">We're delighted to confirm your reservation at <strong style="color: #ffa726;">Golden Hotel</strong> for:</p>
+            <p style="font-size: 16px;">Thank you for choosing <strong style="color: #ffb74d;">Hotel Golden View Restaurant</strong></p>
+            <p style="font-size: 16px;">We're delighted to confirm your reservation at <strong style="color: #ffa726;">Hotel Golden View</strong> for:</p>
             <ul style="list-style-type: none; padding: 0; font-size: 16px; color: #333;">
               <li><strong style="color: #ff9800;">Date:</strong> ${reservationDate}</li>
               <li><strong style="color: #ff9800;">Time:</strong> ${reservationTime}</li>
