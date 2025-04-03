@@ -15,11 +15,10 @@ const nodemailer = require("nodemailer");
 const rooms = require("./public/js/roomsData");
 require('dotenv').config();
 
-
 const  roomRoutes = require('./Routes/roomRoutes');
 const bookingRoutes = require('./Routes/bookingRoutes');
 const userRoutes = require('./Routes/userRoutes');
-const Tablebooking = require('./Routes/tableRoutes'); // Import the model
+const Tablebooking = require('./Routes/tableRoutes'); 
 
 // Load environment variables
 dotenv.config();
@@ -38,9 +37,6 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.set("views", path.join(__dirname, "/views"));
 app.set("view engine", "ejs");
 
-
-
-
 // MongoDB connection
 const MONGO_URL = "mongodb+srv://nigamsuryansh11:eSTwBDp3cHp8N2mr@cluster0.sm9sa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
@@ -50,15 +46,15 @@ mongoose.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 
 // Razorpay setup
 const razorpay = new Razorpay({
-    key_id: "rzp_test_z5oX2eRIpY5t0C", // Replace with your Razorpay key
-    key_secret: "Oo2Lx0mjSCQRMYWWTFW4zfPR", // Replace with your Razorpay secret
+    key_id: "rzp_test_z5oX2eRIpY5t0C", 
+    key_secret: "Oo2Lx0mjSCQRMYWWTFW4zfPR",
 });
 
 // Require booking routes
 app.use('/api', bookingRoutes);
 app.use('/api', roomRoutes);
 app.use('/api', userRoutes);
-app.use('/api', Tablebooking); // Use the Tablebooking routes
+app.use('/api', Tablebooking);
 
 // Routes
 app.get("/", (req, res) => {
@@ -216,98 +212,6 @@ app.get("/payment", (req, res) => {
   const amount = 500; 
   res.render("payment", { amount });
 });
-
-
-
-// // Booked route with email notification
-// app.post("/confirmation_page", async (req, res) => {
-//     const { name, phone, person, reservationDate, time, email } = req.body;
-//     const user = new User({
-//         name, phone, person, reservationDate, time, email
-//     })
-//     try {
-//         await user.save();
-
-//         const transporter = nodemailer.createTransport({
-//             service: "gmail",
-//             port: 465,
-//             secure: true,
-//             auth: {
-//                 user: "nigamsuryansh921@gmail.com",
-//                 pass: "bwom agtl cuyl wmym",
-//             },
-//         });
-
-//         async function main() {
-//             const info = await transporter.sendMail({
-//                 from: '<nigamsuryansh921@gmail.com>',
-//                 to: email,
-//                 subject: "Confirmation from Hotel Golden View - Restaurant",
-//                 html: `<p>Thank you for choosing  Golden View Restaurant !! 
-//                 We're delighted to confirm your reservation for ${reservationDate} at ${time}. 
-//                 We look forward to welcoming you for a wonderful dining experience. 
-//                 Should you have any special requests or dietary requirements, please feel free to let us know in advance. See you soon !!</p>`
-//             });
-
-//             console.log("Message sent: %s", info.messageId);
-//             // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
-//         }
-
-//         main().catch(console.error);
-
-//         res.render("confirmation_page.ejs")
-//         console.log("Booked");
-//     } catch (err) {
-//         console.error('Error saving reservation:', err);
-//         res.status(500).send('Error submitting data');
-//     }
-
-// })
-
-
-// Booked route with email notification
-// app.post("/confirmation_page", async (req, res) => {
-//     const {  reservationDate, time, email } = req.body;
-    
-//     try {
-       
-
-//         const transporter = nodemailer.createTransport({
-//             service: "gmail",
-//             port: 465,
-//             secure: true,
-//             auth: {
-//                 user: "nigamsuryansh921@gmail.com",
-//                 pass: "bwom agtl cuyl wmym",
-//             },
-//         });
-
-//         async function main() {
-//             const info = await transporter.sendMail({
-//                 from: '<nigamsuryansh921@gmail.com>',
-//                 to: email,
-//                 subject: "Confirmation from Hotel Golden View - Restaurant",
-//                 html: `<p>Thank you for choosing  Golden View Restaurant !! 
-//                 We're delighted to confirm your reservation for ${reservationDate} at ${time}. 
-//                 We look forward to welcoming you for a wonderful dining experience. 
-//                 Should you have any special requests or dietary requirements, please feel free to let us know in advance. See you soon !!</p>`
-//             });
-
-//             console.log("Message sent: %s", info.messageId);
-//             // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
-//         }
-
-//         main().catch(console.error);
-
-//         res.render("confirmation_page.ejs")
-//         console.log("Booked");
-//     } catch (err) {
-//         console.error('Error saving reservation:', err);
-//         res.status(500).send('Error submitting data');
-//     }
-
-// })
-
 
 
 // Start the server
