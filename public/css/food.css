@@ -1,0 +1,144 @@
+body {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    min-height: 10;
+    background: url('/images/photo.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* background-color: #f2f2f2; */
+}
+
+.parent {
+    display: flex;
+    justify-content: space-around;
+}
+
+.container1 {
+    max-width: 800px;
+    border: 1px solid #d8d2d2;
+    margin: 50px auto;
+    padding: 20px;
+    margin-top: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(236, 233, 233, 0.985);
+
+}
+
+h1 {
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    text-align: center;
+    color: #e0bd0be5;
+    margin-top: 30px;
+    box-shadow: 0 0 10px rgba(236, 233, 233, 0.985);
+    animation: fadeBackground 2s infinite;
+
+
+}
+
+@keyframes fadeBackground {
+
+    0%,
+    100% {
+        opacity: 0.9;
+        /* Start and end at the desired opacity */
+    }
+
+    50% {
+        opacity: 0;
+        /* Fade to transparent at the midpoint */
+    }
+}
+
+.menu-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.menu-item {
+    margin: 0;
+    color: #f8f4f4;
+}
+
+.menu-item p {
+    margin-top: 5px;
+    color: #fbf9f9;
+}
+
+.price {
+    float: right;
+    color: #f5f1f1;
+}
+
+h2 {
+    color: #f5ad06;
+}
+
+main {
+    margin-top: 100px;
+
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* background-color: #f2f2f2; */
+}
+
+.container2 {
+    max-width: 800px;
+    margin-left: 100px;
+
+    /* background-color: #fff; */
+    padding: 20px;
+    margin-top: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(236, 233, 233, 0.985);
+}
+
+.menu-section {
+    margin-bottom: 30px;
+}
+
+.menu-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.menu-item h2 {
+    margin: 0;
+    color: #f5ad06;
+    ;
+}
+
+.menu-item p {
+    margin-top: 5px;
+    color: #f7f4f4;
+}
+
+.price {
+    float: right;
+    color: #f7f4f4;
+}
